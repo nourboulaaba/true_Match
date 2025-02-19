@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.Dashboard"
+            styleClass="main-container" stylesheets="@style.css">
+
+    <!-- Side Navigation -->
+    <VBox styleClass="sidebar" prefWidth="250.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+
+        <!-- Profile Section -->
+        <VBox styleClass="profile-section" alignment="CENTER" spacing="15">
+            <padding>
+                <Insets top="30" bottom="30"/>
+            </padding>
+
+            <!-- Profile Circle -->
+            <Circle radius="40" styleClass="profile-circle"/>
+            <Label text="John Doe" styleClass="profile-name"/>
+            <Label text="Administrator" styleClass="profile-role"/>
+        </VBox>
+
+        <!-- Navigation Menu -->
+        <VBox styleClass="nav-menu" spacing="5">
+            <Button styleClass="nav-button" text="📊 Dashboard">
+                <padding>
+                    <Insets left="10" right="10"/>
+                </padding>
+            </Button>
+            <Button fx:id="missionsButton" styleClass="nav-button" text="🎯 Missions" onAction="#handleMissionsButtonAction">
+                <padding>
+                    <Insets left="10" right="10"/>
+                </padding>
+            </Button>
+            <Button fx:id="contratsButton" styleClass="nav-button" text="📄 Contrats" onAction="#handleContratsButtonAction">
+                <padding>
+                    <Insets left="10" right="10"/>
+                </padding>
+            </Button>
+        </VBox>
+    </VBox>
+
+    <!-- Main Content -->
+    <VBox AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+
+        <!-- Header -->
+        <HBox styleClass="header" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets left="30" right="30" top="20" bottom="20"/>
+            </padding>
+
+            <Label text="Dashboard" styleClass="header-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- Search Bar -->
+            <TextField promptText="Search..." styleClass="search-field"/>
+
+        </HBox>
+
+        <!-- Dashboard Content -->
+        <ScrollPane fitToWidth="true" styleClass="dashboard-scroll">
+            <VBox spacing="30" styleClass="dashboard-content">
+                <padding>
+                    <Insets top="30" right="30" bottom="30" left="30"/>
+                </padding>
+
+                <!-- Stats Cards -->
+                <HBox spacing="20">
+                    <VBox styleClass="stat-card">
+                        <Label text="Missions" styleClass="stat-label"/>
+                        <Label text="24" styleClass="stat-value"/>
+                    </VBox>
+
+                    <VBox styleClass="stat-card">
+                        <Label text="Contrats" styleClass="stat-label"/>
+                        <Label text="12" styleClass="stat-value"/>
+                    </VBox>
+
+                    <VBox styleClass="stat-card">
+                        <Label text="Utilisateurs" styleClass="stat-label"/>
+                        <Label text="85%" styleClass="stat-value"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Projects Section -->
+                <VBox spacing="20">
+                    <Label text="Missions Récentes" styleClass="section-title"/>
+
+                    <TableView styleClass="project-table" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn text="Project Name" prefWidth="200"/>
+                            <TableColumn text="Status" prefWidth="100"/>
+                            <TableColumn text="Progress" prefWidth="150"/>
+                            <TableColumn text="Due Date" prefWidth="120"/>
+                            <TableColumn text="Team" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </VBox>
+</AnchorPane>

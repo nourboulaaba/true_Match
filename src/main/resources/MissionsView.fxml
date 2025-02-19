@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MissionsController">
+    <!-- Sidebar (same as in Dashboard) -->
+    <left>
+        <VBox prefWidth="200.0">
+            <!-- Sidebar content here (menu items, buttons, etc.) -->
+            <Button text="Missions" fx:id="missionsButton" onAction="#handleMissionsButtonAction"/>
+            <!-- Add other sidebar items like links/buttons as in your dashboard -->
+        </VBox>
+    </left>
+
+    <!-- Main content area for Missions -->
+    <center>
+        <AnchorPane>
+            <TableView fx:id="missionsTable" VBox.vgrow="ALWAYS" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+                <columns>
+                    <TableColumn fx:id="colTitle" text="Title" prefWidth="200"/>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="150"/>
+                    <TableColumn fx:id="colDestination" text="Destination" prefWidth="150"/>
+                    <TableColumn fx:id="colEmployee" text="Employee" prefWidth="150"/>
+                </columns>
+            </TableView>
+        </AnchorPane>
+    </center>
+</BorderPane>
