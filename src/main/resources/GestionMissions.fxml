@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controller.GestionMissionsController"
+            prefHeight="600.0" prefWidth="800.0"
+            styleClass="main-container">
+
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <VBox spacing="20" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
+        <HBox alignment="CENTER_LEFT" styleClass="header" spacing="20">
+            <Button text="← Retour" onAction="#handleRetourButton" styleClass="button-return"/>
+            <Label text="Gestion des Missions" styleClass="title-label"/>
+        </HBox>
+
+        <!-- Formulaire -->
+        <GridPane hgap="10" vgap="10" styleClass="form-container">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Titre:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="titreField" promptText="Entrez le titre" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <DatePicker fx:id="dateField" promptText="Sélectionnez la date" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Destination:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="destinationField" promptText="Entrez la destination" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="ID Employé:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="idEmployeField" promptText="Entrez l'ID de l'employé" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                <Button text="Ajouter" onAction="#handleAjouter" styleClass="button-primary"/>
+                <Button text="Modifier" onAction="#handleModifier" styleClass="button-secondary"/>
+                <Button text="Supprimer" onAction="#handleSupprimer" styleClass="button-danger"/>
+                <Button text="Effacer" onAction="#handleEffacer" styleClass="button-neutral"/>
+            </HBox>
+        </GridPane>
+
+        <!-- TableView -->
+        <TableView fx:id="missionsTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="titreColumn" text="Titre" prefWidth="150"/>
+                <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
+                <TableColumn fx:id="destinationColumn" text="Destination" prefWidth="150"/>
+                <TableColumn fx:id="employeColumn" text="ID Employé" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>

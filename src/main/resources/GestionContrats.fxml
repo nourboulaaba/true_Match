@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controller.GestionContratsController"
+            prefHeight="600.0" prefWidth="800.0"
+            styleClass="main-container">
+
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <VBox spacing="20" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
+        <HBox alignment="CENTER_LEFT" styleClass="header" spacing="20">
+            <Button text="← Retour" onAction="#handleRetourButton" styleClass="button-return"/>
+            <Label text="Gestion des Contrats" styleClass="title-label"/>
+        </HBox>
+
+        <!-- Formulaire -->
+        <GridPane hgap="10" vgap="10" styleClass="form-container">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <ComboBox fx:id="typeField" promptText="Sélectionnez le type" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Date de début:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <DatePicker fx:id="dateDebutField" promptText="Sélectionnez la date de début" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Date de fin:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <DatePicker fx:id="dateFinField" promptText="Sélectionnez la date de fin" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="Salaire:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="salaireField" promptText="Entrez le salaire" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <Label text="ID Employé:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <TextField fx:id="idEmployeField" promptText="Entrez l'ID de l'employé" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                <Button text="Ajouter" onAction="#handleAjouter" styleClass="button-primary"/>
+                <Button text="Modifier" onAction="#handleModifier" styleClass="button-secondary"/>
+                <Button text="Supprimer" onAction="#handleSupprimer" styleClass="button-danger"/>
+                <Button text="Effacer" onAction="#handleEffacer" styleClass="button-neutral"/>
+            </HBox>
+        </GridPane>
+
+        <!-- TableView -->
+        <TableView fx:id="contratsTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="typeColumn" text="Type" prefWidth="100"/>
+                <TableColumn fx:id="dateDebutColumn" text="Date de début" prefWidth="120"/>
+                <TableColumn fx:id="dateFinColumn" text="Date de fin" prefWidth="120"/>
+                <TableColumn fx:id="salaireColumn" text="Salaire" prefWidth="100"/>
+                <TableColumn fx:id="employeColumn" text="ID Employé" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>
