@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllerConge.ListeReclamationController">
+
+    <TableView fx:id="tableReclamations" prefWidth="600" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colIdentifier" text="Identifier" prefWidth="100"/>
+            <TableColumn fx:id="colSujet" text="Sujet" prefWidth="150"/>
+            <TableColumn fx:id="colDescription" text="Description" prefWidth="200"/>
+            <TableColumn fx:id="colImagePath" text="Image Path" prefWidth="150"/>
+            <TableColumn fx:id="colDate" text="Date" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+</AnchorPane>
+
