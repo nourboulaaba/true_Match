@@ -11,8 +11,10 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <javafx.version>23.0.2</javafx.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -20,11 +22,13 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>org.example.mainFX</mainClass>
+                    <mainClass>org.example.MainFX</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -36,22 +40,22 @@
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
+        <!-- Utiliser la même version pour javafx-controls et javafx-fxml -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>22.0.1</version>
+            <version>23.0.2</version> <!-- Mise à jour pour correspondre à la version la plus récente -->
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>21.0.1</version>
+            <version>23.0.2</version> <!-- Mise à jour ici aussi -->
         </dependency>
         <dependency>
             <groupId>com.jfoenix</groupId>
             <artifactId>jfoenix</artifactId>
             <version>9.0.1</version>
         </dependency>
-
     </dependencies>
 
 </project>
