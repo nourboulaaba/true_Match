@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllerConge.Reclamation" spacing="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <TextField fx:id="identifierField" promptText="Identifiant de l'utilisateur" />
+    <TextField fx:id="sujetField" promptText="Sujet de la réclamation" />
+    <TextArea fx:id="descriptionArea" promptText="Description de la réclamation" />
+
+    <Button text="Ajouter une image (optionnel)" onAction="#choisirImage" />
+    <Label fx:id="imageLabel" text="Aucune image sélectionnée" />
+
+    <Button fx:id="envoyerButton" text="Envoyer la réclamation" onAction="#envoyerReclamation" disable="true" />
+</VBox>
