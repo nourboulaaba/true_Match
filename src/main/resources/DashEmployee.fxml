@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
@@ -14,9 +15,8 @@
 <?import javafx.scene.text.Font?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 
-<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Dashboard">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashEmp">
     <children>
-        <!-- En-tête -->
         <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label layoutX="224.0" layoutY="47.0" text="TRUE MATCH" textFill="WHITE">
@@ -24,7 +24,7 @@
                         <Font size="36.0" />
                     </font>
                 </Label>
-                <Label layoutX="227.0" layoutY="100.0" text=" Ressources Humaine " textFill="WHITE">
+                <Label layoutX="227.0" layoutY="100.0" text="Employee " textFill="WHITE">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -45,7 +45,7 @@
         </Pane>
         <VBox layoutX="-1.0" layoutY="145.0" prefHeight="438.0" prefWidth="252.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="146.0">
             <children>
-                <Label prefHeight="30.0" prefWidth="252.0" text="GESTION PERSONNELLE" textFill="#171717">
+                <Label prefHeight="30.0" prefWidth="252.0" text="MENUS" textFill="#171717">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -57,7 +57,7 @@
                     </VBox.margin>
                 </Label>
 
-                <JFXButton fx:id="ProfileButton" onAction="#handleButtonProfile" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Profile" textFill="#5b5858">
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Profile" textFill="#5b5858" fx:id="ProfileButton" onAction="#handleButtonProfile" >
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -105,26 +105,9 @@
                     </padding>
                 </JFXButton>
 
-                <Label prefHeight="30.0" prefWidth="252.0" text="GESTION RH" textFill="#171717">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <padding>
-                        <Insets left="40.0" />
-                    </padding>
-                </Label>
 
-                <JFXButton fx:id="EmpButton" onAction="#handleButtonActionx" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Employés" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <graphic>
-                        <FontAwesomeIcon glyphName="USERS" size="16" />
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </JFXButton>
+
+
 
 
                 <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Contrats" textFill="#5b5858">
@@ -151,29 +134,8 @@
                     </padding>
                 </JFXButton>
 
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Offres d'emploi" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <graphic>
-                        <FontAwesomeIcon glyphName="BRIEFCASE" size="16" />
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </JFXButton>
 
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Recrutement" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <graphic>
-                        <FontAwesomeIcon glyphName="USER_PLUS" size="16" />
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </JFXButton>
+
 
                 <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Formations" textFill="#5b5858">
                     <font>
@@ -197,7 +159,6 @@
                 </ImageView>
             </children>
         </Pane>
-
         <ScrollPane layoutX="254.0" layoutY="146.0" prefHeight="477.0" prefWidth="809.0">
             <content>
                 <AnchorPane prefHeight="477.0" prefWidth="809.0">

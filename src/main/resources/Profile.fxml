@@ -8,35 +8,34 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #F4F4F4;">
+<AnchorPane prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #F4F4F4;" fx:controller="Controller.profileController">
     <children>
         <!-- Carte du profil -->
         <VBox layoutX="75.0" layoutY="50.0" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-border-color: #E0E0E0; -fx-border-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);">
             <children>
                 <!-- Photo de profil -->
-                <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 50%; -fx-margin-bottom: 20;" layoutX="240.0" layoutY="20.0">
+                <ImageView fx:id="photoImageView" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 50%; -fx-margin-bottom: 20;" layoutX="240.0" layoutY="20.0">
                     <image>
-                        <Image url="images/user.png" />
+                        <Image url="images/user.png" /> <!-- Image par défaut -->
                     </image>
                 </ImageView>
 
                 <!-- Informations de l'utilisateur -->
                 <VBox spacing="12" layoutX="50.0" layoutY="160.0" style="-fx-alignment: center;">
-                    <Text fx:id="name" text="Nom de l'utilisateur" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-fill: #333333;" />
-                    <Text fx:id="stud_number" text="Numéro d'étudiant: 123456" style="-fx-font-size: 18; -fx-fill: #666666;" />
-                    <Text fx:id="course_name" text="Cours: Informatique" style="-fx-font-size: 18; -fx-fill: #666666;" />
-                    <Text fx:id="res" text="Résidence: Campus A" style="-fx-font-size: 18; -fx-fill: #666666;" />
+                    <Text fx:id="nomText" text="Nom: [Nom]" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-fill: #333333;" />
+                    <Text fx:id="prenomText" text="Prénom: [Prénom]" style="-fx-font-size: 18; -fx-fill: #666666;" />
+                    <Text fx:id="emailText" text="Email: [Email]" style="-fx-font-size: 18; -fx-fill: #666666;" />
+                    <Text fx:id="telephoneText" text="Téléphone: [Téléphone]" style="-fx-font-size: 18; -fx-fill: #666666;" />
+                    <Text fx:id="posteText" text="Poste: [Poste]" style="-fx-font-size: 18; -fx-fill: #666666;" />
+                    <Text fx:id="departementText" text="Département: [Département]" style="-fx-font-size: 18; -fx-fill: #666666;" />
                 </VBox>
-
-                <!-- Code-barres -->
-
             </children>
         </VBox>
-        <!-- Bouton Modifier mon profil -->
-        <Button layoutX="300.0" layoutY="370.0" text="Modifier mon profil" style="-fx-background-color: #699bf7; -fx-text-fill: white; -fx-font-size: 16; -fx-background-radius: 10; -fx-padding: 8 15;" mnemonicParsing="false" />
 
+        <!-- Bouton Modifier mon profil -->
+        <Button layoutX="300.0" layoutY="420.0" text="Modifier mon profil" style="-fx-background-color: #699bf7; -fx-text-fill: white; -fx-font-size: 16; -fx-background-radius: 10; -fx-padding: 8 15;" mnemonicParsing="false" fx:id="ModifierUtilisateurButton" onAction="#handleModifier"/>
 
         <!-- Bouton Retour -->
-
+       
     </children>
 </AnchorPane>

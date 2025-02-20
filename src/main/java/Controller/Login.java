@@ -6,8 +6,11 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
@@ -17,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXPasswordField;
 
@@ -61,6 +65,15 @@ public class Login implements Initializable{
     @FXML
     private JFXPasswordField password;
 
+
+    @FXML
+    private JFXTextField usernameField;
+    @FXML
+    private JFXPasswordField passwordField;
+
+    @FXML
+    private JFXButton loginButton;
+
     @FXML
     private JFXButton signUpButton;
     @FXML
@@ -69,7 +82,10 @@ public class Login implements Initializable{
     private int duration = 250;
     private double x, y;
 
-
+    @FXML
+    private void initialize() {
+        loginButton.setOnAction(event -> login());
+    }
     public Login(){
         connection = DBConnection.getInstance().getConnection();
     }
@@ -117,6 +133,130 @@ public class Login implements Initializable{
         timeline.play();
 
 
+    }
+    /*@FXML
+    public void login(){
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            showAlert("Error", "Please enter both username and password.");
+            return;
+        }
+
+        String sql = "SELECT password, email FROM utilisateur WHERE email = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String hashedPassword = rs.getString("password");
+
+
+
+                if (org.mindrot.jbcrypt.BCrypt.checkpw(password, hashedPassword)) {
+                    // Store user session
+
+                    showAlert("Success", "Login successful!");
+                    //openDashboard(role); // Pass role to open the corresponding dashboard
+                    closeWindow();
+                } else {
+                    showAlert("Error", "Invalid password.");
+                }
+            } else {
+                showAlert("Error", "Username not found.");
+            }
+        } catch (SQLException e) {
+            showAlert("Error", "An error occurred during login: " + e.getMessage());
+        }
+
+
+    }
+*/
+
+    @FXML
+    public void login() {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            showAlert("Error", "Please enter both username and password.");
+            return;
+        }
+
+        String sql = "SELECT password, email,role FROM utilisateur WHERE email = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String hashedPassword = rs.getString("password");
+                String role = rs.getString("role");
+
+                if (org.mindrot.jbcrypt.BCrypt.checkpw(password, hashedPassword)) {
+                    showAlert("Success", "Login successful!");
+                     openDashboard(role); // Pass role to open the corresponding dashboard
+                    closeWindow();
+                } else {
+                    showAlert("Error", "Invalid password.");
+                }
+            } else {
+                showAlert("Error", "Username not found.");
+            }
+        } catch (SQLException e) {
+            showAlert("Error", "An error occurred during login: " + e.getMessage());
+        }
+    }
+
+    public void openDashboard(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Dashboard");
+
+            stage.show();
+        } catch (Exception e) {
+            showAlert("Error", "Failed to open the dashboard: " + e.getMessage());
+        }
+    }
+
+    private void openDashboard(String role) {
+        String fxmlFile;
+
+        if ("CANDIDAT".equalsIgnoreCase(role)) {
+            fxmlFile = "/DashCondidat.fxml"; // employe dashboard
+        } else if ("EMPLOYE".equalsIgnoreCase(role)) {
+            fxmlFile = "/DashEmployee.fxml"; // condidat dashboard
+        } else {
+            showAlert("Error", "Unknown role: " + role);
+            return;
+        }
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Dashboard - " + role.toUpperCase());
+
+            stage.show();
+        } catch (Exception e) {
+            showAlert("Error", "Failed to open the dashboard: " + e.getMessage());
+        }
+    }
+
+
+
+    private void closeWindow() {
+        Stage stage = (Stage) loginButton.getScene().getWindow();
+        stage.close();
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
     @FXML
     private void registerUser() {
