@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="82.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pifinal.Controller.DepartementCellController">
+   <children>
+      <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="71.73669052124023" />
+      <Text fx:id="nomDep" layoutX="14.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="71.73669052124012" />
+      <Text layoutX="111.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Budget" wrappingWidth="71.73669052124012" />
+      <Text fx:id="budgetDep" layoutX="111.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="71.73669052124012" />
+      <Text layoutX="205.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'Employe" wrappingWidth="117.33666610717762" />
+      <Text fx:id="nbEmployeDep" layoutX="203.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="71.73669052124012" />
+      <Text layoutX="354.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsable" wrappingWidth="71.73669052124012" />
+      <Text fx:id="respDep" layoutX="354.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="71.73669052124012" />
+      <Button fx:id="update" layoutX="456.0" layoutY="29.0" mnemonicParsing="false" onAction="#update" text="Update" />
+      <Button fx:id="delete" layoutX="525.0" layoutY="29.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+   </children>
+</AnchorPane>

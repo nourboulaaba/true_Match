@@ -1,0 +1,54 @@
+/* General styles */
+AnchorPane {
+    -fx-background-color: #f4f4f4;
+}
+
+/* Styling for the title label */
+Label {
+    -fx-font-family: "Arial";
+    -fx-text-fill: #333;
+}
+
+
+
+/* Input fields */
+TextField, ComboBox {
+    -fx-font-size: 14px;
+    -fx-pref-height: 30px;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-background-color: white;
+}
+
+/* Input fields hover effect */
+TextField:hover, ComboBox:hover {
+    -fx-border-color: #0077cc;
+}
+
+
+
+/* Buttons */
+Button {
+    -fx-background-color: #0077cc;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-pref-height: 35px;
+    -fx-pref-width: 120px;
+}
+
+/* Hover effect on buttons */
+Button:hover {
+    -fx-background-color: #005fa3;
+}
+
+/* Cancel button - styled differently */
+#cancelButton {
+    -fx-background-color: #e74c3c;
+}
+
+#cancelButton:hover {
+    -fx-background-color: #c0392b;
+}
