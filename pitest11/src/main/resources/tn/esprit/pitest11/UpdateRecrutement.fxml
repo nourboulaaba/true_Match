@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="228.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pitest11.Controller.UpdateRecrutementController">
+
+    <VBox alignment="CENTER" layoutX="10" layoutY="20" prefWidth="580" spacing="10">
+        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Update Recrutement" />
+
+        <HBox spacing="10">
+            <Label text="Start Date:" />
+            <DatePicker fx:id="dateDebutPicker" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="End Date:" />
+            <DatePicker fx:id="dateFinPicker" promptText="(Optional)" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Number of Interviews:" />
+            <TextField fx:id="nbEntretienField" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Button fx:id="updateButton" onAction="#handleUpdate" text="Update" />
+            <Button fx:id="cancelButton" onAction="#handleCancel" text="Cancel" />
+        </HBox>
+    </VBox>
+</AnchorPane>

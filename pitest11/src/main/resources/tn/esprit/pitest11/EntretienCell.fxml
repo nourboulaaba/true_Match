@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="94.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pitest11.Controller.EntretienCellController">
+   <children>
+      <Text layoutX="21.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recrutement" wrappingWidth="78.13671493530273" />
+      <Text layoutX="126.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User" wrappingWidth="63.7366943359375" />
+      <Text layoutX="197.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="78.13671493530273" />
+      <Text layoutX="283.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu" wrappingWidth="63.7366943359375" />
+      <Text layoutX="365.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Approvement" wrappingWidth="78.13671493530273" />
+      <Text fx:id="nomRecrutement" layoutX="14.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="78.13671493530268" />
+      <Text fx:id="userName" layoutX="116.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="63.7366943359375" />
+      <Text fx:id="Date" layoutX="197.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="63.7366943359375" />
+      <Text fx:id="Lieu" layoutX="283.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="78.13671493530268" />
+      <Text fx:id="approvement" layoutX="361.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="85.33673095703125" />
+      <Button fx:id="update" layoutX="455.0" layoutY="35.0" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="64.0" text="Update" />
+      <Button fx:id="delete" layoutX="529.0" layoutY="36.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="64.0" text="Delete" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="540.0" prefWidth="380.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="tn.esprit.pitest11.Controller.AddEntretienController">
+
+    <VBox alignment="CENTER" spacing="10" prefWidth="360" layoutX="10" layoutY="20">
+        <Label text="Add New Entretien" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+        <HBox spacing="10">
+            <Label text="User:"/>
+            <ComboBox fx:id="userComboBox" prefWidth="200"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Date:"/>
+            <DatePicker fx:id="datePicker"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Offre :"/>
+            <TextField fx:id="OffreField"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Lieu :"/>
+            <TextField fx:id="LieuField"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Longitude:"/>
+            <TextField fx:id="longitudeField"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Latitude:"/>
+            <TextField fx:id="latitudeField"/>
+        </HBox>
+
+
+        <HBox spacing="10">
+            <Button text="Save" fx:id="saveButton" onAction="#handleSave"/>
+            <Button text="Cancel" fx:id="cancelButton" onAction="#handleCancel"/>
+        </HBox>
+    </VBox>
+</AnchorPane>
