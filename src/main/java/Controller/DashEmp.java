@@ -5,6 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+<<<<<<< Updated upstream
+=======
+import javafx.scene.control.Alert;
+>>>>>>> Stashed changes
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -114,6 +118,75 @@ public class DashEmp {
         System.out.println("Logged out successfully!");
         // You can also close the window or navigate to another screen
     }
+<<<<<<< Updated upstream
+=======
+    @FXML
+    private void handleOpenFormulaire() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Formulaire.fxml"));
+            Pane formulairePane = loader.load();
+
+            // Remplacer le contenu de 'Emp' avec le formulaire de congé
+            Emp.getChildren().setAll(formulairePane);
+
+            // Appliquer du style si nécessaire
+            Emp.setStyle("-fx-background-color : #F4F4F4");
+            Emp.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Impossible d'ouvrir le formulaire de congé");
+            alert.setContentText("Une erreur est survenue lors du chargement de Formulaire.fxml.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
+    private void handleOpenReclamation() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Reclamation.fxml"));
+            Pane reclamationPane = loader.load();
+
+            // Remplacer le contenu de 'Emp' avec le formulaire de réclamation
+            Emp.getChildren().setAll(reclamationPane);
+
+            // Appliquer du style si nécessaire
+            Emp.setStyle("-fx-background-color : #F4F4F4");
+            Emp.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Impossible d'ouvrir le formulaire de réclamation");
+            alert.setContentText("Une erreur est survenue lors du chargement de Reclamation.fxml.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
+    private void handleOpenHistorique() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Historique.fxml"));
+            Pane historiquePane = loader.load();
+
+            // Remplacer le contenu de 'Emp' avec l'historique des congés
+            Emp.getChildren().setAll(historiquePane);
+
+            // Appliquer du style si nécessaire
+            Emp.setStyle("-fx-background-color : #F4F4F4");
+            Emp.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Impossible d'ouvrir l'historique des congés");
+            alert.setContentText("Une erreur est survenue lors du chargement de Historique.fxml.");
+            alert.showAndWait();
+        }
+    }
+
+
+
+>>>>>>> Stashed changes
 
 }
 

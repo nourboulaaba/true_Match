@@ -150,4 +150,73 @@ public class Dashboard {
 
         }
     }
+<<<<<<< Updated upstream
+=======
+    @FXML
+    private void handleOpenReceptionConge() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReceptionConge.fxml"));
+            Pane receptionCongePane = loader.load();
+
+            // Ajouter le contenu dans le Pane principal (Emp)
+            Emp.getChildren().setAll(receptionCongePane);
+
+            // Mettre à jour le style si nécessaire
+            Emp.setStyle("-fx-background-color : #464F67");
+            Emp.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Impossible d'ouvrir la gestion des congés");
+            alert.setContentText("Une erreur est survenue lors du chargement de ReceptionConge.fxml.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
+    private void handleOpenReclamations() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListeReclamation.fxml"));
+            Pane reclamationsPane = loader.load();
+
+            // Set the content inside the Pane in Dashboard
+            Emp.getChildren().setAll(reclamationsPane);
+
+            // Apply style if needed
+            Emp.setStyle("-fx-background-color : #464F67");
+            Emp.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Impossible d'ouvrir la liste des réclamations");
+            alert.setContentText("Une erreur est survenue lors du chargement de ListeReclamation.fxml.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
+    private void handleOpenAllConges() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TousLesConges.fxml"));
+            Pane allCongesPane = loader.load();
+
+            // Remplacer le contenu de 'Emp' avec la liste des congés
+            Emp.getChildren().setAll(allCongesPane);
+
+            // Appliquer du style si nécessaire
+            Emp.setStyle("-fx-background-color : #F4F4F4");
+            Emp.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Impossible d'ouvrir la liste des congés");
+            alert.setContentText("Une erreur est survenue lors du chargement de TousLesConges.fxml.");
+            alert.showAndWait();
+        }
+    }
+
+
+
+>>>>>>> Stashed changes
 }

@@ -13,6 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<<<<<<< Updated upstream
+=======
+<?import javafx.fxml.FXML?>
+
+>>>>>>> Stashed changes
 
 <AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Dashboard">
     <children>
@@ -69,6 +74,7 @@
                     </padding>
                 </JFXButton>
 
+<<<<<<< Updated upstream
                 <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Congé" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
@@ -93,6 +99,21 @@
                     </padding>
                 </JFXButton>
 
+=======
+                <JFXButton fx:id="btnReceptionConge" text="Gérer les Congés" onAction="#handleOpenReceptionConge"/>
+                <JFXButton fx:id="btnAllConges" text="Tous les Congés" onAction="#handleOpenAllConges">
+                </JFXButton>
+
+
+
+                <JFXButton fx:id="btnReclamations" text="Réclamations" onAction="#handleOpenReclamations">
+                    <graphic>
+                        <FontAwesomeIcon glyphName="EXCLAMATION_CIRCLE" size="16" />
+                    </graphic>
+                </JFXButton>
+
+
+>>>>>>> Stashed changes
                 <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Certificats" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />

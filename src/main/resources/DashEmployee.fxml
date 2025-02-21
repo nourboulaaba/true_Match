@@ -69,6 +69,7 @@
                     </padding>
                 </JFXButton>
 
+<<<<<<< Updated upstream
                 <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Congé" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
@@ -93,6 +94,28 @@
                     </padding>
                 </JFXButton>
 
+=======
+                <JFXButton fx:id="btnConge" text="Congé" onAction="#handleOpenFormulaire">
+                    <graphic>
+                        <FontAwesomeIcon glyphName="CALENDAR_ALT" size="16" />
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="btnHistorique" text="Historique Congés" onAction="#handleOpenHistorique">
+                    <graphic>
+                        <FontAwesomeIcon glyphName="CLOCK" size="16" />
+                    </graphic>
+                </JFXButton>
+
+
+
+                <JFXButton fx:id="btnReclamation" text="Réclamation" onAction="#handleOpenReclamation">
+                    <graphic>
+                        <FontAwesomeIcon glyphName="EXCLAMATION_CIRCLE" size="16" />
+                    </graphic>
+                </JFXButton>
+
+
+>>>>>>> Stashed changes
                 <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Certificats" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />

@@ -18,11 +18,7 @@ public class mainFX extends Application {
     @Override
     public void start(Stage stage)throws IOException {
 
-<<<<<<< Updated upstream
         FXMLLoader fxmlLoader = new FXMLLoader(mainFX.class.getResource("/LOGIN.fxml"));
-=======
-        FXMLLoader fxmlLoader = new FXMLLoader(mainFX.class.getResource("/Dashboard.fxml"));
->>>>>>> Stashed changes
         Scene scene = new Scene(fxmlLoader.load(), 980, 700);
         stage.setTitle("Login!");
         stage.setScene(scene);
