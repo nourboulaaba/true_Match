@@ -1,70 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.stage.FileChooser?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.TextField?>
 
-<?import javafx.scene.layout.Region?>
-<?import com.jfoenix.controls.JFXTextField?>
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifierProfile">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Dashboard">
     <children>
-        <!-- Carte de modification du profil -->
-        <VBox layoutX="50.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #CCCCCC; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);">
+        <!-- En-tête -->
+        <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <!-- Photo de profil avec un bouton de modification -->
-                <HBox alignment="CENTER" spacing="10">
-                    <ImageView fx:id="photoImageView" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 50%;">
-                        <image>
-                            <Image url="images/user.png" /> <!-- Image par défaut -->
-                        </image>
-                    </ImageView>
-                    <!-- Bouton pour changer la photo -->
-                    <Button onAction="#handleChangePhoto" style="-fx-background-color: transparent; -fx-font-size: 24; -fx-text-fill: #4CAF50; -fx-border-width: 0;">
-                        <graphic>
-                            <ImageView fx:id="cameraIcon" fitHeight="30" fitWidth="30">
-                                <image>
-                                    <Image url="images/addphoto.png" /> <!-- Icône de caméra -->
-                                </image>
-                            </ImageView>
-                        </graphic>
-                    </Button>
-                </HBox>
+                <Label layoutX="224.0" layoutY="47.0" text="TRUE MATCH" textFill="WHITE">
+                    <font>
+                        <Font size="36.0" />
+                    </font>
+                </Label>
+                <Label layoutX="227.0" layoutY="100.0" text=" Ressources Humaine " textFill="WHITE">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+                <AnchorPane layoutX="1041.0" layoutY="95.0" prefHeight="30.0" prefWidth="30.0">
+                    <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" >
+                            <image>
+                                <Image url="images/logout.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+            </children>
+        </Pane>
 
-                <!-- Champs de modification -->
-                <VBox spacing="20">
-                    <!-- Nom -->
-                    <Text text="Nom" style="-fx-font-size: 18; -fx-font-weight: bold;" />
-                    <JFXTextField fx:id="nomField" promptText="Entrez votre nom" />
+        <!-- Menu latéral -->
+        <VBox layoutX="0.0" layoutY="145.0" prefHeight="478.0" prefWidth="252.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="146.0">
+            <children>
+                <Label prefHeight="30.0" prefWidth="252.0" text="GESTION PERSONNELLE" textFill="#171717">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                    <padding>
+                        <Insets left="40.0" />
+                    </padding>
+                    <VBox.margin>
+                        <Insets top="60.0" />
+                    </VBox.margin>
+                </Label>
 
-                    <!-- Prénom -->
-                    <Text text="Prénom" style="-fx-font-size: 18; -fx-font-weight: bold;" />
-                    <JFXTextField fx:id="prenomField" promptText="Entrez votre prénom" />
-
-                    <!-- Email -->
-                    <Text text="Email" style="-fx-font-size: 18; -fx-font-weight: bold;" />
-                    <JFXTextField fx:id="emailField" promptText="Entrez votre email" />
-
-                    <!-- Téléphone -->
-                    <Text text="Téléphone" style="-fx-font-size: 18; -fx-font-weight: bold;" />
-                    <JFXTextField fx:id="telephoneField" promptText="Entrez votre téléphone" />
-
-                    <!-- Espacement entre les champs et les boutons -->
-                    <Region />
-                </VBox>
-
-                <!-- Boutons -->
-                <HBox spacing="20" layoutX="50.0" layoutY="420.0">
-                    <Button text="Enregistrer" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16; -fx-background-radius: 10; -fx-padding: 8 15;" mnemonicParsing="false" fx:id="EnregistrerButton" onAction="#handleModifier" />
-                    <Button text="Annuler" style="-fx-background-color: #FF4081; -fx-text-fill: white; -fx-font-size: 16; -fx-background-radius: 10; -fx-padding: 8 15;" mnemonicParsing="false" fx:id="AnnullerButton" onAction="#handleAnnuller"/>
-                </HBox>
+                <!-- Bouton Profil -->
+                <JFXButton fx:id="ProfileButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" onAction="#handleButtonProfile" text="Profil" textFill="#5b5858">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIcon glyphName="USER" size="16" />
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </JFXButton>
             </children>
         </VBox>
+
+        <!-- Contenu principal -->
+        <ScrollPane fx:id="mainScrollPane" layoutX="251.0" layoutY="145.0" prefHeight="478.0" prefWidth="1018.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="145.0">
+            <content>
+                <AnchorPane fx:id="contentPane" prefHeight="478.0" prefWidth="1018.0">
+                    <!-- Interface ModifierProfile -->
+                    <VBox fx:id="modifierProfilePane" layoutX="510.0" layoutY="10.0" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #CCCCCC; -fx-padding: 20;">
+                        <children>
+                            <!-- Titre -->
+                            <Label text="Modifier Profil" style="-fx-font-size: 20; -fx-font-weight: bold;" />
+
+                            <!-- Nom -->
+                            <Label text="Nom:" />
+                            <TextField fx:id="nomField" promptText="Entrez votre nom" />
+
+                            <!-- Prénom -->
+                            <Label text="Prénom:" />
+                            <TextField fx:id="prenomField" promptText="Entrez votre prénom" />
+
+                            <!-- Email -->
+                            <Label text="Email:" />
+                            <TextField fx:id="emailField" promptText="Entrez votre email" />
+
+                            <!-- Téléphone -->
+                            <Label text="Téléphone:" />
+                            <TextField fx:id="telephoneField" promptText="Entrez votre téléphone" />
+
+                            <!-- Boutons -->
+                            <HBox spacing="20">
+                                <JFXButton text="Enregistrer" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" fx:id="EnregistrerButton" />
+                                <JFXButton text="Annuler" style="-fx-background-color: #FF4081; -fx-text-fill: white;" fx:id="AnnullerButton" />
+                            </HBox>
+                        </children>
+                    </VBox>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
     </children>
 </AnchorPane>

@@ -41,6 +41,15 @@ public class Dashboard {
 
         refreshNodes();
     }
+    public void loadDashboard() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+            AnchorPane dashboardPane = loader.load();
+            contentPane.getChildren().setAll(dashboardPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
    /* @FXML
@@ -65,7 +74,7 @@ public class Dashboard {
         }
     }*/
    @FXML
-   private void handleButtonActionx() {
+   private void handleButtonEmployee() {
        try {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionRH.fxml"));
            Pane ajoutAbonnementPane = loader.load(); // Charger le FXML
@@ -90,6 +99,8 @@ public class Dashboard {
 
             // Ajouter le contenu dans le Pane principal de DashNUTRITIONNISTE
             Emp.getChildren().setAll(ajoutAbonnementPane); // ou pnlOverview, pnlMenus, selon où tu veux l'afficher
+            ajoutAbonnementPane.setPrefWidth(1000); // Largeur fixe
+            ajoutAbonnementPane.setPrefHeight(400);
 
             // Mettre à jour le style si nécessaire
             Emp.setStyle("-fx-background-color : #464F67");
@@ -124,6 +135,19 @@ public class Dashboard {
         }
     }
 
+    @FXML
+    private AnchorPane contentPane; // L'élément où on va charger la page
+
+    public void loadModifierProfile() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierProfile.fxml"));
+            AnchorPane newUserPane = loader.load();
+
+            contentPane.getChildren().setAll(newUserPane); // Remplace le contenu par ModifierProfile.fxml
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
    // @Override
     public void initialize(URL url, ResourceBundle rb) {

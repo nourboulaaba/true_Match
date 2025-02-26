@@ -2,78 +2,45 @@ package Entities;
 
 public class utilisateur {
     private int id;
-    private String lastName; // nom
-    private String firstName; // prenom
-    private String identifier; // identifiant
+    private String lastName;
+    private String firstName;
+    private String identifier;
     private String email;
-    private String password; // motDePasse
-    private String jobPosition; // poste
-    private Role role; // Utilisation de l'énumération Role
-    private String employeeId; // idEmploye
-    private String faceId; // faceId
-    private double salary; // salaire
-    private String hireDate; // dateEmbauche
-    private String phoneNumber; // telephone
-    private String cv; // cv
-    private String profilePhoto; // photoDeProfile
+    private String password;
+    private String CIN;
+    private Role role;
 
+    private String faceId;
+    private double salary;
+    private String hireDate;
+    private String phoneNumber;
+    private String cv;
+    private String profilePhoto;
+    private static utilisateur currentUtilisateur;
 
-    public utilisateur(String lastName, String firstName, String identifier, String email, String password, String jobPosition, Role role, String employeeId, String faceId, double salary, String hireDate, String phoneNumber, String cv, String profilePhoto) {
+    // Constructeur par défaut
+    public utilisateur() {}
+
+    // Constructeur complet
+    public utilisateur(String lastName, String firstName, String identifier, String email, String password,
+                       String phoneNumber, String CIN, String faceId, double salary,
+                       Role role, String hireDate, String cv, String profilePhoto) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.identifier = identifier;
         this.email = email;
         this.password = password;
-        this.jobPosition = jobPosition;
-        this.role = role;
-        this.employeeId = employeeId;
+        this.phoneNumber = phoneNumber;
+        this.CIN = CIN;
         this.faceId = faceId;
         this.salary = salary;
+        this.role = role;
         this.hireDate = hireDate;
-        this.phoneNumber = phoneNumber;
         this.cv = cv;
         this.profilePhoto = profilePhoto;
     }
 
-    public utilisateur(int id, String lastName, String firstName, String identifier, String email, String password, String jobPosition) {
-        this.id = id;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.identifier = identifier;
-        this.email = email;
-        this.password = password;
-        this.jobPosition = jobPosition;
-    }
-
-    public utilisateur(String lastName, String firstName, String identifier, String email, String password, String jobPosition, Role role) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.identifier = identifier;
-        this.email = email;
-        this.password = password;
-        this.jobPosition = jobPosition;
-        this.role = role;
-    }
-
-    public utilisateur(int id, String lastName, String firstName, String identifier, String email, String password, String jobPosition, Role role, String employeeId, String faceId, double salary, String hireDate, String phoneNumber, String cv, String profilePhoto) {
-        this.id = id;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.identifier = identifier;
-        this.email = email;
-        this.password = password;
-        this.jobPosition = jobPosition;
-        this.role = role;
-        this.employeeId = employeeId;
-        this.faceId = faceId;
-        this.salary = salary;
-        this.hireDate = hireDate;
-        this.phoneNumber = phoneNumber;
-        this.cv = cv;
-        this.profilePhoto = profilePhoto;
-    }
-
-    // Getters et Setters
+    // Getters et Setters avec validations
     public int getId() {
         return id;
     }
@@ -111,7 +78,11 @@ public class utilisateur {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        if (email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            this.email = email;
+        } else {
+            throw new IllegalArgumentException("Email invalide !");
+        }
     }
 
     public String getPassword() {
@@ -122,12 +93,12 @@ public class utilisateur {
         this.password = password;
     }
 
-    public String getJobPosition() {
-        return jobPosition;
+    public String getCIN() {
+        return CIN;
     }
 
-    public void setJobPosition(String jobPosition) {
-        this.jobPosition = jobPosition;
+    public void setCIN(String CIN) {
+        this.CIN = CIN;
     }
 
     public Role getRole() {
@@ -136,14 +107,6 @@ public class utilisateur {
 
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
     }
 
     public String getFaceId() {
@@ -159,7 +122,11 @@ public class utilisateur {
     }
 
     public void setSalary(double salary) {
-        this.salary = salary;
+        if (salary >= 0) {
+            this.salary = salary;
+        } else {
+            throw new IllegalArgumentException("Le salaire ne peut pas être négatif !");
+        }
     }
 
     public String getHireDate() {
@@ -175,7 +142,11 @@ public class utilisateur {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        if (phoneNumber.matches("^\\d{8,15}$")) {
+            this.phoneNumber = phoneNumber;
+        } else {
+            throw new IllegalArgumentException("Numéro de téléphone invalide !");
+        }
     }
 
     public String getCv() {
@@ -194,19 +165,17 @@ public class utilisateur {
         this.profilePhoto = profilePhoto;
     }
 
-    // Méthode toString
+    // Méthode toString améliorée
     @Override
     public String toString() {
-        return "utilisateur{" +
+        return "Utilisateur{" +
                 "id=" + id +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", identifier='" + identifier + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", jobPosition='" + jobPosition + '\'' +
+                ", CIN='" + CIN + '\'' +
                 ", role=" + role +
-                ", employeeId='" + employeeId + '\'' +
                 ", faceId='" + faceId + '\'' +
                 ", salary=" + salary +
                 ", hireDate='" + hireDate + '\'' +

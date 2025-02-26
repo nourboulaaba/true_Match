@@ -1,21 +1,31 @@
 package Controller;
 
+import Entities.utilisateur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import service.utilisateurService;
+import javafx.geometry.Insets;  // Assurez-vous que c'est la bonne classe
 
+
+import java.awt.*;
 import java.io.IOException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class profileController {
 
@@ -43,51 +53,60 @@ public class profileController {
     private Connection connection;
     @FXML
     private Button ModifierUtilisateurButton;
-    // Méthode pour initialiser la connexion à la base de données
-    public void setConnection(Connection connection) {
-        this.connection = connection;
-    }
+
+    private utilisateur currentUser;
+
+    @FXML
+    private ImageView currentUserImage;
+    @FXML
+    private Label currentUserName;
+    @FXML
+    private Label currentUserLastName;
+    @FXML
+    private Label currentUserEmail;
+    @FXML
+    private Label currentUserPassword;
+    @FXML
+    private GridPane userGridPane;
+
+    private utilisateurService userService = new utilisateurService();
 
     public void initialize() {
-        ModifierUtilisateurButton.setOnAction(event -> handleModifier());
+        utilisateur user = userService.getConnectedUser(); // Remplace par ta méthode de récupération de l'utilisateur connecté
+        if (user != null) {
+            setCurrentUser(user);
+        } else {
+            System.out.println(" Aucun utilisateur connecté !");
+        }
     }
 
-    // Méthode pour charger les données de l'utilisateur
-    public void loadUser(String email) {
-        String query = "SELECT lastName, firstName, email, phoneNumber, poste, departement, photo FROM utilisateur WHERE email = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, email);
-            ResultSet rs = stmt.executeQuery();
+    public void setCurrentUser(utilisateur user) {
+        System.out.println("🔹 Chargement du profil utilisateur : " + (user != null ? user.getEmail() : "null"));
 
-            if (rs.next()) {
-                // Récupérer les données de l'utilisateur
-                String lastName = rs.getString("lastName");
-                String firstName = rs.getString("firstName");
-                String userEmail = rs.getString("email");
-                String phoneNumber = rs.getString("phoneNumber");
-                String poste = rs.getString("poste");
-                String departement = rs.getString("departement");
-                String photoPath = rs.getString("photo");
+        if (user != null) {
+            this.currentUser = user;
 
-                // Afficher les données dans l'interface
-                nomText.setText("Nom: " + lastName);
-                prenomText.setText("Prénom: " + firstName);
-                emailText.setText("Email: " + userEmail);
-                telephoneText.setText("Téléphone: " + phoneNumber);
-                posteText.setText("Poste: " + poste);
-                departementText.setText("Département: " + departement);
-
-                // Charger la photo de profil
-                if (photoPath != null && !photoPath.isEmpty()) {
-                    Image image = new Image("file:" + photoPath);
-                    photoImageView.setImage(image);
-                }
-            } else {
-                System.out.println("Aucun utilisateur trouvé avec cet email.");
+            // Mettre à jour les labels
+            if (currentUserName != null) {
+                currentUserName.setText(user.getFirstName());
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Erreur lors du chargement des données de l'utilisateur.");
+            if (currentUserLastName != null) {
+                currentUserLastName.setText(user.getLastName());
+            }
+            if (currentUserEmail != null) {
+                currentUserEmail.setText(user.getEmail());
+            }
+
+            // Afficher l'image ou une image par défaut
+            if (currentUserImage != null) {
+                if (user.getProfilePhoto() != null && !user.getProfilePhoto().isEmpty()) {
+                    currentUserImage.setImage(new Image("file:" + user.getProfilePhoto()));
+                } else {
+                    currentUserImage.setImage(new Image("/images/default_profile.png")); // Image par défaut
+                }
+            }
+        } else {
+            System.out.println("❌ Erreur : utilisateur non trouvé !");
         }
     }
     public void handleModifier() {
@@ -113,5 +132,7 @@ public class profileController {
             alert.setContentText("Une erreur s'est produite lors du chargement de la scène pour ajouter un utilisateur.");
             alert.showAndWait();
         }
+
     }
+
 }

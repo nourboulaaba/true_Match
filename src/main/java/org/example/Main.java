@@ -1,4 +1,4 @@
-package org.example;
+/*package org.example;
 
 import Entities.utilisateur;
 import Entities.Role;
@@ -51,4 +51,4 @@ public class Main {
         System.out.println("Liste des utilisateurs après suppression :");
         service.getAll().forEach(System.out::println);
     }
-}
+}*/

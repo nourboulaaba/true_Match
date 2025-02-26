@@ -114,7 +114,7 @@
                     </padding>
                 </Label>
 
-                <JFXButton fx:id="EmpButton" onAction="#handleButtonActionx" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Employés" textFill="#5b5858">
+                <JFXButton fx:id="EmpButton" onAction="#handleButtonEmployee" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Employés" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -198,15 +198,16 @@
             </children>
         </Pane>
 
-        <ScrollPane layoutX="254.0" layoutY="146.0" prefHeight="477.0" prefWidth="809.0">
+        <ScrollPane layoutX="254.0" layoutY="146.0" prefHeight="627.0" prefWidth="1300.0">
             <content>
                 <AnchorPane prefHeight="477.0" prefWidth="809.0">
                     <children>
                         <Pane fx:id="Emp"/>
-                        <Pane fx:id="Profile"/>
+                     <!--   <Pane fx:id="Profile"/>-->
                         <!-- Votre contenu ici -->
                     </children>
                 </AnchorPane>
+
             </content>
         </ScrollPane>
     </children>

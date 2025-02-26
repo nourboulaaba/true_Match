@@ -1,4 +1,6 @@
 package Controller;
+import Entities.EmailSender;
+import Entities.utilisateur;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.KeyFrame;
@@ -11,14 +13,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
@@ -30,8 +36,12 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import service.utilisateurService;
 
 public class Login implements Initializable{
+
+    @FXML
+    private Label errorLabel;
     @FXML
     private VBox SIGNUP;
     @FXML
@@ -134,45 +144,10 @@ public class Login implements Initializable{
 
 
     }
-    /*@FXML
-    public void login(){
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-
-        if (username.isEmpty() || password.isEmpty()) {
-            showAlert("Error", "Please enter both username and password.");
-            return;
-        }
-
-        String sql = "SELECT password, email FROM utilisateur WHERE email = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, username);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                String hashedPassword = rs.getString("password");
 
 
 
-                if (org.mindrot.jbcrypt.BCrypt.checkpw(password, hashedPassword)) {
-                    // Store user session
 
-                    showAlert("Success", "Login successful!");
-                    //openDashboard(role); // Pass role to open the corresponding dashboard
-                    closeWindow();
-                } else {
-                    showAlert("Error", "Invalid password.");
-                }
-            } else {
-                showAlert("Error", "Username not found.");
-            }
-        } catch (SQLException e) {
-            showAlert("Error", "An error occurred during login: " + e.getMessage());
-        }
-
-
-    }
-*/
 
     @FXML
     public void login() {
@@ -194,8 +169,9 @@ public class Login implements Initializable{
                 String role = rs.getString("role");
 
                 if (org.mindrot.jbcrypt.BCrypt.checkpw(password, hashedPassword)) {
+
                     showAlert("Success", "Login successful!");
-                     openDashboard(role); // Pass role to open the corresponding dashboard
+                    openDashboard(role); // Pass role to open the corresponding dashboard
                     closeWindow();
                 } else {
                     showAlert("Error", "Invalid password.");
@@ -208,26 +184,19 @@ public class Login implements Initializable{
         }
     }
 
-    public void openDashboard(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(loader.load()));
-            stage.setTitle("Dashboard");
 
-            stage.show();
-        } catch (Exception e) {
-            showAlert("Error", "Failed to open the dashboard: " + e.getMessage());
-        }
-    }
+
+
 
     private void openDashboard(String role) {
         String fxmlFile;
 
-        if ("CANDIDAT".equalsIgnoreCase(role)) {
-            fxmlFile = "/DashCondidat.fxml"; // employe dashboard
+        if ("RH".equalsIgnoreCase(role)) {
+            fxmlFile = "/Dashboard.fxml"; // Dashboard pour les candidats
         } else if ("EMPLOYE".equalsIgnoreCase(role)) {
-            fxmlFile = "/DashEmployee.fxml"; // condidat dashboard
+            fxmlFile = "/DashEmployee.fxml"; // Dashboard pour les employés
+        } else if ("RH".equalsIgnoreCase(role)) {
+            fxmlFile = "/Dashboard.fxml"; // Dashboard pour les RH
         } else {
             showAlert("Error", "Unknown role: " + role);
             return;
@@ -258,6 +227,7 @@ public class Login implements Initializable{
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     @FXML
     private void registerUser() {
         String lastNameText = lastName.getText();
@@ -266,35 +236,60 @@ public class Login implements Initializable{
         String phoneNumberText = phoneNumber.getText();
         String passwordText = password.getText();
 
+        // Vérification des champs vides
+        if (lastNameText.isEmpty() || firstNameText.isEmpty() || emailText.isEmpty() || phoneNumberText.isEmpty() || passwordText.isEmpty()) {
+            showAlert("Error", "All fields are required.");
+            return;
+        }
+
+        // Validation de l'email
+        if (!isValidEmail(emailText)) {
+            showAlert("Error", "Please enter a valid email address.");
+            return;
+        }
+
+        // Validation du numéro de téléphone (format simple)
+        if (!isValidPhoneNumber(phoneNumberText)) {
+            showAlert("Error", "Please enter a valid phone number.");
+            return;
+        }
+
+        // Validation du mot de passe
+        if (!isValidPassword(passwordText)) {
+            showAlert("Error", "Password must be at least 6 characters long.");
+            return;
+        }
+
         String hashedPassword = BCrypt.hashpw(passwordText, BCrypt.gensalt());
-       // String insertQuery = "INSERT INTO utilisateur (lastName, firstName, email,  password , phoneNumber) VALUES (?, ?, ?, ?, ?)";
-        String insertQuery = "INSERT INTO utilisateur (lastName, firstName, email,  password , phoneNumber) VALUES (?, ?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO utilisateur (lastName, firstName, email, password, phoneNumber) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(insertQuery)) {
             stmt.setString(1, lastNameText);
-            stmt.setString(2, firstNameText);  // Insérer la valeur JSON pour roles
+            stmt.setString(2, firstNameText);
             stmt.setString(3, emailText);
             stmt.setString(4, hashedPassword);
             stmt.setString(5, phoneNumberText);
 
             int rowsAffected = stmt.executeUpdate();
-
-
-
-            //int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("User registered successfully!");
+                try {
+                    EmailSender.sendWelcomeEmail(emailText);
+                } catch (Exception e) {
+                    e.printStackTrace(); // Affichez l'erreur dans les logs
+                    System.err.println("Erreur lors de l'envoi de l'email : " + e.getMessage());
+                }
+
+                showAlert("Success", "User registered successfully!");
+
             } else {
-                System.out.println("User registration failed.");
+                showAlert("Error", "User registration failed.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            showAlert("Error", "An error occurred during registration: " + e.getMessage());
         }
-
-
-
     }
 
-        @FXML
+
+    @FXML
     public void SignIn(ActionEvent actionEvent) {
         SIGNUP.setVisible(true);
         SIGNUP.setOpacity(0.0);
@@ -353,6 +348,21 @@ public class Login implements Initializable{
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
     }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(emailRegex);
+    }
+
+    private boolean isValidPassword(String password) {
+        return password.length() >= 6;  // Minimum 6 caractères pour le mot de passe
+    }
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        String phoneRegex = "^[0-9]{8}$";  // Simple validation pour un numéro à 10 chiffres
+        return phoneNumber.matches(phoneRegex);
+    }
+
+
 
 
 }
