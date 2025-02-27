@@ -1,7 +1,7 @@
 package Controller;
 
 import Entities.Role;
-import Entities.utilisateur;
+import Entities.User;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
@@ -16,19 +16,13 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
-import service.utilisateurService;
+import service.UserService;
 
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,20 +39,20 @@ public class AjouterUser implements Initializable {
     @FXML private ImageView photoImageView;
     @FXML private Label cvLabel;
     @FXML private DatePicker dateEmbauchePicker;
-    @FXML private JFXTextField nomField;
-    @FXML private JFXTextField prenomField;
-    @FXML private JFXTextField identifierField;
-    @FXML private JFXTextField emailField;
-    @FXML private JFXPasswordField mdpField;
-    @FXML private JFXTextField telField;
-    @FXML private JFXTextField posteField;
-    @FXML private JFXTextField faceIDField;
-    @FXML private JFXTextField salaireField;
+    @FXML private TextField nomField;
+    @FXML private TextField prenomField;
+    @FXML private TextField identifierField;
+    @FXML private TextField emailField;
+    @FXML private PasswordField mdpField;
+    @FXML private TextField telField;
+    @FXML private TextField posteField;
+    @FXML private TextField faceIDField;
+    @FXML private TextField salaireField;
     @FXML private ComboBox<String> roleBox;
 
     private String cvPath;
     private String imagePath;
-    private final utilisateurService utilisateurService = new utilisateurService();
+    private final UserService utilisateurService = new UserService();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -97,27 +91,35 @@ public class AjouterUser implements Initializable {
 
     @FXML
     public void handleAjouterUtilisateur() {
+        System.out.println("_______________________________>handleAjouterUtilisateur1 ");
+
         try {
-            utilisateur utilisateur = new utilisateur(
-                    nomField.getText(),
-                    prenomField.getText(),
-                    identifierField.getText(),
-                    emailField.getText(),
-                    BCrypt.hashpw(mdpField.getText(), BCrypt.gensalt()), // Hachage du mot de passe
-                    telField.getText(),
-                    posteField.getText(),
-                    faceIDField.getText(),
-                    Double.parseDouble(salaireField.getText()), // Conversion en double
-                    Role.valueOf(roleBox.getValue().toUpperCase()), // 🔹 Convertir String en Role
-                    dateEmbauchePicker.getValue() != null ? dateEmbauchePicker.getValue().toString() : null, // Gestion de la date
-                    cvPath,
-                    imagePath
+            // Créez un utilisateur en utilisant le constructeur existant
+            User utilisateur = new User(
+                    nomField.getText(), // nom
+                    prenomField.getText(), // prénom
+                    emailField.getText(), // email
+                    telField.getText(), // téléphone
+                    BCrypt.hashpw(mdpField.getText(), BCrypt.gensalt()) // mot de passe haché
             );
 
-            // Call insert() and then show alert based on outcome
-            utilisateurService.insert(utilisateur);
+            // Maintenant, vous devez définir les autres attributs après la création de l'objet
+            utilisateur.setcin(identifierField.getText()); // Identifiant CIN
+            utilisateur.setFaceId(faceIDField.getText()); // Face ID
+            utilisateur.setSalary(Double.parseDouble(salaireField.getText())); // salaire
+            utilisateur.setRole(Role.valueOf(roleBox.getValue().toUpperCase())); // rôle
+            utilisateur.setHireDate(dateEmbauchePicker.getValue() != null ? dateEmbauchePicker.getValue().toString() : null); // date d'embauche
+            utilisateur.setCv(cvPath); // CV
+            utilisateur.setProfilePhoto(imagePath); // Photo de profil
+            System.out.println("_______________________________>handleAjouterUtilisateur2 ");
 
-            showAlert("Succès", "Utilisateur ajouté avec succès.");
+            // Appeler la méthode insert() de utilisateurService
+            boolean result = utilisateurService.insert(utilisateur);
+            System.out.println("_______________________________>handleAjouterUtilisateur3 ");
+
+            // Afficher une alerte de succès
+            if (result) showAlert("Succès", "Utilisateur ajouté avec succès.");
+
         } catch (NumberFormatException e) {
             showAlert("Erreur", "Le salaire doit être un nombre valide.");
         } catch (IllegalArgumentException e) {
@@ -127,10 +129,6 @@ public class AjouterUser implements Initializable {
         }
     }
 
-
-
-
-
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -138,6 +136,7 @@ public class AjouterUser implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     public void backToLogin() {
         try {
             // Load the Login FXML

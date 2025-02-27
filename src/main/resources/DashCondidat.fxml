@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -12,8 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<!--?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?-->
 
+<?import javafx.scene.control.Button?>
 <AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashCondidat">
     <children>
         <!-- En-tête -->
@@ -33,7 +33,7 @@
                     <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#logout">
                             <image>
-                                <Image url="images/logout.png" />
+                                <Image url="@images/logout.png" />
                             </image>
                         </ImageView>
                     </children>
@@ -57,43 +57,43 @@
                 </Label>
 
                 <!-- Bouton Profil -->
-                <JFXButton fx:id="ProfileButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" onAction="#handleButtonProfile" text="Profil" textFill="#5b5858">
+                <Button fx:id="ProfileButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" onAction="#handleButtonProfile" text="Profil" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
                     </font>
-                    <graphic>
+                    <!--graphic>
                         <FontAwesomeIcon glyphName="USER" size="16" />
-                    </graphic>
+                    </graphic-->
                     <padding>
                         <Insets left="50.0" />
                     </padding>
-                </JFXButton>
+                </Button>
 
                 <!-- Bouton Offres d'emploi -->
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Offres d'emploi" textFill="#5b5858">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Offres d'emploi" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
                     </font>
-                    <graphic>
+                    <!--graphic>
                         <FontAwesomeIcon glyphName="BRIEFCASE" size="16" />
-                    </graphic>
+                    </graphic-->
                     <padding>
                         <Insets left="50.0" />
                     </padding>
-                </JFXButton>
+                </Button>
 
                 <!-- Bouton Recrutement -->
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Recrutement" textFill="#5b5858">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Recrutement" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
                     </font>
-                    <graphic>
+                    <!--graphic>
                         <FontAwesomeIcon glyphName="USER_PLUS" size="16" />
-                    </graphic>
+                    </graphic-->
                     <padding>
                         <Insets left="50.0" />
                     </padding>
-                </JFXButton>
+                </Button>
             </children>
         </VBox>
 

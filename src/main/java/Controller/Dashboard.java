@@ -1,16 +1,15 @@
 package Controller;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -19,6 +18,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import service.UserSession;
+import utils.PreferenceManager;
 
 public class Dashboard {
 
@@ -41,6 +42,7 @@ public class Dashboard {
 
         refreshNodes();
     }
+
     public void loadDashboard() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
@@ -52,15 +54,31 @@ public class Dashboard {
     }
 
 
-   /* @FXML
-    private void handleButtonActionx() {
+    /* @FXML
+     private void handleButtonActionx() {
+         try {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionRH.fxml"));
+             Stage stage = new Stage();
+             stage.setScene(new Scene(loader.load()));
+             stage.setTitle("Dashboard");
+
+             stage.show();
+             Pane ajoutAbonnementPane = loader.load(); // Charger le FXML
+
+             // Ajouter le contenu dans le Pane principal de DashNUTRITIONNISTE
+             Emp.getChildren().setAll(ajoutAbonnementPane); // ou pnlOverview, pnlMenus, selon où tu veux l'afficher
+
+             // Mettre à jour le style si nécessaire
+             Emp.setStyle("-fx-background-color : #464F67");
+             Emp.toFront();
+         } catch (Exception e) {
+            // showAlert("Error", "Failed to open the dashboard: " + e.getMessage());
+         }
+     }*/
+    @FXML
+    private void handleButtonEmployee() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionRH.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(loader.load()));
-            stage.setTitle("Dashboard");
-
-            stage.show();
             Pane ajoutAbonnementPane = loader.load(); // Charger le FXML
 
             // Ajouter le contenu dans le Pane principal de DashNUTRITIONNISTE
@@ -69,28 +87,13 @@ public class Dashboard {
             // Mettre à jour le style si nécessaire
             Emp.setStyle("-fx-background-color : #464F67");
             Emp.toFront();
-        } catch (Exception e) {
-           // showAlert("Error", "Failed to open the dashboard: " + e.getMessage());
+            //  handleAjouterUtilisateur() ;
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }*/
-   @FXML
-   private void handleButtonEmployee() {
-       try {
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionRH.fxml"));
-           Pane ajoutAbonnementPane = loader.load(); // Charger le FXML
+    }
 
-           // Ajouter le contenu dans le Pane principal de DashNUTRITIONNISTE
-           Emp.getChildren().setAll(ajoutAbonnementPane); // ou pnlOverview, pnlMenus, selon où tu veux l'afficher
-
-           // Mettre à jour le style si nécessaire
-           Emp.setStyle("-fx-background-color : #464F67");
-           Emp.toFront();
-          //  handleAjouterUtilisateur() ;
-
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
-   }
     @FXML
     private void handleButtonProfile() {
         try {
@@ -111,6 +114,7 @@ public class Dashboard {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void handleAjouterUtilisateur() {
         try {
@@ -149,23 +153,21 @@ public class Dashboard {
         }
     }
 
-   // @Override
+    // @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
         refreshNodes();
     }
 
-    private void refreshNodes()
-    {
+    private void refreshNodes() {
         pnl_scroll.getChildren().clear();
 
-        Node [] nodes = new  Node[15];
+        Node[] nodes = new Node[15];
 
-        for(int i = 0; i<10; i++)
-        {
+        for (int i = 0; i < 10; i++) {
             try {
-                nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
+                nodes[i] = (Node) FXMLLoader.load(getClass().getResource("Item.fxml"));
                 pnl_scroll.getChildren().add(nodes[i]);
 
             } catch (IOException ex) {
@@ -173,5 +175,28 @@ public class Dashboard {
             }
 
         }
+    }
+
+    @FXML
+    void logout(MouseEvent event) {
+        PreferenceManager.clearAll();
+        UserSession.setCurrentUser(null);
+        try {
+            Stage stage = (Stage) Emp.getScene().getWindow(); // Get reference to the login window's stage
+            stage.setTitle("Welcome");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+            Parent p = loader.load();
+
+            Scene scene = new Scene(p);
+
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            // Handle navigation failure
+        }
+
     }
 }

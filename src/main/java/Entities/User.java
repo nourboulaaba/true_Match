@@ -1,46 +1,60 @@
 package Entities;
 
-public class utilisateur {
-    private int id;
+public class User {
+    private int id = 0;
     private String lastName;
     private String firstName;
     private String identifier;
     private String email;
     private String password;
-    private String CIN;
+    private String cin;
     private Role role;
-
     private String faceId;
     private double salary;
     private String hireDate;
     private String phoneNumber;
     private String cv;
     private String profilePhoto;
-    private static utilisateur currentUtilisateur;
 
     // Constructeur par défaut
-    public utilisateur() {}
+    public User() {}
 
-    // Constructeur complet
-    public utilisateur(String lastName, String firstName, String identifier, String email, String password,
-                       String phoneNumber, String CIN, String faceId, double salary,
-                       Role role, String hireDate, String cv, String profilePhoto) {
+    public User(int id, String lastName, String firstName, String identifier, String email, String cin, Role role, String faceId, double salary, String hireDate, String phoneNumber, String cv, String profilePhoto, String password) {
+        this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.identifier = identifier;
         this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.CIN = CIN;
+        this.cin = cin;
+        this.role = role;
         this.faceId = faceId;
         this.salary = salary;
-        this.role = role;
         this.hireDate = hireDate;
+        this.phoneNumber = phoneNumber;
         this.cv = cv;
         this.profilePhoto = profilePhoto;
+        this.password = password;
     }
 
-    // Getters et Setters avec validations
+    // Constructeur complet
+    public User(String lastName, String firstName, String email, String phoneNumber, String password) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        // Vous pouvez définir des valeurs par défaut ou laisser les autres attributs comme null
+        this.role = null; // Par exemple
+        this.salary = 0.0;
+        this.cin = "";
+        this.faceId = "";
+        this.hireDate = "";
+        this.cv = "";
+        this.profilePhoto = "";
+    }
+
+
+    // Getters et Setters
     public int getId() {
         return id;
     }
@@ -78,11 +92,7 @@ public class utilisateur {
     }
 
     public void setEmail(String email) {
-        if (email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-            this.email = email;
-        } else {
-            throw new IllegalArgumentException("Email invalide !");
-        }
+        this.email = email;
     }
 
     public String getPassword() {
@@ -93,12 +103,12 @@ public class utilisateur {
         this.password = password;
     }
 
-    public String getCIN() {
-        return CIN;
+    public String getCin() {
+        return cin;
     }
 
-    public void setCIN(String CIN) {
-        this.CIN = CIN;
+    public void setcin(String cin) {
+        this.cin = cin;
     }
 
     public Role getRole() {
@@ -108,6 +118,7 @@ public class utilisateur {
     public void setRole(Role role) {
         this.role = role;
     }
+
 
     public String getFaceId() {
         return faceId;
@@ -122,11 +133,7 @@ public class utilisateur {
     }
 
     public void setSalary(double salary) {
-        if (salary >= 0) {
-            this.salary = salary;
-        } else {
-            throw new IllegalArgumentException("Le salaire ne peut pas être négatif !");
-        }
+        this.salary = salary;
     }
 
     public String getHireDate() {
@@ -142,11 +149,7 @@ public class utilisateur {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if (phoneNumber.matches("^\\d{8,15}$")) {
-            this.phoneNumber = phoneNumber;
-        } else {
-            throw new IllegalArgumentException("Numéro de téléphone invalide !");
-        }
+        this.phoneNumber = phoneNumber;
     }
 
     public String getCv() {
@@ -165,7 +168,7 @@ public class utilisateur {
         this.profilePhoto = profilePhoto;
     }
 
-    // Méthode toString améliorée
+    // Méthode toString
     @Override
     public String toString() {
         return "Utilisateur{" +
@@ -174,7 +177,7 @@ public class utilisateur {
                 ", firstName='" + firstName + '\'' +
                 ", identifier='" + identifier + '\'' +
                 ", email='" + email + '\'' +
-                ", CIN='" + CIN + '\'' +
+                ", cin='" + cin + '\'' +
                 ", role=" + role +
                 ", faceId='" + faceId + '\'' +
                 ", salary=" + salary +

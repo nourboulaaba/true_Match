@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.GridPane?>
-<AnchorPane prefHeight="1250.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #F4F4F4;" fx:controller="Controller.profileController">
+<AnchorPane prefHeight="1250.0" prefWidth="750.0" style="-fx-background-color: #F4F4F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.profileController">
     <children>
         <!-- Carte du profil -->
-        <VBox layoutX="250.0" layoutY="50.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-border-color: #E0E0E0; -fx-border-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);">
+        <VBox layoutX="100.0" layoutY="50.0" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-border-color: #E0E0E0; -fx-border-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);">
             <children>
+                <!-- Image de l'utilisateur -->
+                <VBox spacing="10" style="-fx-alignment: center;">
+                    <ImageView fx:id="currentUserImage" fitHeight="120" fitWidth="120" style="-fx-background-radius: 60;" />
+                    <Label fx:id="currentUserName" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Nom de l'utilisateur" />
+                    <Label fx:id="currentUserLastName" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Nom de l'utilisateur" />
+                    <Label fx:id="currentUserEmail" style="-fx-font-size: 18; -fx-text-fill: #555555;" text="Email de l'utilisateur" />
+                </VBox>
 
+                <!-- Informations supplémentaires -->
+                <VBox spacing="15" style="-fx-alignment: center; -fx-padding-top: 30;">
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Téléphone" />
+                    <Text fx:id="telephoneText" style="-fx-font-size: 14; -fx-text-fill: #555555;" text="Numéro de téléphone de l'utilisateur" />
 
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Poste" />
+                    <Text fx:id="posteText" style="-fx-font-size: 14; -fx-text-fill: #555555;" text="Poste de l'utilisateur" />
 
-                    <VBox spacing="10" style="-fx-alignment: center;">
-                        <ImageView fx:id="currentUserImage" fitHeight="100" fitWidth="100" />
-                        <Label fx:id="currentUserName" text="Nom de l'utilisateur" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
-                        <Label fx:id="currentUserLastName" text="Nom de l'utilisateur" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
-                        <Label fx:id="currentUserEmail" text="Email de l'utilisateur" style="-fx-font-size: 16;"/>
-
-                    </VBox>
-
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Département" />
+                    <Text fx:id="departementText" style="-fx-font-size: 14; -fx-text-fill: #555555;" text="Département de l'utilisateur" />
+         
+                          <!-- Bouton Modifier mon profil -->
+                 <Button fx:id="ModifierUtilisateurButton" mnemonicParsing="false" onAction="#handleModifier" style="-fx-background-color: #699bf7; -fx-text-fill: white; -fx-font-size: 16; -fx-background-radius: 10; -fx-padding: 8 15;" text="Modifier mon profil" textAlignment="CENTER" />
+                </VBox>
             </children>
         </VBox>
-
-        <!-- Bouton Modifier mon profil -->
-        <Button layoutX="480.0" layoutY="420.0" text="Modifier mon profil" style="-fx-background-color: #699bf7; -fx-text-fill: white; -fx-font-size: 16; -fx-background-radius: 10; -fx-padding: 8 15;" mnemonicParsing="false" fx:id="ModifierUtilisateurButton" onAction="#handleModifier"/>
-
-        <!-- Bouton Retour -->
-       
     </children>
 </AnchorPane>

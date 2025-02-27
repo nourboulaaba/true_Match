@@ -1,6 +1,6 @@
 package Controller;
 
-import Entities.utilisateur;
+import Entities.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,21 +11,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import service.utilisateurService;
-import javafx.geometry.Insets;  // Assurez-vous que c'est la bonne classe
+import service.UserService;
+import javafx.scene.text.Text;
+import service.UserSession;
 
-
-import java.awt.*;
 import java.io.IOException;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
 
 public class profileController {
 
@@ -50,43 +41,57 @@ public class profileController {
     @FXML
     private ImageView photoImageView;
 
-    private Connection connection;
     @FXML
     private Button ModifierUtilisateurButton;
 
-    private utilisateur currentUser;
+    private User currentUser;
 
     @FXML
     private ImageView currentUserImage;
+
     @FXML
     private Label currentUserName;
+
     @FXML
     private Label currentUserLastName;
+
     @FXML
     private Label currentUserEmail;
+
     @FXML
-    private Label currentUserPassword;
+    private Label currentUserPhoneNumber;
+
+    @FXML
+    private Label currentUserPoste;
+
     @FXML
     private GridPane userGridPane;
 
-    private utilisateurService userService = new utilisateurService();
 
     public void initialize() {
-        utilisateur user = userService.getConnectedUser(); // Remplace par ta méthode de récupération de l'utilisateur connecté
+        // Récupère l'utilisateur connecté via le service
+        User user = UserSession.getConnectedUser();
+
+        // Si un utilisateur est connecté, on affiche ses informations
         if (user != null) {
             setCurrentUser(user);
         } else {
-            System.out.println(" Aucun utilisateur connecté !");
+            System.out.println("❌ Aucun utilisateur connecté !");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Aucun utilisateur connecté");
+            alert.setContentText("Aucun utilisateur connecté. Veuillez vous connecter.");
+            alert.showAndWait();
         }
     }
 
-    public void setCurrentUser(utilisateur user) {
+    public void setCurrentUser(User user) {
         System.out.println("🔹 Chargement du profil utilisateur : " + (user != null ? user.getEmail() : "null"));
 
         if (user != null) {
             this.currentUser = user;
 
-            // Mettre à jour les labels
+            // Mettre à jour les labels avec les informations de l'utilisateur connecté
             if (currentUserName != null) {
                 currentUserName.setText(user.getFirstName());
             }
@@ -96,8 +101,17 @@ public class profileController {
             if (currentUserEmail != null) {
                 currentUserEmail.setText(user.getEmail());
             }
+            if (currentUserPhoneNumber != null) {
+                currentUserPhoneNumber.setText(user.getPhoneNumber());
+            }
 
-            // Afficher l'image ou une image par défaut
+            // Si un poste et département sont associés à l'utilisateur, on les affiche également
+            if (posteText != null && departementText != null) {
+                posteText.setText(user.getRole() != null ? user.getRole().name() : "Non défini");
+                departementText.setText("Département inconnu"); // Ajoute un département si nécessaire
+            }
+
+            // Afficher l'image de profil ou une image par défaut
             if (currentUserImage != null) {
                 if (user.getProfilePhoto() != null && !user.getProfilePhoto().isEmpty()) {
                     currentUserImage.setImage(new Image("file:" + user.getProfilePhoto()));
@@ -109,14 +123,15 @@ public class profileController {
             System.out.println("❌ Erreur : utilisateur non trouvé !");
         }
     }
+
     public void handleModifier() {
         try {
-            // Charger la nouvelle scène pour ajouter un utilisateur
+            // Charger la nouvelle scène pour modifier le profil de l'utilisateur
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierProfile.fxml"));
             AnchorPane newUserPane = loader.load();
 
             // Créer une nouvelle scène
-            Scene newUserScene = new Scene(newUserPane, 600, 400);
+            Scene newUserScene = new Scene(newUserPane);
 
             // Obtenir la scène actuelle (stage)
             Stage stage = (Stage) ModifierUtilisateurButton.getScene().getWindow();
@@ -129,10 +144,8 @@ public class profileController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Erreur de chargement de la scène");
-            alert.setContentText("Une erreur s'est produite lors du chargement de la scène pour ajouter un utilisateur.");
+            alert.setContentText("Une erreur s'est produite lors du chargement de la scène pour modifier le profil.");
             alert.showAndWait();
         }
-
     }
-
 }

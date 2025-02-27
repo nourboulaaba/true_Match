@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -13,44 +14,47 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane  prefHeight="600.0" prefWidth="800.0" style="-fx-background-color:  #F4F4F4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GestionRH">
-    <VBox alignment="TOP_CENTER" layoutX="366.0"  spacing="20">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color:  #F4F4F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GestionRH">
+    <VBox alignment="TOP_CENTER" layoutX="46.0" layoutY="20.0" prefHeight="617.0" prefWidth="887.0" spacing="20">
         <children>
-            <VBox layoutX="250.0" layoutY="50.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-border-color: #E0E0E0; -fx-border-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);">
-
-            <!-- Titre -->
-            <Text style="-fx-font-size: 24; -fx-font-weight: bold;" text="Gestion des Utilisateurs" />
-
-            <!-- Barre de recherche -->
-            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
-                <TextField promptText="Rechercher un employé..." style="-fx-pref-width: 300;" />
-                <Button style="-fx-background-color: #699bf7; -fx-text-fill: white; -fx-font-size: 14;" text="Rechercher" />
-            </HBox>
-
-            <!-- GridPane pour les utilisateurs -->
-            <GridPane fx:id="userGridPane" hgap="10" vgap="10">
-                <VBox spacing="10" style="-fx-alignment: center;">
-                    <ImageView fx:id="currentUserImage" fitHeight="100" fitWidth="100" />
-                    <Label fx:id="currentUserName" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Nom de l'utilisateur" />
-                    <Label fx:id="currentUserLastName" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Nom de l'utilisateur" />
-                    <Label fx:id="currentUserEmail" style="-fx-font-size: 16;" text="Email de l'utilisateur" />
-                    <Button  layoutX="480.0" layoutY="420.0"  fx:id="ajouter" onAction="#handleAjouterUtilisateur" style="-fx-background-color: #699bf7; -fx-text-fill: white; -fx-font-size: 16; -fx-background-radius: 10;" text="Ajouter Utilisateur" />
-
-                </VBox>
-            <columnConstraints>
-               <ColumnConstraints />
-            </columnConstraints>
-            <rowConstraints>
-               <RowConstraints />
-            </rowConstraints>
-            </GridPane>
-
-            <!-- Espace entre les cartes et le bouton -->
-            <Region prefHeight="50" />
-
-            <!-- Bouton Ajouter Utilisateur en bas -->
+            <VBox layoutX="250.0" layoutY="50.0" prefHeight="524.0" prefWidth="837.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-border-color: #E0E0E0; -fx-border-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);">
+      
+                <!-- Titre -->
+                <Text style="-fx-font-size: 24; -fx-font-weight: bold;" text="Gestion des Utilisateurs" />
+      
+                <!-- Barre de recherche -->
+                <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
+                    <TextField promptText="Rechercher un employé..." style="-fx-pref-width: 300;" />
+                    <Button style="-fx-background-color: #699bf7; -fx-text-fill: white; -fx-font-size: 14;" text="Rechercher" />
+                </HBox>
+      
+                <!-- GridPane pour les utilisateurs -->
+                <GridPane fx:id="userGridPane" hgap="10" vgap="10">
+                    <VBox spacing="10" style="-fx-alignment: center;">
+                        <ImageView fx:id="currentUserImage" fitHeight="100" fitWidth="100" />
+                        <Label fx:id="currentUserName" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Nom de l'utilisateur" />
+                        <Label fx:id="currentUserLastName" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Nom de l'utilisateur" />
+                        <Label fx:id="currentUserEmail" style="-fx-font-size: 16;" text="Email de l'utilisateur" />
+                        <Button fx:id="ajouter" layoutX="480.0" layoutY="420.0" onAction="#handleAjouterUtilisateur" style="-fx-background-color: #699bf7; -fx-text-fill: white; -fx-font-size: 16; -fx-background-radius: 10;" text="Ajouter Utilisateur" />
+      
+                    </VBox>
+                    <columnConstraints>
+                        <ColumnConstraints />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+      
+                <!-- Espace entre les cartes et le bouton -->
+                <Region prefHeight="50" />
+            <VBox.margin>
+               <Insets right="50.0" />
+            </VBox.margin>
+      
+                <!-- Bouton Ajouter Utilisateur en bas -->
             </VBox>
-            <Button  layoutX="480.0" layoutY="420.0"  fx:id="ajouterUtilisateurButton" onAction="#handleAjouterUtilisateur" style="-fx-background-color: #699bf7; -fx-text-fill: white; -fx-font-size: 16; -fx-background-radius: 10;" text="Ajouter Utilisateur" />
+            <Button fx:id="ajouterUtilisateurButton" layoutX="480.0" layoutY="420.0" onAction="#handleAjouterUtilisateur" style="-fx-background-color: #699bf7; -fx-text-fill: white; -fx-font-size: 16; -fx-background-radius: 10;" text="Ajouter Utilisateur" />
 
         </children>
     </VBox>

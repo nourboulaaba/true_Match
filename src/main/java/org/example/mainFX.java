@@ -5,6 +5,8 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import utils.PreferenceManager;
+
 import java.io.IOException;
 
 
@@ -17,13 +19,25 @@ public class mainFX extends Application {
 
     @Override
     public void start(Stage stage)throws IOException {
+try {
+    FXMLLoader loader;
+    if (PreferenceManager.getBoolean("isLoggedI", false)) {
+        System.out.println("((((((((((((((((((((((((((");
+        loader = new FXMLLoader(mainFX.class.getResource("/Dashboard.fxml"));
+        stage.setTitle("Dashboard - " + PreferenceManager.getString("role", "non role").toUpperCase());
+    } else {
+        System.out.println("--------------------------------");
 
-        FXMLLoader fxmlLoader = new FXMLLoader(mainFX.class.getResource("/login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 980, 700);
+        loader = new FXMLLoader(mainFX.class.getResource("/Login.fxml"));
         stage.setTitle("Login!");
-        stage.setScene(scene);
-        stage.show();
+    }
 
+    Scene scene = new Scene(loader.load());
+    stage.setScene(scene);
+    stage.show();
+}catch(Exception e) {
+    e.printStackTrace();
+}
 
     }
 }

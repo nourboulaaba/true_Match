@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -62,6 +61,7 @@ public class DashCondidat {
 
     @FXML
     public void handleClicks(ActionEvent event) {
+
         if (event.getSource() == profil) {
 
             openAjouterAbonnement();

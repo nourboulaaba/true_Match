@@ -7,19 +7,6 @@
 <?import javafx.scene.text.*?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXPasswordField?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterUser">
    <children>
@@ -40,14 +27,14 @@
                      <ImageView fx:id="photoImageView" fitHeight="120.0" fitWidth="120.0"
                                 pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 50%;">
                         <image>
-                           <Image url="images/user.png" />
+                           <Image url="@images/user.png" />
                         </image>
                      </ImageView>
                      <Button fx:id="photoButton" onAction="#uploadPhoto" style="-fx-background-color: transparent;">
                         <graphic>
                            <ImageView fitHeight="30" fitWidth="30">
                               <image>
-                                 <Image url="images/addphoto.png" />
+                                 <Image url="@images/addphoto.png" />
                               </image>
                            </ImageView>
                         </graphic>
@@ -57,16 +44,16 @@
 
                   <!-- Formulaire -->
                   <VBox spacing="10">
-                     <JFXTextField fx:id="nomField" promptText="Nom" style="-fx-font-size: 16;" prefWidth="500"/>
-                     <JFXTextField fx:id="prenomField" promptText="Prénom" style="-fx-font-size: 16;" prefWidth="500"/>
-                     <JFXTextField fx:id="identifierField" promptText="Identifiant" style="-fx-font-size: 16;" prefWidth="500"/>
-                     <JFXTextField fx:id="emailField" promptText="Email" style="-fx-font-size: 16;" prefWidth="500"/>
-                     <JFXPasswordField fx:id="mdpField" promptText="Mot de passe" style="-fx-font-size: 16;" prefWidth="500"/>
-                     <JFXTextField fx:id="telField" promptText="Numéro de téléphone" style="-fx-font-size: 16;" prefWidth="500"/>
-                     <JFXTextField fx:id="posteField" promptText="Poste" style="-fx-font-size: 16;" prefWidth="500"/>
+                     <TextField fx:id="nomField" promptText="Nom" style="-fx-font-size: 16;" prefWidth="500"/>
+                     <TextField fx:id="prenomField" promptText="Prénom" style="-fx-font-size: 16;" prefWidth="500"/>
+                     <TextField fx:id="identifierField" promptText="Cin" style="-fx-font-size: 16;" prefWidth="500"/>
+                     <TextField fx:id="emailField" promptText="Email" style="-fx-font-size: 16;" prefWidth="500"/>
+                     <PasswordField fx:id="mdpField" promptText="Mot de passe" style="-fx-font-size: 16;" prefWidth="500"/>
+                     <TextField fx:id="telField" promptText="Numéro de téléphone" style="-fx-font-size: 16;" prefWidth="500"/>
+                     <TextField fx:id="posteField" promptText="Poste" style="-fx-font-size: 16;" prefWidth="500"/>
 
-                     <JFXTextField fx:id="faceIDField" promptText="Face ID" style="-fx-font-size: 16;" prefWidth="500"/>
-                     <JFXTextField fx:id="salaireField" promptText="Salaire" style="-fx-font-size: 16;" prefWidth="500"/>
+                     <TextField fx:id="faceIDField" promptText="Face ID" style="-fx-font-size: 16;" prefWidth="500"/>
+                     <TextField fx:id="salaireField" promptText="Salaire" style="-fx-font-size: 16;" prefWidth="500"/>
 
                      <!-- Champ de date avec un DatePicker -->
                      <DatePicker fx:id="dateEmbauchePicker" promptText="Date d'embauche" style="-fx-font-size: 16;" prefWidth="500"/>

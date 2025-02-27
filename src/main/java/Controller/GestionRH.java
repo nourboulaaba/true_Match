@@ -1,10 +1,9 @@
 package Controller;
 
-import Entities.utilisateur;
+import Entities.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,9 +13,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import service.utilisateurService;
+import service.UserService;
+import service.UserSession;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class GestionRH {
@@ -36,17 +38,20 @@ public class GestionRH {
     @FXML
     private GridPane userGridPane;
 
-    private utilisateur currentUser;
-    private utilisateur selectedUser = null;
-    private final utilisateurService userService = new utilisateurService();
-
+    //private User selectedUser ;
+    private final UserService userService = new UserService();
+    private User currentUser= UserSession.getConnectedUser();
     // Initialize the controller
     public void initialize() {
         afficherUsersDansGrid(); // Display users on startup
     }
 
+
+
+
+  
     // Set the current logged-in user
-    public void setCurrentUser(utilisateur user) {
+    public void setCurrentUser(User user) {
         this.currentUser = user;
 
         if (user != null) {
@@ -76,12 +81,12 @@ public class GestionRH {
     public void afficherUsersDansGrid() {
         userGridPane.getChildren().clear(); // Clear the GridPane before displaying
 
-        List<utilisateur> utilisateurs = userService.getAll();
+        List<User> utilisateurs = userService.getAll();
 
         int colonne = 0;
         int ligne = 0;
 
-        for (utilisateur user : utilisateurs) {
+        for (User user : utilisateurs) {
             VBox userCard = createUserCard(user); // Create a card for each user
             userGridPane.add(userCard, colonne, ligne);
 
@@ -94,7 +99,7 @@ public class GestionRH {
     }
 
     // Create a user card (VBox) for display
-    private VBox createUserCard(utilisateur user) {
+    private VBox createUserCard(User user) {
         VBox userCard = new VBox();
         userCard.setPadding(new Insets(10));
         userCard.setSpacing(5);
@@ -103,9 +108,9 @@ public class GestionRH {
         // User image
         ImageView userImage = new ImageView();
         if (user.getProfilePhoto() != null && !user.getProfilePhoto().isEmpty()) {
-            userImage.setImage(new Image("file:" + user.getProfilePhoto()));
+            userImage.setImage(new Image(user.getProfilePhoto()));
         } else {
-            userImage.setImage(new Image("file:default.png")); // Default image
+            userImage.setImage(new Image("/images/user.png")); // Default image
         }
         userImage.setFitHeight(50);
         userImage.setFitWidth(50);
@@ -135,7 +140,7 @@ public class GestionRH {
     }
 
     // Handle user deletion
-    private void handleSupprimerUtilisateur(utilisateur user) {
+    private void handleSupprimerUtilisateur(User user) {
         if (user == null) {
             showAlert("Veuillez sélectionner un utilisateur !");
             return;
@@ -150,20 +155,28 @@ public class GestionRH {
         System.out.println("Deleting user with ID: " + user.getId()); // Debug statement
 
         if (user.getId() == currentUser.getId()) { // Ne pas permettre la suppression de soi-même
-            showAlert("Vous ne pouvez pas vous supprimer vous-même !");
+            showAlert("Vous ne pouvez pas vous supprimer vous-même !"+user.getId());
             return;
         }
 
         if (confirmDelete(user)) {
-            userService.deleteByID(user.getId());
-            afficherUsersDansGrid(); // Refresh the user list
-            showAlert("Utilisateur supprimé avec succès !");
+            try {
+                userService.deleteByID(user.getId());
+                showAlert("Utilisateur supprimé avec succès !");
+                afficherUsersDansGrid(); // Refresh the user list
+            }catch (SQLException e){
+                e.printStackTrace();
+                showAlert("erreur sql , voir le console !");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
     }
 
 
     // Handle user modification
-    public void handleModifierUtilisateur(utilisateur user) {
+    public void handleModifierUtilisateur(User user) {
         if (user == null) {
             showAlert("Veuillez sélectionner un utilisateur !");
             return;
@@ -173,10 +186,10 @@ public class GestionRH {
             AnchorPane newUserPane = loader.load();
 
             // Pass the selected user to the new controller
-            // ModifierProfileController controller = loader.getController();
-//            controller.setUser(user);
+            ModifierProfile controller = loader.getController();
+            controller.setUser(user);
 
-            Scene newUserScene = new Scene(newUserPane, 600, 400);
+            Scene newUserScene = new Scene(newUserPane);
             Stage stage = (Stage) userGridPane.getScene().getWindow(); // Use the current stage
             stage.setScene(newUserScene);
             stage.show();
@@ -187,7 +200,7 @@ public class GestionRH {
     }
 
     // Show a confirmation dialog for deletion
-    private boolean confirmDelete(utilisateur user) {
+    private boolean confirmDelete(User user) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation de suppression");
         alert.setHeaderText(null);

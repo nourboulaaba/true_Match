@@ -1,28 +1,85 @@
 package Controller;
 
+import Entities.User;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import service.UserService;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.mindrot.jbcrypt.BCrypt;
 import org.example.dao.DBConnection;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class ModifierProfile implements Initializable {
+    private User user;
+    @FXML
+    private JFXButton AnnullerButton;
 
     @FXML
+    private JFXButton ProfileButton;
+
+    @FXML
+    private AnchorPane contentPane;
+
+    @FXML
+    private Text emailError;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private Text imgError;
+
+    @FXML
+    private ScrollPane mainScrollPane;
+
+    @FXML
+    private VBox modifierProfilePane;
+
+    @FXML
+    private Text nomError;
+
+    @FXML
+    private TextField nomField;
+
+    @FXML
+    private Text prenomError;
+
+    @FXML
+    private TextField prenomField;
+
+    @FXML
+    private Text telError;
+
+    @FXML
+    private TextField telephoneField;
+    ///////////////
+    @FXML
     private ImageView photoImageView;  // ImageView pour la photo de profil
+
     @FXML
     private Button uploadCVButton; // Bouton pour télécharger le CV
     @FXML
@@ -32,44 +89,134 @@ public class ModifierProfile implements Initializable {
     @FXML
     private DatePicker dateEmbauchePicker; // Sélecteur de date d'embauche
     @FXML
-    private JFXTextField nomField, prenomField, identifierField, emailField, telField, posteField, faceIDField, salaireField; // Champs texte
+    private JFXTextField identifierField, telField, posteField, faceIDField, salaireField; // Champs texte
     @FXML
     private JFXPasswordField mdpField; // Champ mot de passe
     @FXML
     private ComboBox<String> roleBox; // Sélecteur de rôle
-    @FXML
-    private Button EnregistrerButton; // Bouton Enregistrer
-    @FXML
-    private Button AnnullerButton; // Bouton Annuler
 
+    private UserService userService = new UserService();
+    private Path destinationFile;
+    private File file;
+
+    @FXML
+    private ImageView imageView;  // ImageView to display the image
+
+    private String fileImage;
     private Connection connection;  // Connexion à la base de données
     private String photoPath = ""; // Chemin de la photo de profil
     private String cvPath = ""; // Chemin du fichier CV
+
+    @FXML
+    void handleButtonProfile(ActionEvent event) {
+    }
+
+    void clearError(){
+        emailError.setText("");
+        imgError.setText("");
+        nomError.setText("");
+        prenomError.setText("");
+        telError.setText("");
+
+    }
+    @FXML
+    void saveProfile(ActionEvent event) {
+        clearError();
+        boolean isValid = true;
+        if (nomField.getText().isEmpty()) {
+            nomError.setText("Veuillez entrer le nom");
+            isValid = false;
+        }
+        if (prenomField.getText().isEmpty()) {
+            prenomError.setText("Veuillez entrer le prénom");
+            isValid = false;
+        }
+        if (emailField.getText().isEmpty()) {
+            emailError.setText("Veuillez entrer votre email");
+            isValid = false;
+        }
+        if (telephoneField.getText().isEmpty()) {
+            telError.setText("Veuillez entrer le numéro de telephone");
+            isValid = false;
+        }
+
+        // Valider les champs obligatoires
+//        if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty()) {
+//            showAlert(Alert.AlertType.ERROR, "Erreur", "Veuillez remplir tous les champs obligatoires.");
+        //return;
+
+
+        // Hacher le mot de passe seulement s'il est fourni
+        // String hashedPassword = password.isEmpty() ? null : BCrypt.hashpw(password, BCrypt.gensalt());
+
+        // Requête SQL pour mettre à jour le profil
+        //String updateQuery = "UPDATE utilisateur SET lastName = ?, firstName = ?, phoneNumber = ?, profilePhoto = ?  WHERE email = ?";
+        if (isValid) {
+            try {
+                user.setEmail(emailField.getText());
+                user.setPhoneNumber(telephoneField.getText());
+                user.setFirstName(prenomField.getText());
+                user.setLastName(nomField.getText());
+                user.setProfilePhoto(photoPath);
+                userService.updateOne(user);
+                showAlert(Alert.AlertType.INFORMATION, "Succès", "Profil mis à jour avec succès !");
+                handleAnnuller();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Erreur SQL", "Erreur lors de la mise à jour du profil.");
+            }
+        }
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.connection = DBConnection.getInstance().getConnection();
 
         // Associer les actions aux boutons
-        EnregistrerButton.setOnAction(event -> handleModifier());
         AnnullerButton.setOnAction(event -> handleAnnuller());
         //uploadCVButton.setOnAction(event -> handleUploadCV());
     }
 
-    /**
-     * Méthode pour changer la photo de profil
-     */
     @FXML
-    private void handleChangePhoto() {
+    void handleChangePhoto(ActionEvent event) {
+        // Create a FileChooser instance
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif"));
-        File selectedFile = fileChooser.showOpenDialog(new Stage());
 
-        if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
-            photoImageView.setImage(image);
-            photoPath = selectedFile.getAbsolutePath(); // Stocker le chemin de l'image
+        // Set the extension filters to allow only image files
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        // Show the file chooser dialog and get the selected file
+        Stage stage = (Stage) imageView.getScene().getWindow();
+        file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+            // Get the destination folder (src/upload in this case)
+            Path destinationFolder = Path.of("src", "upload");
+
+            try {
+                if (!Files.exists(destinationFolder)) {
+                    Files.createDirectories(destinationFolder);
+                }
+
+                // Define the destination file path
+                destinationFile = destinationFolder.resolve(file.getName());
+
+                // Copy the selected image file to the destination folder
+                Files.copy(file.toPath(), destinationFile, StandardCopyOption.REPLACE_EXISTING);
+                photoPath = destinationFile.toUri().toString();
+                // Load the image from the saved location
+                Image image = new Image(photoPath);
+                imageView.setImage(image);
+
+                System.out.println("Image saved to: " + destinationFile.toString());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Error saving the image: " + e.getMessage());
+            }
         }
+
     }
 
     /**
@@ -87,61 +234,22 @@ public class ModifierProfile implements Initializable {
         }
     }
 
-    /**
-     * Méthode pour enregistrer les modifications du profil
-     */
-    @FXML
-    private void handleModifier() {
-        // Récupérer les valeurs des champs
-        String nom = nomField.getText();
-        String prenom = prenomField.getText();
-        String email = emailField.getText();
-        String password = mdpField.getText();
-        String tel = telField.getText();
-
-
-
-        // Valider les champs obligatoires
-//        if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty()) {
-//            showAlert(Alert.AlertType.ERROR, "Erreur", "Veuillez remplir tous les champs obligatoires.");
-        //return;
-
-
-        // Hacher le mot de passe seulement s'il est fourni
-        String hashedPassword = password.isEmpty() ? null : BCrypt.hashpw(password, BCrypt.gensalt());
-
-        // Requête SQL pour mettre à jour le profil
-        String updateQuery = "UPDATE utilisateur SET lastName = ?, firstName = ?, password = ?, phoneNumber = ?, profilePhoto = ?,  WHERE email = ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(updateQuery)) {
-            stmt.setString(1, nom);
-            stmt.setString(2, prenom);
-            stmt.setString(3, hashedPassword);
-            stmt.setString(4, tel);
-            stmt.setString(5, photoPath);
-
-            stmt.setString(6, cvPath);
-            stmt.setString(7, email);
-
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                showAlert(Alert.AlertType.INFORMATION, "Succès", "Profil mis à jour avec succès !");
-            } else {
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Aucune modification effectuée.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Erreur SQL", "Erreur lors de la mise à jour du profil.");
-        }
-    }
 
     /**
      * Méthode pour annuler et fermer la fenêtre
      */
     @FXML
     private void handleAnnuller() {
-        Stage stage = (Stage) AnnullerButton.getScene().getWindow();
-        stage.close();
+        Stage stage = (Stage) emailField.getScene().getWindow(); // Get reference to the login window's stage
+        try {
+            stage.setTitle("Dashboard");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+            Parent p = loader.load();
+            Scene scene = new Scene(p);
+            stage.setScene(scene);
+        } catch (Exception e){
+            System.err.println(e);
+        }
     }
 
     /**
@@ -153,5 +261,19 @@ public class ModifierProfile implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+        prenomField.setText(user.getFirstName());
+        nomField.setText(user.getLastName());
+        emailField.setText(user.getEmail());
+        telephoneField.setText(user.getPhoneNumber());
+
+        if (user.getProfilePhoto() != null&&!user.getProfilePhoto().equals("")) {
+            photoPath=user.getProfilePhoto();
+            Image image = new Image(user.getProfilePhoto());
+            imageView.setImage(image);
+        }
     }
 }
