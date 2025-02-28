@@ -221,7 +221,9 @@ public class Login implements Initializable {
             PreferenceManager.save("role", user.getRole().name());
             PreferenceManager.save("id", user.getId());
             PreferenceManager.save("lastName", user.getLastName());
-            PreferenceManager.save("firstName", user.getIdentifier());
+            PreferenceManager.save("firstName", user.getFirstName());
+            PreferenceManager.save("email", user.getEmail());
+
             PreferenceManager.save("identifier", user.getIdentifier());
             PreferenceManager.save("password", user.getPassword());
             PreferenceManager.save("CIN", user.getCin());

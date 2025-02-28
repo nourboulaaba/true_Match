@@ -19,6 +19,7 @@ public class UserSession {
             currentUser.setRole( Role.valueOf(PreferenceManager.getString("role", "RH")));
             currentUser.setId(PreferenceManager.getInt("id", 0));
             currentUser.setLastName(PreferenceManager.getString("lastName", "unkonw"));
+            currentUser.setEmail(PreferenceManager.getString("email", "unkonw"));
             currentUser.setFirstName(PreferenceManager.getString("firstName", "unkown"));
             currentUser.setIdentifier( PreferenceManager.getString("identifier", "unkown"));
             currentUser.setPassword(PreferenceManager.getString("password", "unkown"));

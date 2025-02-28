@@ -21,6 +21,8 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.dao.DBConnection;
+import service.UserSession;
+import utils.PreferenceManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -242,11 +244,19 @@ public class ModifierProfile implements Initializable {
     private void handleAnnuller() {
         Stage stage = (Stage) emailField.getScene().getWindow(); // Get reference to the login window's stage
         try {
+            if(PreferenceManager.getString("role", "RH").equals("RH")){
             stage.setTitle("Dashboard");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
             Parent p = loader.load();
             Scene scene = new Scene(p);
             stage.setScene(scene);
+            }else{
+                stage.setTitle("Dashboard");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/DashEmployee.fxml"));
+                Parent p = loader.load();
+                Scene scene = new Scene(p);
+                stage.setScene(scene);
+            }
         } catch (Exception e){
             System.err.println(e);
         }
@@ -264,6 +274,7 @@ public class ModifierProfile implements Initializable {
     }
 
     public void setUser(User user) {
+
         this.user = user;
         prenomField.setText(user.getFirstName());
         nomField.setText(user.getLastName());
@@ -272,7 +283,13 @@ public class ModifierProfile implements Initializable {
 
         if (user.getProfilePhoto() != null&&!user.getProfilePhoto().equals("")) {
             photoPath=user.getProfilePhoto();
-            Image image = new Image(user.getProfilePhoto());
+            Image image;
+            try {
+                 image = new Image(user.getProfilePhoto());
+            }catch (Exception e){
+                 image = new Image("/images/user.png");
+
+            }
             imageView.setImage(image);
         }
     }

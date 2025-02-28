@@ -72,9 +72,13 @@ public class profileController {
         // Récupère l'utilisateur connecté via le service
         User user = UserSession.getConnectedUser();
 
+
+
+        setCurrentUser( user);
         // Si un utilisateur est connecté, on affiche ses informations
         if (user != null) {
-            setCurrentUser(user);
+            currentUser = UserSession.getConnectedUser();
+            System.out.println(user);
         } else {
             System.out.println("❌ Aucun utilisateur connecté !");
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -86,6 +90,7 @@ public class profileController {
     }
 
     public void setCurrentUser(User user) {
+        if (user.getId() == UserSession.getConnectedUser().getId()) user = UserSession.getConnectedUser();
         System.out.println("🔹 Chargement du profil utilisateur : " + (user != null ? user.getEmail() : "null"));
 
         if (user != null) {
@@ -114,9 +119,14 @@ public class profileController {
             // Afficher l'image de profil ou une image par défaut
             if (currentUserImage != null) {
                 if (user.getProfilePhoto() != null && !user.getProfilePhoto().isEmpty()) {
-                    currentUserImage.setImage(new Image("file:" + user.getProfilePhoto()));
+                    try {
+                        currentUserImage.setImage(new Image(user.getProfilePhoto()));
+                    }catch (Exception e){
+                        currentUserImage.setImage(new Image("/images/user.png")); // Image par défaut
+
+                    }
                 } else {
-                    currentUserImage.setImage(new Image("/images/default_profile.png")); // Image par défaut
+                    currentUserImage.setImage(new Image("/images/user.png")); // Image par défaut
                 }
             }
         } else {
@@ -126,26 +136,20 @@ public class profileController {
 
     public void handleModifier() {
         try {
-            // Charger la nouvelle scène pour modifier le profil de l'utilisateur
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierProfile.fxml"));
             AnchorPane newUserPane = loader.load();
 
-            // Créer une nouvelle scène
+            // Pass the selected user to the new controller
+            ModifierProfile controller = loader.getController();
+            controller.setUser(UserSession.getConnectedUser());
+
             Scene newUserScene = new Scene(newUserPane);
-
-            // Obtenir la scène actuelle (stage)
-            Stage stage = (Stage) ModifierUtilisateurButton.getScene().getWindow();
-            stage.setScene(newUserScene);  // Changer la scène actuelle avec la nouvelle scène
-
-            // Afficher la nouvelle scène
+            Stage stage = (Stage) currentUserName.getScene().getWindow(); // Use the current stage
+            stage.setScene(newUserScene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Erreur de chargement de la scène");
-            alert.setContentText("Une erreur s'est produite lors du chargement de la scène pour modifier le profil.");
-            alert.showAndWait();
+
         }
     }
 }

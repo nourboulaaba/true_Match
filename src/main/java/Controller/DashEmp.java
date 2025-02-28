@@ -1,14 +1,20 @@
 package Controller;
 
+import Entities.User;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import service.UserSession;
+import utils.PreferenceManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -92,6 +98,7 @@ public class DashEmp {
     @FXML
     private void handleButtonProfile() {
         try {
+            System.out.println(UserSession.getConnectedUser());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
             Pane ajoutAbonnementPane = loader.load(); // Charger le FXML
 
@@ -108,11 +115,26 @@ public class DashEmp {
         }
     }
     @FXML
-    private void logout(MouseEvent event) {
-        // Your logout logic here
-        System.out.println("Logged out successfully!");
-        // You can also close the window or navigate to another screen
-    }
+    void logout(MouseEvent event) {
+        PreferenceManager.clearAll();
+        UserSession.setCurrentUser(null);
+        try {
+            Stage stage = (Stage) Emp.getScene().getWindow(); // Get reference to the login window's stage
+            stage.setTitle("Welcome");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+            Parent p = loader.load();
 
+            Scene scene = new Scene(p);
+
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            // Handle navigation failure
+        }
+
+    }
 }
 
