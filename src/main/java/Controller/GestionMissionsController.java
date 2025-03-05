@@ -1,6 +1,8 @@
 package Controller;
 
 import Entities.Mission;
+import Entities.utilisateur;
+import mail.EmailSender;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import service.missionService;
+import service.utilisateurService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,6 +50,7 @@ public class GestionMissionsController implements Initializable {
     private ComboBox<Integer> pageSizeComboBox;
 
     private final missionService service = new missionService();
+    private final utilisateurService userService = new utilisateurService();
     private Mission selectedMission;
     
     // Variables pour la pagination
@@ -223,6 +227,8 @@ public class GestionMissionsController implements Initializable {
             );
 
             service.insert(mission);
+            // Envoyer un email de notification à l'employé
+            sendMissionNotificationEmail(mission, true);
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Mission ajoutée avec succès");
             refreshList();
             handleEffacer();
@@ -248,6 +254,8 @@ public class GestionMissionsController implements Initializable {
             );
 
             service.update(mission);
+            // Envoyer un email de notification à l'employé
+            sendMissionNotificationEmail(mission, false);
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Mission modifiée avec succès");
             refreshList();
             handleEffacer();
@@ -301,5 +309,74 @@ public class GestionMissionsController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+    
+    /**
+     * Envoie un email de notification à l'utilisateur assigné à une mission
+     * @param mission La mission concernée
+     * @param isNew Indique s'il s'agit d'une nouvelle mission ou d'une mise à jour
+     */
+    private void sendMissionNotificationEmail(Mission mission, boolean isNew) {
+        try {
+            // Récupérer l'email de l'utilisateur directement depuis la base de données
+            String email = getUserEmailById(mission.getIdEmploye());
+            
+            if (email != null && !email.isEmpty()) {
+                // Préparer le sujet et le contenu de l'email
+                String subject = isNew ? 
+                        "Nouvelle mission assignée : " + mission.getTitre() :
+                        "Mise à jour de votre mission : " + mission.getTitre();
+                
+                StringBuilder messageBuilder = new StringBuilder();
+                messageBuilder.append("Bonjour,\n\n");
+                
+                if (isNew) {
+                    messageBuilder.append("Une nouvelle mission vous a été assignée :\n\n");
+                } else {
+                    messageBuilder.append("Votre mission a été mise à jour :\n\n");
+                }
+                
+                messageBuilder.append("Titre : ").append(mission.getTitre()).append("\n");
+                messageBuilder.append("Date : ").append(mission.getDate()).append("\n");
+                messageBuilder.append("Destination : ").append(mission.getDestination()).append("\n\n");
+                
+                messageBuilder.append("Veuillez consulter votre espace personnel pour plus de détails.\n\n");
+                messageBuilder.append("Cordialement,\nL'équipe True Match");
+                
+                // Envoyer l'email
+                EmailSender.sendEmail(email, subject, messageBuilder.toString());
+                System.out.println("✅ Email de notification envoyé à " + email);
+            } else {
+                System.out.println("⚠️ Impossible d'envoyer l'email : adresse email de l'utilisateur non disponible");
+            }
+        } catch (Exception e) {
+            System.err.println("❌ Erreur lors de l'envoi de l'email : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Récupère l'email d'un utilisateur à partir de son ID
+     * @param userId L'ID de l'utilisateur
+     * @return L'adresse email de l'utilisateur ou null si non trouvée
+     */
+    private String getUserEmailById(int userId) {
+        try {
+            java.sql.Connection conn = org.example.dao.DBConnection.getInstance().getConnection();
+            String query = "SELECT email FROM utilisateur WHERE id = ?";
+            
+            try (java.sql.PreparedStatement pst = conn.prepareStatement(query)) {
+                pst.setInt(1, userId);
+                java.sql.ResultSet rs = pst.executeQuery();
+                
+                if (rs.next()) {
+                    return rs.getString("email");
+                }
+            }
+        } catch (java.sql.SQLException e) {
+            System.err.println("❌ Erreur lors de la récupération de l'email : " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
     }
 }
