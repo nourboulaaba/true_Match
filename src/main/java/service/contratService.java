@@ -100,6 +100,80 @@ public class contratService implements IService<Contrat> {
 
         return contrats;
     }
+    
+    public List<Contrat> getAllPaginated(int page, int size) {
+        List<Contrat> contrats = new ArrayList();
+        String query = "SELECT * FROM Contrat LIMIT ? OFFSET ?";
+        int offset = (page - 1) * size;
+
+        try (PreparedStatement pstmt = this.connection.prepareStatement(query)) {
+            pstmt.setInt(1, size);
+            pstmt.setInt(2, offset);
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()) {
+                Contrat contrat = new Contrat(rs.getInt("idContrat"), rs.getInt("idEmploye"), rs.getString("type"), rs.getDate("DateDébut"), rs.getDate("DateFin"), rs.getDouble("salaire"));
+                contrats.add(contrat);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return contrats;
+    }
+    
+    public int getTotalCount() {
+        String query = "SELECT COUNT(*) FROM Contrat";
+        try (Statement stmt = this.connection.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
+    public List<Contrat> searchContrats(String keyword) {
+        List<Contrat> contrats = new ArrayList();
+        String query = "SELECT * FROM Contrat WHERE type LIKE ? OR idEmploye LIKE ? OR salaire LIKE ?";
+
+        try (PreparedStatement pstmt = this.connection.prepareStatement(query)) {
+            String searchTerm = "%" + keyword + "%";
+            pstmt.setString(1, searchTerm);
+            pstmt.setString(2, searchTerm);
+            pstmt.setString(3, searchTerm);
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()) {
+                Contrat contrat = new Contrat(rs.getInt("idContrat"), rs.getInt("idEmploye"), rs.getString("type"), rs.getDate("DateDébut"), rs.getDate("DateFin"), rs.getDouble("salaire"));
+                contrats.add(contrat);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return contrats;
+    }
+    
+    public List<Contrat> getAllSorted(String sortField, boolean ascending) {
+        List<Contrat> contrats = new ArrayList();
+        String direction = ascending ? "ASC" : "DESC";
+        String query = "SELECT * FROM Contrat ORDER BY " + sortField + " " + direction;
+
+        try (Statement stmt = this.connection.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            while(rs.next()) {
+                Contrat contrat = new Contrat(rs.getInt("idContrat"), rs.getInt("idEmploye"), rs.getString("type"), rs.getDate("DateDébut"), rs.getDate("DateFin"), rs.getDouble("salaire"));
+                contrats.add(contrat);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return contrats;
+    }
 
     public Contrat getById(int id) {
         String query = "SELECT * FROM Contrat WHERE idContrat=?";

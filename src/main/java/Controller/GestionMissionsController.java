@@ -9,13 +9,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import java.io.IOException;
-import javafx.scene.control.cell.PropertyValueFactory;
 import service.missionService;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GestionMissionsController implements Initializable {
@@ -28,47 +29,177 @@ public class GestionMissionsController implements Initializable {
     private TextField destinationField;
     @FXML
     private TextField idEmployeField;
-    
     @FXML
-    private TableView<Mission> missionsTable;
+    private TextField searchField;
     @FXML
-    private TableColumn<Mission, Integer> idColumn;
+    private ComboBox<String> sortFieldComboBox;
     @FXML
-    private TableColumn<Mission, String> titreColumn;
+    private ToggleButton sortDirectionToggle;
     @FXML
-    private TableColumn<Mission, Date> dateColumn;
+    private ListView<Mission> missionsList;
     @FXML
-    private TableColumn<Mission, String> destinationColumn;
+    private Button prevPageButton;
     @FXML
-    private TableColumn<Mission, Integer> employeColumn;
+    private Button nextPageButton;
+    @FXML
+    private Label pageInfoLabel;
+    @FXML
+    private ComboBox<Integer> pageSizeComboBox;
 
     private final missionService service = new missionService();
     private Mission selectedMission;
+    
+    // Variables pour la pagination
+    private int currentPage = 1;
+    private int pageSize = 5;
+    private int totalPages = 1;
+    
+    // Variables pour le tri
+    private String currentSortField = "idMission";
+    private boolean sortAscending = true;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Configuration des colonnes
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("idMission"));
-        titreColumn.setCellValueFactory(new PropertyValueFactory<>("titre"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        destinationColumn.setCellValueFactory(new PropertyValueFactory<>("destination"));
-        employeColumn.setCellValueFactory(new PropertyValueFactory<>("idEmploye"));
+        // Initialisation des options de tri
+        sortFieldComboBox.setItems(FXCollections.observableArrayList(
+            "idMission", "titre", "date", "destination"
+        ));
+        sortFieldComboBox.setValue("idMission");
+        
+        // Initialisation des options de pagination
+        pageSizeComboBox.setItems(FXCollections.observableArrayList(5, 10, 20, 50));
+        pageSizeComboBox.setValue(5);
+        
+        // Configuration de l'affichage des missions
+        setupMissionListView();
+        
+        // Chargement initial des données
+        refreshList();
+        
+        // Ajout des listeners pour les contrôles de recherche, tri et pagination
+        setupEventListeners();
+    }
+    
+    private void setupMissionListView() {
+        // Personnalisation des cellules de la liste
+        missionsList.setCellFactory(param -> new ListCell<Mission>() {
+            @Override
+            protected void updateItem(Mission mission, boolean empty) {
+                super.updateItem(mission, empty);
+                if (empty || mission == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    VBox container = new VBox();
+                    Label id = new Label("ID : " + mission.getIdMission());
+                    Label title = new Label("Titre : " + mission.getTitre());
+                    Label date = new Label("Date : " + mission.getDate().toString());
+                    Label destination = new Label("Destination : " + mission.getDestination());
+                    Label employe = new Label("ID Employé : " + mission.getIdEmploye());
+                    container.getChildren().addAll(id, title, date, destination, employe);
+                    setGraphic(container);
+                }
+            }
+        });
 
-        // Chargement des données
-        refreshTable();
-
-        // Listener pour la sélection dans la table
-        missionsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+        // Listener pour la sélection dans la liste
+        missionsList.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 selectedMission = newSelection;
                 populateFields(newSelection);
             }
         });
     }
+    
+    private void setupEventListeners() {
+        // Listener pour la recherche
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.trim().isEmpty()) {
+                refreshList();
+            } else {
+                searchMissions(newValue);
+            }
+        });
+        
+        // Listener pour le tri
+        sortFieldComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                currentSortField = newValue;
+                applySorting();
+            }
+        });
+        
+        // Listener pour la direction du tri
+        sortDirectionToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            sortAscending = !newValue;
+            sortDirectionToggle.setText(sortAscending ? "↑" : "↓");
+            applySorting();
+        });
+        
+        // Listener pour la taille de page
+        pageSizeComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                pageSize = newValue;
+                currentPage = 1; // Retour à la première page
+                refreshList();
+            }
+        });
+    }
 
-    private void refreshTable() {
-        ObservableList<Mission> missions = FXCollections.observableArrayList(service.getAll());
-        missionsTable.setItems(missions);
+    private void refreshList() {
+        // Récupérer le nombre total de missions pour calculer le nombre de pages
+        int totalMissions = service.getTotalCount();
+        totalPages = (int) Math.ceil((double) totalMissions / pageSize);
+        
+        // Mettre à jour les contrôles de pagination
+        updatePaginationControls();
+        
+        // Charger les missions pour la page courante
+        List<Mission> missionList = service.getAllPaginated(currentPage, pageSize);
+        ObservableList<Mission> missions = FXCollections.observableArrayList(missionList);
+        missionsList.setItems(missions);
+    }
+    
+    private void updatePaginationControls() {
+        pageInfoLabel.setText("Page " + currentPage + " sur " + totalPages);
+        prevPageButton.setDisable(currentPage <= 1);
+        nextPageButton.setDisable(currentPage >= totalPages);
+    }
+    
+    @FXML
+    private void handlePrevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            refreshList();
+        }
+    }
+    
+    @FXML
+    private void handleNextPage() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            refreshList();
+        }
+    }
+    
+    private void searchMissions(String keyword) {
+        List<Mission> searchResults = service.searchMissions(keyword);
+        missionsList.setItems(FXCollections.observableArrayList(searchResults));
+        
+        // Désactiver la pagination pendant la recherche
+        prevPageButton.setDisable(true);
+        nextPageButton.setDisable(true);
+        pageInfoLabel.setText("Résultats de recherche");
+    }
+    
+    private void applySorting() {
+        List<Mission> sortedList = service.getAllSorted(currentSortField, sortAscending);
+        missionsList.setItems(FXCollections.observableArrayList(sortedList));
+        
+        // Désactiver la pagination pendant le tri
+        prevPageButton.setDisable(true);
+        nextPageButton.setDisable(true);
+        pageInfoLabel.setText("Résultats triés");
     }
 
     private void populateFields(Mission mission) {
@@ -81,16 +212,19 @@ public class GestionMissionsController implements Initializable {
     @FXML
     private void handleAjouter() {
         try {
+            int idEmploye = Integer.parseInt(idEmployeField.getText());
+            System.out.println("🧐 ID Employé récupéré : " + idEmploye); // Vérifier la valeur récupérée
+
             Mission mission = new Mission(
-                titreField.getText(),
-                java.sql.Date.valueOf(dateField.getValue()),
-                destinationField.getText(),
-                Integer.parseInt(idEmployeField.getText())
+                    titreField.getText(),
+                    Date.valueOf(dateField.getValue()),
+                    destinationField.getText(),
+                    idEmploye
             );
-            
+
             service.insert(mission);
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Mission ajoutée avec succès");
-            refreshTable();
+            refreshList();
             handleEffacer();
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'ajout: " + e.getMessage());
@@ -106,16 +240,16 @@ public class GestionMissionsController implements Initializable {
 
         try {
             Mission mission = new Mission(
-                selectedMission.getIdMission(),
-                titreField.getText(),
-                java.sql.Date.valueOf(dateField.getValue()),
-                destinationField.getText(),
-                Integer.parseInt(idEmployeField.getText())
+                    selectedMission.getIdMission(),
+                    titreField.getText(),
+                    Date.valueOf(dateField.getValue()),
+                    destinationField.getText(),
+                    Integer.parseInt(idEmployeField.getText())
             );
-            
+
             service.update(mission);
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Mission modifiée avec succès");
-            refreshTable();
+            refreshList();
             handleEffacer();
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de la modification: " + e.getMessage());
@@ -129,23 +263,12 @@ public class GestionMissionsController implements Initializable {
             return;
         }
 
-        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmation.setTitle("Confirmation de suppression");
-        confirmation.setHeaderText("Êtes-vous sûr de vouloir supprimer cette mission ?");
-        confirmation.setContentText("Cette action est irréversible.");
-
-        if (confirmation.showAndWait().get() == ButtonType.OK) {
-            try {
-                Mission missionToDelete = service.getById(selectedMission.getIdMission());
-                if (missionToDelete != null) {
-                    service.delete(missionToDelete);
-                }
-                showAlert(Alert.AlertType.INFORMATION, "Succès", "Mission supprimée avec succès");
-                refreshTable();
-                handleEffacer();
-            } catch (Exception e) {
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de la suppression: " + e.getMessage());
-            }
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous vraiment supprimer cette mission ?", ButtonType.YES, ButtonType.NO);
+        if (confirmation.showAndWait().get() == ButtonType.YES) {
+            service.delete(selectedMission);
+            showAlert(Alert.AlertType.INFORMATION, "Succès", "Mission supprimée avec succès");
+            refreshList();
+            handleEffacer();
         }
     }
 
@@ -156,7 +279,7 @@ public class GestionMissionsController implements Initializable {
         destinationField.clear();
         idEmployeField.clear();
         selectedMission = null;
-        missionsTable.getSelectionModel().clearSelection();
+        missionsList.getSelectionModel().clearSelection();
     }
 
     @FXML

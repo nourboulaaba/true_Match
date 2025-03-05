@@ -56,9 +56,16 @@
             <artifactId>jfoenix</artifactId>
             <version>9.0.1</version>
         </dependency>
-
-
-
+        <dependency>
+            <groupId>com.docusign</groupId>
+            <artifactId>docusign-esign-java</artifactId>
+            <version>3.18.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <version>2.0.1</version>
+        </dependency>
     </dependencies>
 
 </project>

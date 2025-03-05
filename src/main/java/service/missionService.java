@@ -98,6 +98,98 @@ public class missionService implements IService<Mission> {
 
         return missions;
     }
+    
+    public List<Mission> getAllPaginated(int page, int size) {
+        List<Mission> missions = new ArrayList<>();
+        String query = "SELECT * FROM Mission LIMIT ? OFFSET ?";
+        int offset = (page - 1) * size;
+
+        try (PreparedStatement pstmt = this.connection.prepareStatement(query)) {
+            pstmt.setInt(1, size);
+            pstmt.setInt(2, offset);
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                Mission mission = new Mission(
+                        rs.getInt("idMission"),
+                        rs.getString("titre"),
+                        rs.getDate("date"),
+                        rs.getString("destination"),
+                        rs.getInt("idEmploye")
+                );
+                missions.add(mission);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return missions;
+    }
+    
+    public int getTotalCount() {
+        String query = "SELECT COUNT(*) FROM Mission";
+        try (Statement stmt = this.connection.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
+    public List<Mission> searchMissions(String keyword) {
+        List<Mission> missions = new ArrayList<>();
+        String query = "SELECT * FROM Mission WHERE titre LIKE ? OR destination LIKE ? OR idEmploye LIKE ?";
+
+        try (PreparedStatement pstmt = this.connection.prepareStatement(query)) {
+            String searchTerm = "%" + keyword + "%";
+            pstmt.setString(1, searchTerm);
+            pstmt.setString(2, searchTerm);
+            pstmt.setString(3, searchTerm);
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                Mission mission = new Mission(
+                        rs.getInt("idMission"),
+                        rs.getString("titre"),
+                        rs.getDate("date"),
+                        rs.getString("destination"),
+                        rs.getInt("idEmploye")
+                );
+                missions.add(mission);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return missions;
+    }
+    
+    public List<Mission> getAllSorted(String sortField, boolean ascending) {
+        List<Mission> missions = new ArrayList<>();
+        String direction = ascending ? "ASC" : "DESC";
+        String query = "SELECT * FROM Mission ORDER BY " + sortField + " " + direction;
+
+        try (Statement stmt = this.connection.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                Mission mission = new Mission(
+                        rs.getInt("idMission"),
+                        rs.getString("titre"),
+                        rs.getDate("date"),
+                        rs.getString("destination"),
+                        rs.getInt("idEmploye")
+                );
+                missions.add(mission);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return missions;
+    }
 
     public Mission getById(int id) {
         String query = "SELECT * FROM Mission WHERE idMission=?";

@@ -19,6 +19,12 @@
         <HBox alignment="CENTER_LEFT" styleClass="header" spacing="20">
             <Button text="← Retour" onAction="#handleRetourButton" styleClass="button-return"/>
             <Label text="Gestion des Missions" styleClass="title-label"/>
+            <Region HBox.hgrow="ALWAYS" />
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <ComboBox fx:id="sortFieldComboBox" promptText="Trier par" />
+                <ToggleButton fx:id="sortDirectionToggle" text="↑" />
+                <TextField fx:id="searchField" promptText="Rechercher..." />
+            </HBox>
         </HBox>
 
         <!-- Formulaire -->
@@ -47,15 +53,15 @@
             </HBox>
         </GridPane>
 
-        <!-- TableView -->
-        <TableView fx:id="missionsTable" VBox.vgrow="ALWAYS">
-            <columns>
-                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
-                <TableColumn fx:id="titreColumn" text="Titre" prefWidth="150"/>
-                <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
-                <TableColumn fx:id="destinationColumn" text="Destination" prefWidth="150"/>
-                <TableColumn fx:id="employeColumn" text="ID Employé" prefWidth="100"/>
-            </columns>
-        </TableView>
+        <!-- ListView et Pagination -->
+        <VBox VBox.vgrow="ALWAYS">
+            <ListView fx:id="missionsList" VBox.vgrow="ALWAYS"/>
+            <HBox alignment="CENTER" spacing="10" styleClass="pagination-container">
+                <Button fx:id="prevPageButton" text="&lt;" onAction="#handlePrevPage" />
+                <Label fx:id="pageInfoLabel" text="Page 1 sur 1" />
+                <Button fx:id="nextPageButton" text="&gt;" onAction="#handleNextPage" />
+                <ComboBox fx:id="pageSizeComboBox" promptText="Éléments par page" />
+            </HBox>
+        </VBox>
     </VBox>
 </AnchorPane>
