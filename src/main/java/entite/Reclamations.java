@@ -1,7 +1,5 @@
 package entite;
-
 import java.time.LocalDate;
-
 public class Reclamations {
     private int id;
     private String identifier;
@@ -9,24 +7,28 @@ public class Reclamations {
     private String description;
     private String imagePath;
     private LocalDate date;
+    private String classification;
+
 
     // Nouveau constructeur
-    public Reclamations(int id, String identifier, String sujet, String description, String imagePath, LocalDate date) {
+    public Reclamations(int id, String identifier, String sujet, String description, String imagePath, LocalDate date, String classification) {
         this.id = id;
         this.identifier = identifier;
         this.sujet = sujet;
         this.description = description;
         this.imagePath = imagePath;
         this.date = date;
+        this.classification = classification;
     }
 
     // Ancien constructeur
-    public Reclamations(String identifier, String sujet, String description, String imagePath, LocalDate date) {
+    public Reclamations(String identifier, String sujet, String description, String imagePath, LocalDate date, String classification) {
         this.identifier = identifier;
         this.sujet = sujet;
         this.description = description;
         this.imagePath = imagePath;
         this.date = date;
+        this.classification = classification;
     }
 
     // Getters et Setters
@@ -47,4 +49,6 @@ public class Reclamations {
 
     public LocalDate getDateReclamation() { return date; }
     public void setDateReclamation(LocalDate date) { this.date = date; }
+    public String getClassification() { return classification; }
+    public void setClassification(String classification) { this.classification = classification; }
 }

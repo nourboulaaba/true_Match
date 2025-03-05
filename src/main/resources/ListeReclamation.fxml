@@ -5,18 +5,19 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllerConge.ListeReclamationController">
+            fx:controller="controllerConge.ListeReclamationController"
+            stylesheets="@tousReclacss.css">
 
-    <TableView fx:id="tableReclamations" prefWidth="600" prefHeight="400">
-        <columns>
-            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
-            <TableColumn fx:id="colIdentifier" text="Identifier" prefWidth="100"/>
-            <TableColumn fx:id="colSujet" text="Sujet" prefWidth="150"/>
-            <TableColumn fx:id="colDescription" text="Description" prefWidth="200"/>
-            <TableColumn fx:id="colImagePath" text="Image Path" prefWidth="150"/>
-            <TableColumn fx:id="colDate" text="Date" prefWidth="100"/>
-        </columns>
-    </TableView>
+    <!-- ComboBox with ID -->
+    <ComboBox fx:id="classificationFilter" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20"
+              AnchorPane.rightAnchor="20" prefWidth="150" />
+
+    <!-- ListView with ID, filling available space -->
+    <ListView fx:id="listViewReclamations" AnchorPane.topAnchor="60" AnchorPane.leftAnchor="20"
+              AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="60" prefHeight="400" />
+
+    <!-- Button with ID -->
+    <Button fx:id="btnRefresh" text="Rafraîchir" AnchorPane.leftAnchor="20" AnchorPane.bottomAnchor="20"
+            onAction="#loadReclamations"/>
 
 </AnchorPane>
-

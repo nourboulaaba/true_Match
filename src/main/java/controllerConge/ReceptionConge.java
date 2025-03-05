@@ -1,27 +1,19 @@
 package controllerConge;
+
 import entite.Conges;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldListCell;
 import utils.CongeRequest;
+
 import java.sql.SQLException;
 import java.util.List;
 
 public class ReceptionConge {
     @FXML
-    private TableView<Conges> congesTable;
-    @FXML
-    private TableColumn<Conges, Integer> idCol;
-    @FXML
-    private TableColumn<Conges, Integer> employeCol;
-    @FXML
-    private TableColumn<Conges, String> typeCol;
-    @FXML
-    private TableColumn<Conges, String> statutCol;
+    private ListView<String> congesList;
     @FXML
     private Button accepterButton;
     @FXML
@@ -31,18 +23,37 @@ public class ReceptionConge {
 
     @FXML
     public void initialize() {
-        idCol.setCellValueFactory(new PropertyValueFactory<>("idConge"));
-        employeCol.setCellValueFactory(new PropertyValueFactory<>("idEmploye"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("typeConge"));
-        statutCol.setCellValueFactory(new PropertyValueFactory<>("statut"));
+        // Créez un usine de cellules personnalisées pour la ListView
+        congesList.setCellFactory(TextFieldListCell.forListView());
+
+        // Charger les congés en attente
         loadCongesEnAttente();
+
+        // Désactivez les boutons par défaut
+        accepterButton.setDisable(true);
+        rejeterButton.setDisable(true);
+
+        // Ajoutez un écouteur de sélection sur la ListView pour activer/désactiver les boutons
+        congesList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            boolean itemSelected = newValue != null;
+            accepterButton.setDisable(!itemSelected);
+            rejeterButton.setDisable(!itemSelected);
+        });
     }
 
     private void loadCongesEnAttente() {
         try {
-            List<Conges> congesList = congeRequest.getCongesEnAttente();
-            ObservableList<Conges> observableList = FXCollections.observableArrayList(congesList);
-            congesTable.setItems(observableList);
+            List<Conges> congesListData = congeRequest.getCongesEnAttente();
+            ObservableList<String> observableList = FXCollections.observableArrayList();
+
+            // Convertir chaque objet Conges en une chaîne formatée et l'ajouter à la liste observable
+            for (Conges conge : congesListData) {
+                String congeString = "ID: " + conge.getIdConge() + " | Employé: " + conge.getIdEmploye() + " | Type: " + conge.getTypeConge() + " | Statut: " + conge.getStatut();
+                observableList.add(congeString);
+            }
+
+            congesList.setItems(observableList);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -50,12 +61,20 @@ public class ReceptionConge {
 
     @FXML
     private void accepterConge() {
-        Conges selectedConge = congesTable.getSelectionModel().getSelectedItem();
-        if (selectedConge != null) {
+        String selectedItem = congesList.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
             try {
-                congeRequest.updateStatutConge(selectedConge.getIdConge(), "Accepté");
+                // Assuming the selectedItem has the format "ID: <id> | ..."
+                String[] parts = selectedItem.split("\\|");  // Split by pipe symbol
+                String[] idParts = parts[0].split(":");     // Get the ID part
+                int congeId = Integer.parseInt(idParts[1].trim()); // Extract the ID
+
+                congeRequest.updateStatutConge(congeId, "Accepté");
                 loadCongesEnAttente();
             } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Error: The selected item format is incorrect.");
                 e.printStackTrace();
             }
         }
@@ -63,24 +82,22 @@ public class ReceptionConge {
 
     @FXML
     private void rejeterConge() {
-        Conges selectedConge = congesTable.getSelectionModel().getSelectedItem();
-        if (selectedConge != null) {
+        String selectedItem = congesList.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
             try {
-                congeRequest.updateStatutConge(selectedConge.getIdConge(), "Rejeté");
+                // Split by pipe symbol
+                String[] parts = selectedItem.split("\\|");
+                String[] idParts = parts[0].split(":");
+                int congeId = Integer.parseInt(idParts[1].trim());
+
+                congeRequest.updateStatutConge(congeId, "Rejeté");
                 loadCongesEnAttente();
             } catch (SQLException e) {
                 e.printStackTrace();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Error: The selected item format is incorrect.");
+                e.printStackTrace();
             }
-        }
-    }
-    public void afficherTousLesConges() {
-        CongeRequest congeRequest = new CongeRequest();
-        try {
-            List<Conges> conges = congeRequest.getAllConges();
-            ObservableList<Conges> observableConges = FXCollections.observableArrayList(conges);
-            congesTable.setItems(observableConges);
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 

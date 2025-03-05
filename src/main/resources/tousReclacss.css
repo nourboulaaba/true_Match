@@ -1,0 +1,29 @@
+/* Exemple de style pour un Button avec un ID spécifique */
+#btnRefresh {
+    -fx-background-color: linear-gradient(to bottom, #0077cc, #004b87);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+}
+
+/* Exemple de style pour le ComboBox avec un ID spécifique */
+#classificationFilter {
+    -fx-font-size: 14px;
+    -fx-pref-height: 35px;
+    -fx-border-color: #004b87;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-padding: 5px 10px;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0, 75, 135, 0.1), 3, 0, 0, 2);
+}
+
+/* Exemple de style pour un ListView */
+#listViewReclamations {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #004b87;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 75, 135, 0.1), 3, 0, 0, 2);
+}

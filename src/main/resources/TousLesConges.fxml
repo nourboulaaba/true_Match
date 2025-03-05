@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controllerConge.TousLesCongesController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="600.0" prefWidth="800.0"
+            stylesheets="@tousConge.css"> <!-- Increased height and width for the entire AnchorPane -->
     <children>
-        <TableView fx:id="congesTable" layoutX="20.0" layoutY="20.0" prefHeight="300.0" prefWidth="560.0">
-            <columns>
-                <TableColumn fx:id="idCol" text="ID" prefWidth="80.0" />
-                <TableColumn fx:id="employeCol" text="Employé" prefWidth="100.0" />
-                <TableColumn fx:id="dateDebutCol" text="Date Début" prefWidth="120.0" />
-                <TableColumn fx:id="dateFinCol" text="Date Fin" prefWidth="120.0" />
-                <TableColumn fx:id="typeCol" text="Type" prefWidth="80.0" />
-                <TableColumn fx:id="statutCol" text="Statut" prefWidth="100.0" />
-            </columns>
-        </TableView>
-        <Button fx:id="refreshButton" layoutX="250.0" layoutY="350.0" text="Rafraîchir" onAction="#afficherTousLesConges" />
+        <!-- Title Label -->
+        <Label text="Tous les Congés" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #007BFF; -fx-padding: 10px;" />
+
+        <!-- ListView to display Conges, taking up the full space except the title -->
+        <ListView fx:id="congesListView" layoutX="20.0" layoutY="60.0"
+                  AnchorPane.topAnchor="60" AnchorPane.leftAnchor="20"
+                  AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="80"/> <!-- Anchored to all sides -->
+
+        <!-- Refresh Button -->
+        <Button fx:id="refreshButton" text="Rafraîchir"
+                layoutX="350.0" layoutY="550.0" onAction="#afficherTousLesConges"/>
     </children>
 </AnchorPane>

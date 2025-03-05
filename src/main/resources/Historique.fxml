@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Pos?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="10" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerConge.HistoriqueController">
-    <TextField fx:id="idEmployeField" promptText="Entrez votre ID Employé" />
-    <Button fx:id="rechercherButton" text="Rechercher" onAction="#rechercherHistorique" />
-    <Label fx:id="errorLabel" textFill="red" />
-    <TableView fx:id="tableView">
-        <columns>
-            <TableColumn fx:id="colId" text="ID Congé" />
-            <TableColumn fx:id="colType" text="Type" />
-            <TableColumn fx:id="colDebut" text="Début" />
-            <TableColumn fx:id="colFin" text="Fin" />
-            <TableColumn fx:id="colStatut" text="Statut" />
-        </columns>
-    </TableView>
-</VBox>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllerConge.HistoriqueController"
+            stylesheets="@Formulaire.css">
+
+    <VBox spacing="15" alignment="CENTER"
+          AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20"
+          style="-fx-pref-width: 600px; -fx-background-color: #f4f4f4; -fx-border-radius: 10px; -fx-background-radius: 10px;">
+
+        <Label text="Historique des Congés" styleClass="title" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+        <TextField fx:id="idEmployeField" promptText="Entrez votre ID Employé"
+                   style="-fx-pref-width: 300px; -fx-font-size: 14px;"/>
+
+        <Button fx:id="rechercherButton" text="Rechercher" onAction="#rechercherHistorique"
+                style="-fx-pref-width: 200px; -fx-font-size: 14px; -fx-background-color: #007bff; -fx-text-fill: white;"/>
+
+        <Label fx:id="errorLabel" textFill="red" style="-fx-font-size: 12px;"/>
+
+        <!-- ListView to fill the remaining space within VBox -->
+        <ListView fx:id="listView"
+                  style="-fx-pref-width: 500px; -fx-background-color: white; -fx-border-color: #ccc;" />
+    </VBox>
+
+</AnchorPane>

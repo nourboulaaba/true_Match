@@ -1,22 +1,135 @@
-.root {
-    -fx-background-color: #FFFFFF;
+/* General styles with a polished, professional feel */
+AnchorPane {
+    -fx-background-color: #f4f7fc;
+}
+
+/* Styling for the title label */
+.title {
     -fx-font-family: "Arial";
+    -fx-text-fill: #002855; /* Deep navy for contrast */
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-padding: 10px 0;
+}
+VBox {
+    -fx-alignment: center;
+    -fx-padding: 50px;
 }
 
-.label {
-    -fx-text-fill: #699BF7;
+
+/* Styling for the input fields */
+TextField, ComboBox, DatePicker {
     -fx-font-size: 14px;
+    -fx-pref-height: 35px;
+    -fx-border-color: #004b87;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-padding: 5px 10px;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0, 75, 135, 0.1), 3, 0, 0, 2);
+}
+
+/* Input fields hover effect */
+TextField:hover, ComboBox:hover, DatePicker:hover {
+    -fx-border-color: #0077cc;
+    -fx-background-color: #f0f9ff;
+}
+
+/* Styling for the submit button */
+Button {
+    -fx-background-color: linear-gradient(to bottom, #004b87, #002855);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 8px;
+    -fx-pref-height: 40px;
+    -fx-pref-width: 130px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-cursor: hand;
+    -fx-padding: 5px 15px;
+}
+
+/* Hover effect on buttons */
+Button:hover {
+    -fx-background-color: #0077cc;
+    -fx-effect: dropshadow(gaussian, rgba(0, 119, 204, 0.4), 6, 0, 0, 4);
+}
+
+/* Cancel button */
+#cancelButton {
+    -fx-background-color: #e74c3c;
+    -fx-border-color: #c0392b;
+}
+
+#cancelButton:hover {
+    -fx-background-color: #c0392b;
+}
+
+/* Footer or subtle elements */
+.footer-label {
+    -fx-text-fill: #0077cc;
+    -fx-font-size: 12px;
+    -fx-padding: 10px;
+}
+
+/* Card-style panels */
+.Card {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #004b87;
+    -fx-border-width: 2px;
+    -fx-border-radius: 12px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0, 0, 4);
+}
+
+/* Overall layout tweaks */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #e3efff, #ffffff);
+}
+
+/* Subtle divider */
+.Divider {
+    -fx-background-color: #004b87;
+    -fx-pref-height: 3px;
+}
+
+/* Styling for text labels */
+Text {
+    -fx-font-size: 14px;
+    -fx-fill: #004b87;
     -fx-font-weight: bold;
 }
 
-.button {
-    -fx-background-color: #699BF7;
-    -fx-text-fill: #FFFFFF;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
+/* Dynamic text content */
+#nomDep, #budgetDep, #nbEmployeDep, #respDep {
+    -fx-font-size: 16px;
+    -fx-fill: #0077cc;
 }
 
-.button:hover {
-    -fx-background-color: #142c45;
+/* Update button styling */
+#update {
+    -fx-background-color: #28a745;
     -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+}
+
+#update:hover {
+    -fx-background-color: #218838;
+    -fx-effect: dropshadow(gaussian, rgba(40, 167, 69, 0.3), 6, 0, 0, 4);
+}
+
+/* Delete button styling */
+#delete {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+}
+
+#delete:hover {
+    -fx-background-color: #c82333;
+    -fx-effect: dropshadow(gaussian, rgba(220, 53, 69, 0.3), 6, 0, 0, 4);
 }

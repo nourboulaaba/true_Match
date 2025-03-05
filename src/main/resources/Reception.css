@@ -1,0 +1,28 @@
+/* Style for the ListView */
+#congesList {
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5;
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+}
+
+/* Style for the buttons */
+#accepterButton, #rejeterButton {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-padding: 10px;
+    -fx-border-radius: 5;
+    -fx-margin-top: 20px;
+}
+
+#rejeterButton {
+    -fx-background-color: #F44336;
+}
+
+#accepterButton:hover, #rejeterButton:hover {
+    -fx-opacity: 0.8;
+}

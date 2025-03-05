@@ -3,6 +3,7 @@ import entite.Reclamations;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import service.GeminiService;
 import utils.ReclamationRequest;
 import java.io.File;
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ public class Reclamation {
     @FXML private TextField sujetField;
     @FXML private TextArea descriptionArea;
     @FXML private Label imageLabel;
+    @FXML private Label classificationLabel;
     @FXML private Button envoyerButton;
 
     private String imagePath = null;
@@ -19,21 +21,16 @@ public class Reclamation {
     @FXML
     public void initialize() {
         envoyerButton.setDisable(true);
-        identifierField.textProperty().addListener((observable, oldValue, newValue) -> checkFields());
-        sujetField.textProperty().addListener((observable, oldValue, newValue) -> checkFields());
-        descriptionArea.textProperty().addListener((observable, oldValue, newValue) -> checkFields());
+        identifierField.textProperty().addListener((obs, oldVal, newVal) -> checkFields());
+        sujetField.textProperty().addListener((obs, oldVal, newVal) -> checkFields());
+        descriptionArea.textProperty().addListener((obs, oldVal, newVal) -> checkFields());
     }
 
     private void checkFields() {
-        boolean validIdentifier = !identifierField.getText().trim().isEmpty();
-        boolean validSujet = isValidText(sujetField.getText());
-        boolean validDescription = isValidText(descriptionArea.getText());
-
-        envoyerButton.setDisable(!(validIdentifier && validSujet && validDescription));
-    }
-
-    private boolean isValidText(String text) {
-        return text != null && !text.trim().isEmpty() && text.matches("[a-zA-ZÀ-ÿ0-9\s.,!?()-]+$");
+        boolean valid = !identifierField.getText().trim().isEmpty() &&
+                !sujetField.getText().trim().isEmpty() &&
+                !descriptionArea.getText().trim().isEmpty();
+        envoyerButton.setDisable(!valid);
     }
 
     @FXML
@@ -41,7 +38,6 @@ public class Reclamation {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg"));
         File file = fileChooser.showOpenDialog(null);
-
         if (file != null) {
             imagePath = file.getAbsolutePath();
             imageLabel.setText(file.getName());
@@ -54,29 +50,28 @@ public class Reclamation {
         String sujet = sujetField.getText().trim();
         String description = descriptionArea.getText().trim();
 
-        if (identifier.isEmpty() || !isValidText(sujet) || !isValidText(description)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Veuillez remplir correctement tous les champs.");
-            alert.show();
+        if (identifier.isEmpty() || sujet.isEmpty() || description.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Veuillez remplir correctement tous les champs.").show();
             return;
         }
 
-        Reclamations reclamation = new Reclamations(identifier, sujet, description, imagePath, LocalDate.now());
+        // Vérification si l'identifier existe dans la table user
+        if (!reclamationRequest.identifierExiste(identifier)) {
+            new Alert(Alert.AlertType.ERROR, "L'identifiant saisi n'existe pas dans la base de données.").show();
+            return;
+        }
+
+        // Utilisation de l'API Google Gemini pour la classification
+        String classification = GeminiService.analyserReclamation(sujet, description);
+        classificationLabel.setText(classification);
+
+        Reclamations reclamation = new Reclamations(identifier, sujet, description, imagePath, LocalDate.now(), classification);
         if (reclamationRequest.ajouterReclamation(reclamation)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Réclamation envoyée avec succès !");
-            alert.show();
-            clearFields();
+            new Alert(Alert.AlertType.INFORMATION, "Réclamation envoyée avec succès !").show();
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Erreur lors de l'envoi de la réclamation.");
-            alert.show();
+            new Alert(Alert.AlertType.ERROR, "Erreur lors de l'envoi.").show();
         }
     }
-
-    private void clearFields() {
-        identifierField.clear();
-        sujetField.clear();
-        descriptionArea.clear();
-        imageLabel.setText("Aucune image sélectionnée");
-        imagePath = null;
-        envoyerButton.setDisable(true);
-    }
 }
+
+

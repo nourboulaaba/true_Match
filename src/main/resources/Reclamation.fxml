@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controllerConge.Reclamation" spacing="10">
+      fx:controller="controllerConge.Reclamation" spacing="15" alignment="CENTER"
+      stylesheets="@reclam.css" prefHeight="600.0" prefWidth="800.0"> <!-- Set preferred size for VBox -->
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
+    <!-- Title Label for the "Réclamation" -->
+    <Label text="Réclamation" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #007BFF; -fx-padding: 10px;"/>
+
+    <!-- Identifier Field -->
     <TextField fx:id="identifierField" promptText="Identifiant de l'utilisateur" />
+
+    <!-- Sujet Field -->
     <TextField fx:id="sujetField" promptText="Sujet de la réclamation" />
+
+    <!-- Description Area -->
     <TextArea fx:id="descriptionArea" promptText="Description de la réclamation" />
 
+    <!-- Add Image Button -->
     <Button text="Ajouter une image (optionnel)" onAction="#choisirImage" />
+
+    <!-- Image Label -->
     <Label fx:id="imageLabel" text="Aucune image sélectionnée" />
 
+    <!-- Classification Label -->
+    <Label fx:id="classificationLabel" text="Classification : " style="-fx-text-fill: blue;"/>
+
+    <!-- Send Button -->
     <Button fx:id="envoyerButton" text="Envoyer la réclamation" onAction="#envoyerReclamation" disable="true" />
+
 </VBox>
