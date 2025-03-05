@@ -1,8 +1,10 @@
-package Controller;
+package Controller.gestUser;
 
 import Entities.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -12,9 +14,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import service.UserService;
 import javafx.scene.text.Text;
 import service.UserSession;
+import javafx.stage.Modality;
 
 import java.io.IOException;
 
@@ -67,6 +69,11 @@ public class profileController {
     @FXML
     private GridPane userGridPane;
 
+    @FXML
+    private Label lblReference;
+
+    @FXML
+    private Label currentSalary;
 
     public void initialize() {
         // Récupère l'utilisateur connecté via le service
@@ -152,4 +159,28 @@ public class profileController {
 
         }
     }
+
+    public void navigateToChangePassword(ActionEvent actionEvent) {
+        try {
+            // Load the FXML file for the change password popup
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Auth/ChangePassword.fxml"));
+            Parent root = loader.load();
+
+            // Create a new stage (window) for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Change Password");
+
+            // Set modality so that the popup blocks interaction with other windows
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Set the scene with the loaded root node and display the popup
+            popupStage.setScene(new Scene(root));
+            popupStage.showAndWait();  // Use showAndWait() if you need to wait until the popup is closed
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Optionally, you can display an error dialog here
+        }
+    }
+
 }

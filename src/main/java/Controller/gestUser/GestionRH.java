@@ -1,4 +1,4 @@
-package Controller;
+package Controller.gestUser;
 
 import Entities.User;
 import javafx.fxml.FXML;
@@ -11,15 +11,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import service.UserService;
 import service.UserSession;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GestionRH {
 
@@ -38,18 +39,20 @@ public class GestionRH {
     @FXML
     private GridPane userGridPane;
 
-    //private User selectedUser ;
+    @FXML
+    private TextField searchField; // Linked to the search field in FXML
+
+    @FXML
+    private Button searchButton; // Linked to the search button in FXML
+
     private final UserService userService = new UserService();
-    private User currentUser= UserSession.getConnectedUser();
+    private User currentUser = UserSession.getConnectedUser();
+
     // Initialize the controller
     public void initialize() {
-        afficherUsersDansGrid(); // Display users on startup
+        afficherUsersDansGrid(); // Display all users on startup
     }
 
-
-
-
-  
     // Set the current logged-in user
     public void setCurrentUser(User user) {
         this.currentUser = user;
@@ -78,15 +81,13 @@ public class GestionRH {
     }
 
     // Display all users in the GridPane
-    public void afficherUsersDansGrid() {
+    public void afficherUsersDansGrid(List<User> users) {
         userGridPane.getChildren().clear(); // Clear the GridPane before displaying
-
-        List<User> utilisateurs = userService.getAll();
 
         int colonne = 0;
         int ligne = 0;
 
-        for (User user : utilisateurs) {
+        for (User user : users) {
             VBox userCard = createUserCard(user); // Create a card for each user
             userGridPane.add(userCard, colonne, ligne);
 
@@ -96,6 +97,11 @@ public class GestionRH {
                 ligne++;
             }
         }
+    }
+
+    // Overload the method to display all users by default
+    public void afficherUsersDansGrid() {
+        afficherUsersDansGrid(userService.getAll());
     }
 
     // Create a user card (VBox) for display
@@ -108,10 +114,13 @@ public class GestionRH {
         // User image
         ImageView userImage = new ImageView();
         if (user.getProfilePhoto() != null && !user.getProfilePhoto().isEmpty()) {
+
             userImage.setImage(new Image(user.getProfilePhoto()));
         } else {
+
             userImage.setImage(new Image("/images/user.png")); // Default image
         }
+
         userImage.setFitHeight(50);
         userImage.setFitWidth(50);
 
@@ -133,7 +142,6 @@ public class GestionRH {
         });
         menuButton.getItems().addAll(modifyItem, deleteItem);
 
-
         // Add components to the card
         userCard.getChildren().addAll(userImage, nameLabel, emailLabel, menuButton);
         return userCard;
@@ -146,16 +154,10 @@ public class GestionRH {
             return;
         }
 
-//        // Vérifie si l'ID de l'utilisateur est valide
-//        if (user.getId() <= 0) {
-//            showAlert("ID utilisateur invalide !");
-//            return;
-//        }
-
         System.out.println("Deleting user with ID: " + user.getId()); // Debug statement
 
         if (user.getId() == currentUser.getId()) { // Ne pas permettre la suppression de soi-même
-            showAlert("Vous ne pouvez pas vous supprimer vous-même !"+user.getId());
+            showAlert("Vous ne pouvez pas vous supprimer vous-même !" + user.getId());
             return;
         }
 
@@ -164,16 +166,14 @@ public class GestionRH {
                 userService.deleteByID(user.getId());
                 showAlert("Utilisateur supprimé avec succès !");
                 afficherUsersDansGrid(); // Refresh the user list
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
-                showAlert("erreur sql , voir le console !");
-            }catch (Exception e){
+                showAlert("Erreur SQL, voir le console !");
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
     }
-
 
     // Handle user modification
     public void handleModifierUtilisateur(User user) {
@@ -234,5 +234,19 @@ public class GestionRH {
             e.printStackTrace();
             showAlert("Erreur de chargement de la scène.");
         }
+    }
+
+    // Handle user search
+    @FXML
+    public void handleRechercheUtilisateur() {
+        String query = searchField.getText().trim().toLowerCase();
+        List<User> allUsers = userService.getAll();
+        List<User> filteredUsers = allUsers.stream()
+                .filter(user -> user.getFirstName().toLowerCase().contains(query) ||
+                        user.getLastName().toLowerCase().contains(query) ||
+                        user.getEmail().toLowerCase().contains(query))
+                .collect(Collectors.toList());
+
+        afficherUsersDansGrid(filteredUsers);
     }
 }

@@ -1,11 +1,13 @@
 package Controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import Controller.gestAuth.GoogleAuthController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -97,7 +99,7 @@ public class Dashboard {
     @FXML
     private void handleButtonProfile() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/item.fxml"));
             Pane ajoutAbonnementPane = loader.load(); // Charger le FXML
 
             // Ajouter le contenu dans le Pane principal de DashNUTRITIONNISTE
@@ -181,10 +183,16 @@ public class Dashboard {
     void logout(MouseEvent event) {
         PreferenceManager.clearAll();
         UserSession.setCurrentUser(null);
+        File tokenDirectory = new File("tokens");
+
+        if (tokenDirectory.exists()) {
+            GoogleAuthController authController = new GoogleAuthController();
+            authController.logout();
+        }
         try {
             Stage stage = (Stage) Emp.getScene().getWindow(); // Get reference to the login window's stage
             stage.setTitle("Welcome");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Auth/Login.fxml"));
             Parent p = loader.load();
 
             Scene scene = new Scene(p);

@@ -1,10 +1,9 @@
-package Controller;
+package Controller.gestUser;
 
 import Entities.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import service.UserService;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -21,15 +20,14 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.dao.DBConnection;
-import service.UserSession;
 import utils.PreferenceManager;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.nio.file.Files;
@@ -52,8 +50,6 @@ public class ModifierProfile implements Initializable {
     @FXML
     private TextField emailField;
 
-    @FXML
-    private Text imgError;
 
     @FXML
     private ScrollPane mainScrollPane;
@@ -113,14 +109,16 @@ public class ModifierProfile implements Initializable {
     void handleButtonProfile(ActionEvent event) {
     }
 
-    void clearError(){
+    void clearError() {
         emailError.setText("");
-        imgError.setText("");
+
+
         nomError.setText("");
         prenomError.setText("");
         telError.setText("");
 
     }
+
     @FXML
     void saveProfile(ActionEvent event) {
         clearError();
@@ -244,20 +242,20 @@ public class ModifierProfile implements Initializable {
     private void handleAnnuller() {
         Stage stage = (Stage) emailField.getScene().getWindow(); // Get reference to the login window's stage
         try {
-            if(PreferenceManager.getString("role", "RH").equals("RH")){
-            stage.setTitle("Dashboard");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
-            Parent p = loader.load();
-            Scene scene = new Scene(p);
-            stage.setScene(scene);
-            }else{
+            if (PreferenceManager.getString("role", "RH").equals("RH")) {
+                stage.setTitle("Dashboard");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+                Parent p = loader.load();
+                Scene scene = new Scene(p);
+                stage.setScene(scene);
+            } else {
                 stage.setTitle("Dashboard");
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/DashEmployee.fxml"));
                 Parent p = loader.load();
                 Scene scene = new Scene(p);
                 stage.setScene(scene);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             System.err.println(e);
         }
     }
@@ -280,17 +278,20 @@ public class ModifierProfile implements Initializable {
         nomField.setText(user.getLastName());
         emailField.setText(user.getEmail());
         telephoneField.setText(user.getPhoneNumber());
+        Image image;
+        try {
+            if (user.getProfilePhoto() != null && !user.getProfilePhoto().equals("")) {
+                photoPath = user.getProfilePhoto();
 
-        if (user.getProfilePhoto() != null&&!user.getProfilePhoto().equals("")) {
-            photoPath=user.getProfilePhoto();
-            Image image;
-            try {
-                 image = new Image(user.getProfilePhoto());
-            }catch (Exception e){
-                 image = new Image("/images/user.png");
+                image = new Image(user.getProfilePhoto());
+            }else {
+                image = new Image("/images/user.png");//get from resource
 
             }
-            imageView.setImage(image);
+        } catch (Exception e) {
+            image = new Image("/images/user.png");//get from resource
         }
+        imageView.setImage(image);
+
     }
 }

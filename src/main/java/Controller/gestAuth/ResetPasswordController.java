@@ -1,4 +1,4 @@
-package Controller;
+package Controller.gestAuth;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,7 +38,7 @@ public class ResetPasswordController {
             try {
                 Stage stage = (Stage) ftEmail.getScene().getWindow(); // Get reference to the login window's stage
                 stage.setTitle("Change Password");
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChangeForgotPassword.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Auth/ChangeForgotPassword.fxml"));
                 Parent p = loader.load();
 
                 Scene scene = new Scene(p);

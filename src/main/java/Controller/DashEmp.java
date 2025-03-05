@@ -1,6 +1,6 @@
 package Controller;
 
-import Entities.User;
+import Controller.gestAuth.GoogleAuthController;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import service.UserSession;
 import utils.PreferenceManager;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -115,20 +116,32 @@ public class DashEmp {
         }
     }
     @FXML
-    void logout(MouseEvent event) {
+    void logout() {
         PreferenceManager.clearAll();
         UserSession.setCurrentUser(null);
+        File tokenDirectory = new File("tokens");
+
+        if (tokenDirectory.exists()) {
+            GoogleAuthController authController = new GoogleAuthController();
+            authController.logout();
+        }
         try {
+
             Stage stage = (Stage) Emp.getScene().getWindow(); // Get reference to the login window's stage
+
             stage.setTitle("Welcome");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Auth/Login.fxml"));
+
             Parent p = loader.load();
+
 
             Scene scene = new Scene(p);
 
             stage.setScene(scene);
 
             stage.show();
+
         } catch (Exception e) {
 
             e.printStackTrace();

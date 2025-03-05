@@ -1,7 +1,4 @@
-package Controller;
-
-import java.net.URL;
-import java.util.ResourceBundle;
+package Controller.gestUser;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,12 +31,12 @@ public class ForgotPasswordController {
     @FXML
     void findAccount(ActionEvent event) {
         if (serviceUser.emailExists(ftEmail.getText())) {
-            String otp = OTPService.generateOTP(ftEmail.getText(), 8);
+            String otp = OTPService.generateOTP(ftEmail.getText(), 6);
             OTPService.sendOTP(ftEmail.getText(), otp);
             try {
                 Stage stage = (Stage) ftEmail.getScene().getWindow(); // Get reference to the login window's stage
                 stage.setTitle("ForgotPassword");
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ResetPassword.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Auth/ResetPassword.fxml"));
                 Parent p = loader.load();
 
                 Scene scene = new Scene(p);

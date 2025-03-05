@@ -8,7 +8,7 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 
-<AnchorPane prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterUser">
+<AnchorPane prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gestUser.AjouterUser">
    <children>
       <!-- ScrollPane pour permettre le défilement si nécessaire -->
       <ScrollPane layoutX="10" layoutY="10" prefWidth="580.0" prefHeight="680.0">

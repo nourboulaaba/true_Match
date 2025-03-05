@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class OTPService {
-    private static final long OTP_EXPIRATION_DURATION = 60 * 1000; // 10 minutes in milliseconds
+    private static final long OTP_EXPIRATION_DURATION = 60 * 10000; // 10 minutes in milliseconds
     public static String EMAIL;
 
     private static Map<String, OTPDetails> otpMap = new HashMap<>();

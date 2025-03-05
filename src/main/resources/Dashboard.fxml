@@ -11,180 +11,131 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Dashboard">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #F4F4F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Dashboard">
     <children>
         <!-- En-tête -->
-        <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutX="-2.0" prefHeight="80.0" prefWidth="1271.0" style="-fx-background-color: #2c3e50;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="224.0" layoutY="47.0" text="TRUE MATCH" textFill="WHITE">
+                <ImageView  fitHeight="60.0" fitWidth="60.0" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/LOGOPI.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="90.0" layoutY="20.0" text="TRUE MATCH" textFill="WHITE">
                     <font>
-                        <Font size="36.0" />
+                        <Font size="24.0" />
                     </font>
                 </Label>
-                <Label layoutX="227.0" layoutY="100.0" text=" Ressources Humaine " textFill="WHITE">
+                <Label layoutX="90.0" layoutY="50.0" text="Ressources Humaines" textFill="#bdc3c7">
                     <font>
                         <Font size="13.0" />
                     </font>
                 </Label>
                 <!-- Bouton de Déconnexion -->
-                <AnchorPane layoutX="1041.0" layoutY="95.0" prefHeight="30.0" prefWidth="30.0">
-                    <children>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#lohout" pickOnBounds="true" preserveRatio="true">
+                <Button layoutX="1200.0" layoutY="20.0" onMouseClicked="#logout" style="-fx-background-color: transparent; -fx-text-fill: white;">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@images/logout.png" />
                             </image>
                         </ImageView>
-                    </children>
-                </AnchorPane>
-
-
+                    </graphic>
+                </Button>
             </children>
         </Pane>
-        <VBox layoutX="-1.0" layoutY="145.0" prefHeight="438.0" prefWidth="252.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="146.0">
+
+        <!-- Menu latéral -->
+        <VBox layoutX="0.0" layoutY="80.0" prefHeight="543.0" prefWidth="200.0" style="-fx-background-color: #34495e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0">
             <children>
-                <Label prefHeight="30.0" prefWidth="252.0" text="GESTION PERSONNELLE" textFill="#171717">
+                <Label prefHeight="30.0" prefWidth="200.0" text="GESTION PERSONNELLE" textFill="#ecf0f1">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="16.0" />
                     </font>
                     <padding>
-                        <Insets left="40.0" />
-                    </padding>
-                    <VBox.margin>
-                        <Insets top="60.0" />
-                    </VBox.margin>
-                </Label>
-
-                <Button fx:id="ProfileButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#handleButtonProfile" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Profile" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </Button>
-
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Congé" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </Button>
-
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Reclamations" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </Button>
-
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Certificats" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </Button>
-
-                <Label prefHeight="30.0" prefWidth="252.0" text="GESTION RH" textFill="#171717">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <padding>
-                        <Insets left="40.0" />
+                        <Insets left="20.0" top="20.0" bottom="10.0" />
                     </padding>
                 </Label>
 
-                <Button fx:id="EmpButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#handleButtonEmployee" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Employés" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-
+                <Button fx:id="ProfileButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#handleButtonProfile" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Profil">
                     <padding>
-                        <Insets left="50.0" />
+                        <Insets left="20.0" />
                     </padding>
                 </Button>
 
-
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Contrats" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Congé">
                     <padding>
-                        <Insets left="50.0" />
+                        <Insets left="20.0" />
                     </padding>
                 </Button>
 
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Missions" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Réclamations">
                     <padding>
-                        <Insets left="50.0" />
+                        <Insets left="20.0" />
                     </padding>
                 </Button>
 
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Offres d'emploi" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Certificats">
                     <padding>
-                        <Insets left="50.0" />
+                        <Insets left="20.0" />
                     </padding>
                 </Button>
 
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Recrutement" textFill="#5b5858">
+                <Label prefHeight="30.0" prefWidth="200.0" text="GESTION RH" textFill="#ecf0f1">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="16.0" />
                     </font>
-
                     <padding>
-                        <Insets left="50.0" />
+                        <Insets left="20.0" top="20.0" bottom="10.0" />
+                    </padding>
+                </Label>
+
+                <Button fx:id="EmpButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#handleButtonEmployee" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Employés">
+                    <padding>
+                        <Insets left="20.0" />
                     </padding>
                 </Button>
 
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #bfadf8;" text="Formations" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Contrats">
                     <padding>
-                        <Insets left="50.0" />
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Missions">
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Offres d'emploi">
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Recrutement">
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Formations">
+                    <padding>
+                        <Insets left="20.0" />
                     </padding>
                 </Button>
             </children>
         </VBox>
-        <Pane layoutX="71.0" layoutY="44.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
-            <children>
-                <ImageView fitHeight="120.0" fitWidth="139.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@images/LOGOPI.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </Pane>
 
-        <ScrollPane layoutX="254.0" layoutY="146.0" prefHeight="627.0" prefWidth="1300.0">
+        <!-- Contenu principal -->
+        <ScrollPane layoutX="200.0" layoutY="80.0" prefHeight="543.0" prefWidth="1071.0" style="-fx-background-color: #f4f4f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
             <content>
-                <AnchorPane prefHeight="477.0" prefWidth="809.0">
+                <AnchorPane prefHeight="543.0" prefWidth="1071.0">
                     <children>
                         <Pane fx:id="Emp" />
-                     <!--   <Pane fx:id="Profile"/>-->
                         <!-- Votre contenu ici -->
                     </children>
                 </AnchorPane>
-
             </content>
         </ScrollPane>
     </children>

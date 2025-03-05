@@ -1,9 +1,6 @@
 package service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +11,8 @@ import org.mindrot.jbcrypt.BCrypt;
 
 
 public class UserService implements IService<User> {
-    private Connection cnx;
+    private final Connection cnx = DBConnection.getInstance().getConnection();
 
-    public UserService() {
-        cnx = DBConnection.getInstance().getConnection();
-    }
 
     @Override
     public boolean insert(User obj) {
@@ -333,7 +327,10 @@ public class UserService implements IService<User> {
         }
         return false; // Default to false in case of exceptions or no result
     }
-    public void changePassword(User user)throws SQLException{
+
+
+
+    public String changePassword(User user)throws SQLException{
         String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
         user.setPassword(hashedPassword);
         String req = "UPDATE `user` SET `password`=? WHERE `id`=?";
@@ -344,11 +341,41 @@ public class UserService implements IService<User> {
             ps.setInt(2, user.getId());
 
             ps.executeUpdate();
-
+            return hashedPassword;
         } catch (SQLException e){
             // Handle SQLException appropriately, e.g., log or propagate
             System.err.println("Error adding user: " + e.getMessage());
+            return null;
+        }
+    }
+    public User insertGoogleSignup(User user){
+        String insertQuery = "INSERT INTO user (last_name, first_name, email, password, role, profile_photo, salary) VALUES (?, ?, ?, ?, ?, ?, 50)";
 
+        try (PreparedStatement stmt = cnx.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {  // Include RETURN_GENERATED_KEYS here
+            stmt.setString(1, user.getLastName());
+            stmt.setString(2, user.getFirstName());
+            stmt.setString(3, user.getEmail());
+            stmt.setString(4, null);  // No password needed for Google login
+            stmt.setString(5, user.getRole().name());  // Default role for Google login
+            stmt.setString(6, user.getProfilePhoto());
+
+            int rowsAffected = stmt.executeUpdate();
+
+            // If insert is successful, retrieve the generated ID
+            if (rowsAffected > 0) {
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        int generatedId = generatedKeys.getInt(1);  // Get the generated ID
+                        user.setId(generatedId);  // Set the ID on the User object
+                    }
+                }
+            }
+
+            return user;
+
+        } catch (SQLException e) {
+            System.err.println("Error adding user: " + e.getMessage());
+            return null;
         }
     }
 }

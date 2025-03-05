@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="949.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gestUser.profileController">
+    <children>
+        <Pane layoutX="29.0" layoutY="22.0" prefHeight="338.0" prefWidth="896.0" style="-fx-background-color: #fff;">
+            <children>
+                <!-- Logo ou Icône -->
+                <ImageView fx:id="currentUserImage" fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/job-icon.png" /> <!-- Icône d'employé -->
+                    </image>
+                </ImageView>
+                <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0" />
+
+                <!-- Titre Principal -->
+                <Label layoutX="123.0" layoutY="18.0" text="Détails de l'Employé" textFill="#3a1c9d">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+
+                <!-- Informations de l'Employé -->
+                <Label fx:id="currentUserName" layoutX="51.0" layoutY="113.0" text="NOM" textFill="#aeacac">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+
+
+                <Label fx:id="currentUserLastName" layoutX="279.0" layoutY="113.0" text="PRENOM" textFill="#aeacac">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="currentUserPhoneNumber" layoutX="51.0" layoutY="186.0" text="NUMÉRO DE TELEPHONE" textFill="#aeacac">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="currentUserEmail" layoutX="279.0" layoutY="186.0" text="EMAIL" textFill="#aeacac">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+
+                <!-- Détails de l'Employé (liés aux propriétés) -->
+                <Label fx:id="lblNom" layoutX="58.0" layoutY="139.0" textFill="#4d4c4c">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblPoste" layoutX="287.0" layoutY="139.0" textFill="#4d4c4c">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblSalaire" layoutX="287.0" layoutY="211.0" textFill="#4d4c4c">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblDepartement" layoutX="58.0" layoutY="211.0" textFill="#4d4c4c">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+
+                <!-- Actions -->
+                <Label layoutX="576.0" layoutY="113.0" text="ACTIONS" textFill="#aeacac">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+
+                <!-- Section Inférieure -->
+                <Pane layoutY="269.0" prefHeight="70.0" prefWidth="896.0" style="-fx-background-color: #F0F0F0;">
+                    <children>
+                        <Label layoutX="61.0" layoutY="26.0" text="Statistiques des Employés : 50 Actifs, 5 Congés en Attente" textFill="#504df2">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+
+                <!-- Dates (liées aux propriétés) -->
+                <Label fx:id="lblDateEmbauche" layoutX="598.0" layoutY="13.0" textFill="#3a1c9d">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblDateNaissance" layoutX="725.0" layoutY="13.0" textFill="#3a1c9d">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+
+                <!-- Référence (liée aux propriétés) -->
+                <Label fx:id="lblReference" layoutX="123.0" layoutY="51.0" textFill="#b2b0b0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            <HBox layoutX="576.0" layoutY="216.0" prefHeight="45.0" prefWidth="172.0" />
+            <Button fx:id="ModifierUtilisateurButton" layoutX="570.0" layoutY="145.0" mnemonicParsing="false" onAction="#handleModifier" prefHeight="26.0" prefWidth="141.0" text="Modifier" />
+            <Button layoutX="570.0" layoutY="193.0" mnemonicParsing="false" onAction="#navigateToChangePassword" prefHeight="26.0" prefWidth="141.0" text="Changer mot de passe" />
+            </children>
+            <effect>
+                <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
+            </effect>
+        </Pane>
+    </children>
+</AnchorPane>
