@@ -5,8 +5,135 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbd42d3c-8835-4f17-95b5-8699f0ab3b66" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Certificat_1.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Certificat_9.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/CertificatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/FormationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ReviewAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entite/Certificat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entite/Review.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entite/formations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MainFX.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/CertificatPDF.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/CertificatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/FormationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ICertificatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/NotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ReviewService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Certificat.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Formations.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/stylef.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/IService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/DashEmp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/Dashboard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/Statistique.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/gestAuth/ChangeForgotPasswordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/gestAuth/GoogleAuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/gestAuth/ResetPasswordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/gestUser/AjouterUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/gestUser/ChangePasswordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/gestUser/ForgotPasswordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/gestUser/GestionRH.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/gestUser/Login.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/gestUser/ModifierProfile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/gestUser/profileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/EmailSender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/org/example/dao/DBConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/org/example/mainFX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/service/AuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/service/IService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/service/MailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/service/OTPService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/service/UserSession.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/utils/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/utils/PreferenceManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/AjouterUser.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/Auth/ChangeForgotPassword.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/Auth/ChangePassword.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/Auth/ForgetPassword.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/Auth/Login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/Auth/ResetPassword.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/DashEmployee.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/Dashboard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/Item.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/ModifierProfile.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/Profile.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/client_secret_59297607140-h0dk215jiob0b5anfmjlbu8vemnutv86.apps.googleusercontent.com.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/credentials.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/fullpackstyling.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/gestionRH.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/DDCLASSE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/LOGOPI.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/addphoto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/agencies.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/camera.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/department-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/falcontech.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/google-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/icons8_500px_64px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/icons8_Facebook_F_48px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/icons8_Google_Wallet_50px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/icons8_Handshake_64px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/icons8_Share_64px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/icons8_US_Dollar_64px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/icons8_Workflow_64px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/icons8_XING_100px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/img.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/job-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/linkedin-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/logout.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/phone-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/profile.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/projections.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/projects.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/reliabilty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/images/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/update.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/97A0C6C2-46D8-47A3-9E3A-81FD6AC64D70.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/IMG_7859.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/Linkedin Profile Tips and Tricks.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/anime-girl-glasses-4k-wallpaper-uhdpaper.com-725@3@a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/anime-girl-smoking-colorful-smoke-4k-wallpaper-uhdpaper.com-258@3@a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/falcontech.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/flyer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/lock (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/nour boulaaba107478363968951213557.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/png-transparent-add-friend-add-user-user-add-add-account-friend-3d-icon-thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/profile2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/profile4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/profile5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/profile6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/profile9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/upload/user.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tokens/StoredCredential" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,25 +159,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.mainFX.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.TrueMatch [install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;prod&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dell/Downloads/true_Match_organisation/true_Match&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MainFX.executor": "Run",
+    "Application.mainFX.executor": "Run",
+    "Maven.TrueMatch [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Merging prod",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/dell/Downloads/true_Match_organisation/true_Match",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
-    <configuration name="mainFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.mainFX" />
+    <configuration name="MainFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.MainFX" />
       <module name="TrueMatch" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml " />
       <extension name="coverage">
@@ -65,7 +193,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.mainFX" />
+        <item itemvalue="Application.MainFX" />
       </list>
     </recent_temporary>
   </component>
@@ -100,6 +228,7 @@
       <workItem from="1741273463678" duration="40000" />
       <workItem from="1741273538690" duration="70000" />
       <workItem from="1741273644650" duration="37000" />
+      <workItem from="1741274405542" duration="2766000" />
     </task>
     <servers />
   </component>

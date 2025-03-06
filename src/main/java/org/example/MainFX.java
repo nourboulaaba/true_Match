@@ -1,56 +1,4 @@
-
 package org.example;
-
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import service.UserSession;
-import utils.PreferenceManager;
-
-import java.io.IOException;
-
-
-public class MainFX extends Application {
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage stage) throws IOException {
-
-        try {
-
-            FXMLLoader loader;
-            if (PreferenceManager.getBoolean("isLoggedIn", false)) {
-                if (PreferenceManager.getString("role", "RH").equals("RH")) {
-                    System.out.println(UserSession.getConnectedUser());
-                    loader = new FXMLLoader(MainFX.class.getResource("/Dashboard.fxml"));
-                    stage.setTitle("Dashboard - " + PreferenceManager.getString("role", "non role").toUpperCase());
-                } else {
-                    loader = new FXMLLoader(MainFX.class.getResource("/DashEmployee.fxml"));
-                    stage.setTitle("Dashboard - " + PreferenceManager.getString("role", "non role").toUpperCase());
-                }
-            } else {
-                System.out.println("--------------------------------");
-
-                loader = new FXMLLoader(MainFX.class.getResource("/Auth/Login.fxml"));
-                stage.setTitle("Login!");
-            }
-
-            Scene scene = new Scene(loader.load());
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
-}
-/*
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -103,4 +51,4 @@ public class MainFX extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-}*/
+}

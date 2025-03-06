@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import Controller.gestAuth.GoogleAuthController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -41,6 +42,14 @@ public class Dashboard {
     @FXML
     private Pane Profile;
 
+
+    @FXML
+    private Button certificatsButton;
+
+
+    @FXML
+    private Button formationButton;
+
     @FXML
     private void handleButtonAction(MouseEvent event) {
 
@@ -56,7 +65,51 @@ public class Dashboard {
             e.printStackTrace();
         }
     }
+    @FXML
+    void handleForamtionButtonAction(ActionEvent event) {
 
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Formations.fxml"));
+            Pane ajoutAbonnementPane = loader.load(); // Charger le FXML
+
+            // Ajouter le contenu dans le Pane principal de DashNUTRITIONNISTE
+            Emp.getChildren().setAll(ajoutAbonnementPane); // ou pnlOverview, pnlMenus, selon où tu veux l'afficher
+            ajoutAbonnementPane.setPrefWidth(1000); // Largeur fixe
+            ajoutAbonnementPane.setPrefHeight(400);
+
+            // Mettre à jour le style si nécessaire
+            //Emp.setStyle("-fx-background-color : #464F67");
+            Emp.toFront();
+            //  handleAjouterUtilisateur() ;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    void handleCertificatsButtonAction(ActionEvent event) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Certificat.fxml"));
+            Pane ajoutAbonnementPane = loader.load(); // Charger le FXML
+
+            // Ajouter le contenu dans le Pane principal de DashNUTRITIONNISTE
+            Emp.getChildren().setAll(ajoutAbonnementPane); // ou pnlOverview, pnlMenus, selon où tu veux l'afficher
+            ajoutAbonnementPane.setPrefWidth(1000); // Largeur fixe
+            ajoutAbonnementPane.setPrefHeight(400);
+
+            // Mettre à jour le style si nécessaire
+           // Emp.setStyle("-fx-background-color : #464F67");
+            Emp.toFront();
+            //  handleAjouterUtilisateur() ;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /* @FXML
      private void handleButtonActionx() {

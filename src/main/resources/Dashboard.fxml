@@ -74,7 +74,7 @@
                     </padding>
                 </Button>
 
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Certificats">
+                <Button fx:id="certificatsButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Certificats"  onAction="#handleCertificatsButtonAction">
                     <padding>
                         <Insets left="20.0" />
                     </padding>
@@ -119,7 +119,7 @@
                     </padding>
                 </Button>
 
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Formations">
+                <Button fx:id="formationButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Formations" onAction="#handleForamtionButtonAction">
                     <padding>
                         <Insets left="20.0" />
                     </padding>
