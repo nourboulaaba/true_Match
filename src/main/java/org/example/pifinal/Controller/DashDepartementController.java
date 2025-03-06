@@ -55,7 +55,19 @@ public class DashDepartementController {
                 }
             }
         });
+        // Add dynamic search
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filterDepartements(newValue);
+        });
     }
+    void filterDepartements(String searchText) {
+        List<Departement> filteredList = departementService.readAll().stream()
+                .filter(dep -> dep.getNom().toLowerCase().contains(searchText.toLowerCase()))
+                .toList();
+        departementList.setAll(filteredList);
+    }
+
+
 
     private void openOffreDashboard(Departement departement) {
         try {

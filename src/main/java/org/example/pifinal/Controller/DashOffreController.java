@@ -11,6 +11,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.pifinal.Model.Departement;
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class DashOffreController {
 
+    public Button freelancers;
     @FXML
     private Button addbtn;
 
@@ -60,6 +62,11 @@ public class DashOffreController {
             populateListView();
             populateCharts();
         }
+        // Add dynamic search listener
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            search(newValue);
+        });
+
     }
 
     /**
@@ -119,6 +126,18 @@ public class DashOffreController {
         }
     }
 
+    public void search(String searchText) {
+        if (searchText == null || searchText.trim().isEmpty()) {
+            populateListView();
+        } else {
+            List<Offre> filteredList = offreService.readAll().stream()
+                    .filter(offre -> offre.getDepartement().getId() == departement.getId() &&
+                            offre.getTitre().toLowerCase().contains(searchText.toLowerCase()))
+                    .toList();
+            offreList.setAll(filteredList);
+        }
+    }
+
     /**
      * Opens the AddOffre.fxml pop-up for adding a new offer.
      */
@@ -159,6 +178,27 @@ public class DashOffreController {
                             offre.getTitre().toLowerCase().contains(searchText))
                     .toList();
             offreList.setAll(filteredList);
+        }
+    }
+
+    public void freelancerOpen(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/pifinal/freelancers.fxml"));
+            VBox pane = loader.load();
+
+            FreelancersController controller = loader.getController();
+
+
+            Stage stage = new Stage();
+            stage.setTitle("Ajouter un Département");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(pane));
+            stage.showAndWait();
+
+            populateListView();
+            populateCharts();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -1,5 +1,7 @@
 package org.example.pifinal.Controller;
 
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,17 +9,42 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.pifinal.Model.Offre;
 import org.example.pifinal.Services.OffreService;
+import org.example.pifinal.Utils.QRCodeGenerator;
 
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.layout.Document;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import javax.imageio.ImageIO;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import java.awt.*;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.Properties;
+import java.util.stream.Collectors;
 
 public class OffreCellController {
+    public ImageView qrCodeImageView;
+    public Button contrat;
+    public Button mail;
     private Offre offre;
     private OffreService offreService = new OffreService();
     private DashOffreController parentController;
@@ -40,10 +67,15 @@ public class OffreCellController {
     @FXML
     private Button update;
 
+
+
     public void setOffre(Offre offre, DashOffreController parentController) {
         this.offre = offre;
         this.parentController = parentController;
         updateView();
+        generateAndDisplayQRCode();
+
+
     }
 
     private void updateView() {
@@ -87,4 +119,153 @@ public class OffreCellController {
             e.printStackTrace();
         }
     }
+
+    private void generateAndDisplayQRCode() {
+        if (offre != null) {
+            try {
+                String qrText = offre.getTitre() + "\n" + offre.getDescription();
+                String qrFilePath = "Static/Images" + offre.getId() + "_QRCode.png"; // Save in a dedicated folder
+
+                boolean success = QRCodeGenerator.generateJobQRCode(offre.getId(), offre.getTitre(),offre.getDescription(), offre.getSalaireMin(),offre.getSalaireMax(),offre.getDepartement().getNom(),150,150 , qrFilePath);
+                if (success) {
+                    File qrFile = new File(qrFilePath);
+                    if (qrFile.exists()) {
+                        qrCodeImageView.setImage(new Image(qrFile.toURI().toString()));
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+        }
+    }
+
+
+    public void contrat(ActionEvent actionEvent) {
+        try {
+            String filePath = "Contrat.pdf";
+            PdfWriter writer = new PdfWriter(filePath);
+            PdfDocument pdfDoc = new PdfDocument(writer);
+            Document document = new Document(pdfDoc);
+
+            document.add(new Paragraph("Contrat d'Embauche").setBold().setFontSize(20));
+            document.add(new Paragraph("Date: .........."));
+            document.add(new Paragraph("Nom de l'employé: .........."));
+            document.add(new Paragraph("Titre du Poste: " + (offre != null ? offre.getTitre() : "..........")));
+            document.add(new Paragraph("Description du Poste: "+offre.getDescription()));
+            document.add(new Paragraph("Salaire Minimum: "+offre.getSalaireMin()));
+            document.add(new Paragraph("Salaire Maximum: "+offre.getSalaireMax()));
+            document.add(new Paragraph("Département: "+offre.getDepartement().getNom()));
+
+            document.add(new Paragraph("\nConditions générales:").setBold());
+            document.add(new Paragraph("1. Période d'essai: 3 mois renouvelable.\n2. Congés annuels selon l'article 234 du code du travail.\n3. Respect du règlement intérieur et des normes de sécurité en vigueur."));
+
+            document.add(new Paragraph("\nSignature de l'Employé: ..........................................."));
+            document.add(new Paragraph("Signature de l'Employeur: ..........................................."));
+
+            document.close();
+            showAlertSuccess("PDF Généré", "Le contrat a été généré avec succès.");
+
+            File pdfFile = new File(filePath);
+            if (pdfFile.exists()) {
+                String os = System.getProperty("os.name").toLowerCase();
+                if (os.contains("win")) {
+                    new ProcessBuilder("cmd", "/c", "start", filePath).start();
+                } else if (os.contains("mac")) {
+                    new ProcessBuilder("open", filePath).start();
+                } else {
+                    new ProcessBuilder("xdg-open", filePath).start();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Erreur lors de la génération du PDF.");
+        }
+    }
+
+    public void mail(ActionEvent actionEvent) {
+        sendEmail("mahmoudtouil9@gmail.com");
+
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private void showAlertSuccess(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    public void sendEmail(String recipient) {
+        final String senderEmail = "mahmoudtouil9@gmail.com";
+        final String senderPassword = "zzjs enoh rimz nqvp"; // Use App Password if using Gmail
+
+        // Check if the PDF file exists before proceeding
+        String filePath = "Contrat.pdf";
+        File file = new File(filePath);
+
+        if (!file.exists()) {
+            showAlert("PDF Not Found", "Please generate the PDF report before sending the email.");
+            return;
+        }
+
+        // SMTP Server Properties
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+
+        // Create Session
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(senderEmail, senderPassword);
+            }
+        });
+
+        try {
+            // Create Email Message
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(senderEmail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
+            message.setSubject("Contrat");
+
+            // Create the email body
+            MimeBodyPart textPart = new MimeBodyPart();
+            String emailContent = "Hello,\n\nPlease find the contract report .\n\nBest Regards,\n";
+            textPart.setText(emailContent);
+
+            // Attach the PDF file
+            MimeBodyPart attachmentPart = new MimeBodyPart();
+            attachmentPart.attachFile(file);
+
+            // Create multipart email
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(textPart);
+            multipart.addBodyPart(attachmentPart);
+
+            // Set the content of the message
+            message.setContent(multipart);
+
+            // Send Email
+            Transport.send(message);
+            System.out.println("Email with PDF sent successfully to " + recipient);
+
+            // Show success alert
+            showAlertSuccess("Success", "Email sent successfully to " + recipient);
+
+        } catch (MessagingException | IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to send email. Please try again.");
+        }
+    }
+
+
 }
