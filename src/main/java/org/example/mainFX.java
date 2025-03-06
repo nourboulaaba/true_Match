@@ -1,6 +1,5 @@
 package org.example;
 
-import Controller.gestAuth.GoogleAuthController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +32,6 @@ public class mainFX extends Application {
                     stage.setTitle("Dashboard - " + PreferenceManager.getString("role", "non role").toUpperCase());
                 }
             } else {
-                System.out.println("--------------------------------");
 
                 loader = new FXMLLoader(mainFX.class.getResource("/Auth/Login.fxml"));
                 stage.setTitle("Login!");

@@ -1,54 +1,45 @@
-/*package org.example;
+package org.example;
 
-import Entities.utilisateur;
-import Entities.Role;
-import service.utilisateurService;
-import java.util.List;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane; // Use AnchorPane if that's the type of root node in your FXML
+import javafx.stage.Stage;
+import service.contratService;
+import service.missionService;
 
-public class Main {
+public class Main extends Application {
+
     public static void main(String[] args) {
-        utilisateurService service = new utilisateurService();
-
-        // Insertion d'un nouvel utilisateur
-        utilisateur user1 = new utilisateur(
-                "Doe", "John", "john123", "john.doe@example.com", "password123",
-                "Developer", Role.EMPLOYE, "EMP001", "face123", 5000.0, "2023-10-01", "123456789", "cv_john.pdf", "profile.jpg"
-        );
-        System.out.println("Role: " + user1.getRole());
-
-        service.insert(user1);
-        System.out.println("Role: " + user1.getRole());
-
-        // Récupération de tous les utilisateurs
-        System.out.println("Liste des utilisateurs :");
-        List<utilisateur> utilisateurs = service.getAll();
-        utilisateurs.forEach(System.out::println);
-
-        // Récupération d'un utilisateur par son ID
-        utilisateur user = service.getById(1);
-        if (user != null) {
-            System.out.println("Utilisateur trouvé : " + user);
-        } else {
-            System.out.println("Utilisateur non trouvé.");
-        }
-
-        // Mise à jour d'un utilisateur
-        if (user != null) {
-            user.setSalary(5500.0);
-            user.setPhoneNumber("987654321");
-            user.setProfilePhoto("new_profile.jpg");
-            service.update(user);
-            System.out.println("Utilisateur mis à jour avec succès !");
-        }
-
-        // Suppression de l'utilisateur
-        if (user != null) {
-            service.delete(user);
-            System.out.println("Utilisateur supprimé avec succès !");
-        }
-
-        // Récupération de tous les utilisateurs après suppression
-        System.out.println("Liste des utilisateurs après suppression :");
-        service.getAll().forEach(System.out::println);
+        // Launch the JavaFX Application
+        launch(args);
     }
-}*/
+
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        // Load your FXML file here
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        // If the root element in FXML is AnchorPane, cast it to AnchorPane
+        AnchorPane root = loader.load();  // Load the FXML and cast to AnchorPane
+        Scene scene = new Scene(root);
+
+        // Set the scene to the primary stage
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("True Match");
+        primaryStage.show();
+
+        // Call your existing business logic if needed
+        contratService contratService = new contratService();
+
+        // Example business logic:
+      //  Contrat contrat1 = new Contrat(1, 200, "CDI", new Date(), new Date(), 6000.0);
+       // contratService.insert(contrat1);
+
+        // Test CRUD for Mission
+        missionService missionService = new missionService();
+        // Example mission addition:
+      //  Mission mission1 = new Mission("Mission Yasmine", new Date(), "Moknine", 2);
+      //  missionService.insert(mission1);
+    }
+}

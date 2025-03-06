@@ -14,7 +14,7 @@ public class UserService implements IService<User> {
     private final Connection cnx = DBConnection.getInstance().getConnection();
 
 
-    @Override
+    //@Override
     public boolean insert(User obj) {
         System.out.println("_______________________________>insert1 ");
 

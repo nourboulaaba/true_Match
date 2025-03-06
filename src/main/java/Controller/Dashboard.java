@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import service.UserSession;
 import utils.PreferenceManager;
+import javafx.scene.control.Button;
 
 public class Dashboard {
 
@@ -156,6 +158,15 @@ public class Dashboard {
     }
 
     // @Override
+    @FXML
+    private Button missionsButton;
+
+    @FXML
+    private Button contratsButton;
+
+
+
+   // @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
@@ -205,6 +216,36 @@ public class Dashboard {
             e.printStackTrace();
             // Handle navigation failure
         }
+    }
 
+    public void handleMissionsButtonAction(javafx.event.ActionEvent actionEvent) {
+        try {
+            // Charger la vue GestionMissions.fxml
+            javafx.scene.Parent missionsView = FXMLLoader.load(getClass().getResource("/GestionMissions.fxml"));
+
+            // Créer une nouvelle scène avec la vue des missions
+            Stage stage = (Stage) missionsButton.getScene().getWindow();
+            Scene scene = new Scene(missionsView);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleContratsButtonAction(javafx.event.ActionEvent actionEvent) {
+        try {
+            // Charger la vue GestionContrats.fxml
+            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/GestionContrats.fxml"));
+
+            // Créer une nouvelle scène avec la vue des contrats
+            Stage stage = (Stage) contratsButton.getScene().getWindow();
+            Scene scene = new Scene(contratsView);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

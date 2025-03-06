@@ -12,7 +12,9 @@
 
 
 .Button2{
-    -fx-background-color:  linear-gradient(to right, #699bf7, #95a5a6);
+-fx-background-color:  linear-gradient(to right, #699bf7, #95a5a6);
+    /*-fx-background-color:  linear-gradient(to right, #eb3b5a , #fc5c65);*/
+
     -fx-background-radius: 20px;
     -fx-font-size: 18px;
     -fx-text-fill: #ffffff;
@@ -49,7 +51,11 @@
 }
 
 .google:hover{
+
     -fx-background-color: #4267B2;
+
+   /* -fx-background-color: #DB4437;*/
+
     -fx-border-color: #ffffff;
 }
 
