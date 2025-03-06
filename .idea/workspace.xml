@@ -6,6 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="3f445380-2a75-4c7c-a03e-24547708b9be" name="Changes" comment="métier avancéé + Api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contrat.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Contrat.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Static/Images9_QRCode.png" beforeDir="false" afterPath="$PROJECT_DIR$/Static/Images9_QRCode.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/AddDepartement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/AddDepartement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/AddOffre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/AddOffre.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DashDepartement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DashDepartement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DashOffre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DashOffre.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DepartementCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DepartementCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/OffreCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/OffreCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/Static/Style/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/Static/Style/Styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/UpdateDepartement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/UpdateDepartement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/UpdateOffre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/UpdateOffre.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/freelancers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/freelancers.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +41,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ab2sfaxii&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/nourboulaaba/true_Match.git&quot;,
+    &quot;accountId&quot;: &quot;db614ad9-6cb5-4fe2-be96-149e7b38de79&quot;
+  }
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -47,28 +72,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.FreelancerProxyServer.executor": "Run",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Emploi",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/java abderahmene/pifinal2/pifinal",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.FreelancerProxyServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Emploi&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/java abderahmene/pifinal2/pifinal&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="FreelancerProxyServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.pifinal.Utils.FreelancerProxyServer" />
@@ -125,6 +150,8 @@
       <workItem from="1740428310350" duration="45000" />
       <workItem from="1740429842136" duration="27000" />
       <workItem from="1741213533780" duration="6154000" />
+      <workItem from="1741229314227" duration="7161000" />
+      <workItem from="1741241765439" duration="939000" />
     </task>
     <task id="LOCAL-00001" summary="métier avancéé + Api">
       <option name="closed" value="true" />
@@ -134,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741219690262</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="métier avancéé + Api">
+      <option name="closed" value="true" />
+      <created>1741229384486</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1741229384486</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,16 +178,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="métier avancéé + Api" />
     <option name="LAST_COMMIT_MESSAGE" value="métier avancéé + Api" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/pifinal/Utils/FreelancerProxyServer.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

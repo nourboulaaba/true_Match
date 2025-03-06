@@ -8,29 +8,29 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@Static/Style/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pifinal.Controller.AddDepartementController">
 
-    <Label layoutX="50" layoutY="30" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Ajouter un Département" />
+    <Label layoutX="13.0" layoutY="14.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Ajouter un Département" underline="true" />
 
     <Label layoutX="50" layoutY="80" text="Nom:" />
-    <TextField fx:id="nomField" layoutX="150" layoutY="75" prefWidth="300" />
+    <TextField fx:id="nomField" layoutX="116.0" layoutY="84.0" prefWidth="300" />
     <Label fx:id="nomErrorLabel" layoutX="50" layoutY="80" />
 
 
     <Label layoutX="50" layoutY="130" text="Budget:" />
-    <TextField fx:id="budgetField" layoutX="150" layoutY="125" prefWidth="150" />
+    <TextField fx:id="budgetField" layoutX="140.0" layoutY="134.0" prefWidth="150" />
     <Label fx:id="budgetErrorLabel" layoutX="50" layoutY="80" />
 
 
     <Label layoutX="50" layoutY="180" text="Nombre d'Employés:" />
-    <TextField fx:id="nbEmployesField" layoutX="200" layoutY="175" prefWidth="100" />
+    <TextField fx:id="nbEmployesField" layoutX="259.0" layoutY="182.0" prefWidth="100" />
     <Label fx:id="nbEmployesErrorLabel" layoutX="50" layoutY="80" />
 
 
     <Label layoutX="50" layoutY="230" text="Responsable:" />
-    <ComboBox fx:id="responsableComboBox" layoutX="150" layoutY="225" prefWidth="200" />
+    <ComboBox fx:id="responsableComboBox" layoutX="190.0" layoutY="230.0" prefWidth="200" />
     <Label fx:id="responsableErrorLabel" layoutX="50" layoutY="80" />
 
 
-    <Button fx:id="saveButton" layoutX="150" layoutY="280" onAction="#save" text="Enregistrer" />
-    <Button fx:id="cancelButton" layoutX="280" layoutY="280" onAction="#cancel" text="Annuler" />
+    <Button fx:id="saveButton" layoutX="115.0" layoutY="326.0" onAction="#save" prefHeight="42.0" prefWidth="131.0" text="Enregistrer" />
+    <Button fx:id="cancelButton" layoutX="300.0" layoutY="326.0" onAction="#cancel" prefHeight="42.0" prefWidth="131.0" text="Annuler" />
 
 </AnchorPane>
