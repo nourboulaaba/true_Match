@@ -5,26 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbd42d3c-8835-4f17-95b5-8699f0ab3b66" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Certificat_1.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Certificat_9.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/CertificatController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/FormationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ReviewAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entite/Certificat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entite/Review.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entite/formations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DBConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MainFX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/CertificatPDF.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/CertificatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/FormationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/ICertificatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/NotificationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/ReviewService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Certificat.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Formations.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/stylef.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" />
@@ -33,16 +13,7 @@
       <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../log.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/IService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MainFX.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/DashEmp.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/Dashboard.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/Statistique.java" beforeDir="false" />
@@ -165,7 +136,7 @@
     "Application.mainFX.executor": "Run",
     "Maven.TrueMatch [install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging prod",
+    "git-widget-placeholder": "prod",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/dell/Downloads/true_Match_organisation/true_Match",
     "node.js.detected.package.eslint": "true",
@@ -229,6 +200,7 @@
       <workItem from="1741273538690" duration="70000" />
       <workItem from="1741273644650" duration="37000" />
       <workItem from="1741274405542" duration="2766000" />
+      <workItem from="1741277293892" duration="11000" />
     </task>
     <servers />
   </component>
