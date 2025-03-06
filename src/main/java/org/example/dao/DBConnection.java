@@ -14,6 +14,7 @@ public class DBConnection {
     private static final String URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;*/
 
     //  private  String URL = "jdbc:mysql://mysql-alphatech.alwaysdata.net:3306/alphatech_pi?useSSL=true&requireSSL=true\";\n;
+  //  private  String URL = "jdbc:mysql://mysql-alphatech.alwaysdata.net:3306/alphatech_pi?useSSL=true&requireSSL=true\";\n;
     private  static String URL = "jdbc:mysql://mysql-alphatech.alwaysdata.net:3306/alphatech_pi?useSSL=true&requireSSL=true";
     private static final String USERNAME = "alphatech";
     private String username = "alphatech";

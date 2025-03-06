@@ -1,0 +1,54 @@
+/* Style for the VBox container */
+VBox {
+    -fx-background-color: #f4f4f4; /* Light background color */
+    -fx-border-radius: 10px;
+    -fx-padding: 20px;
+    -fx-alignment: center; /* Center all the elements */
+    -fx-spacing: 15px;
+}
+
+/* Style for the TextFields and TextArea */
+#identifierField, #sujetField, #descriptionArea {
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-border-color: #ccc;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 300px;
+    -fx-focus-color: #4CAF50; /* Green color when focused */
+}
+
+/* Style for the Buttons (changed to blue) */
+Button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-color: #007BFF; /* Blue button */
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 200px;
+}
+
+/* Button hover effect (blue on hover) */
+Button:hover {
+    -fx-background-color: #0056b3; /* Darker blue on hover */
+    -fx-opacity: 0.8;
+}
+
+/* Style for the Labels */
+Label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333; /* Dark text color */
+}
+
+/* Image label (additional styling for the image label) */
+#imageLabel {
+    -fx-font-style: italic;
+    -fx-text-fill: #777; /* Lighter text color for the image label */
+}
+
+/* Classification label color */
+#classificationLabel {
+    -fx-font-weight: bold;
+    -fx-text-fill: blue;
+}

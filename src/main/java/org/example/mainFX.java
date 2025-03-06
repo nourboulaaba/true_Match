@@ -11,7 +11,7 @@ import utils.PreferenceManager;
 import java.io.IOException;
 
 
-public class MainFX extends Application {
+public class mainFX extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -26,16 +26,16 @@ public class MainFX extends Application {
             if (PreferenceManager.getBoolean("isLoggedIn", false)) {
                 if (PreferenceManager.getString("role", "RH").equals("RH")) {
                     System.out.println(UserSession.getConnectedUser());
-                    loader = new FXMLLoader(MainFX.class.getResource("/Dashboard.fxml"));
+                    loader = new FXMLLoader(mainFX.class.getResource("/Dashboard.fxml"));
                     stage.setTitle("Dashboard - " + PreferenceManager.getString("role", "non role").toUpperCase());
                 } else {
-                    loader = new FXMLLoader(MainFX.class.getResource("/DashEmployee.fxml"));
+                    loader = new FXMLLoader(mainFX.class.getResource("/DashEmployee.fxml"));
                     stage.setTitle("Dashboard - " + PreferenceManager.getString("role", "non role").toUpperCase());
                 }
             } else {
                 System.out.println("--------------------------------");
 
-                loader = new FXMLLoader(MainFX.class.getResource("/Auth/Login.fxml"));
+                loader = new FXMLLoader(mainFX.class.getResource("/Auth/Login.fxml"));
                 stage.setTitle("Login!");
             }
 
@@ -61,7 +61,7 @@ import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 import service.NotificationService;
 
-public class MainFX extends Application {
+public class mainFX extends Application {
 
     @Override
     public void start(Stage stage) {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllerConge.ListeReclamationController"
+            stylesheets="@tousReclacss.css">
+
+    <!-- ComboBox with ID -->
+    <ComboBox fx:id="classificationFilter" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20"
+              AnchorPane.rightAnchor="20" prefWidth="150" />
+
+    <!-- ListView with ID, filling available space -->
+    <ListView fx:id="listViewReclamations" AnchorPane.topAnchor="60" AnchorPane.leftAnchor="20"
+              AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="60" prefHeight="400" />
+
+    <!-- Button with ID -->
+    <Button fx:id="btnRefresh" text="Rafraîchir" AnchorPane.leftAnchor="20" AnchorPane.bottomAnchor="20"
+            onAction="#loadReclamations"/>
+
+</AnchorPane>

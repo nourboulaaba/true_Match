@@ -1,0 +1,45 @@
+/* Style for the VBox container */
+AnchorPane {
+    -fx-background-color: #f4f4f4; /* Light background color */
+    -fx-padding: 20px;
+}
+
+/* Style for the Title Label */
+Label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #007BFF; /* Blue color */
+    -fx-padding: 10px;
+}
+
+/* Style for the ListView */
+#congesListView {
+    -fx-font-size: 14px;
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}
+
+/* Style for the ListView items */
+.list-cell {
+    -fx-padding: 10px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
+}
+
+/* Button Styling */
+Button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-color: #007BFF;
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+}
+
+/* Button hover effect */
+Button:hover {
+    -fx-background-color: #0056b3; /* Darker blue on hover */
+}

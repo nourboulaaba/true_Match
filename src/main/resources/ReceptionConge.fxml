@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllerConge.ReceptionConge"
+            prefHeight="600.0" prefWidth="800.0"
+            stylesheets="@Reception.css">
+    <children>
+        <!-- ListView to display Conges, filling the space -->
+        <ListView fx:id="congesList" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20"
+                  AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="80" />
+
+        <Button fx:id="accepterButton" layoutX="150.0" layoutY="530.0" text="Accepter" onAction="#accepterConge" />
+        <Button fx:id="rejeterButton" layoutX="350.0" layoutY="530.0" text="Rejeter" onAction="#rejeterConge" />
+
+    </children>
+</AnchorPane>
