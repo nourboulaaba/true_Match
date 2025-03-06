@@ -88,6 +88,67 @@ public class Dashboard {
         }
     }
 
+    @FXML
+    void handleCalendarButtonAction(ActionEvent event) {
+        try {
+            // Charger la vue GestionContrats.fxml
+            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/Calendrier.fxml"));
+
+            // Créer une nouvelle scène avec la vue des contrats
+            Stage stage = (Stage) contratsButton.getScene().getWindow();
+            Scene scene = new Scene(contratsView);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    void handleTousLesCongesButtonAction(ActionEvent event) {
+        try {
+            // Charger la vue GestionContrats.fxml
+            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/TousLesConges.fxml"));
+
+            // Créer une nouvelle scène avec la vue des contrats
+            Stage stage = (Stage) contratsButton.getScene().getWindow();
+            Scene scene = new Scene(contratsView);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    void handleRecepetionCongeButtonAction(ActionEvent event) {
+        try {
+            // Charger la vue GestionContrats.fxml
+            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/ReceptionConge.fxml"));
+
+            // Créer une nouvelle scène avec la vue des contrats
+            Stage stage = (Stage) contratsButton.getScene().getWindow();
+            Scene scene = new Scene(contratsView);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    void handleReclamationsButtonAction(ActionEvent event) {
+
+        try {
+            // Charger la vue GestionContrats.fxml
+            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/ListeReclamation.fxml"));
+
+            // Créer une nouvelle scène avec la vue des contrats
+            Stage stage = (Stage) contratsButton.getScene().getWindow();
+            Scene scene = new Scene(contratsView);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void handleCertificatsButtonAction(ActionEvent event) {

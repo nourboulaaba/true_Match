@@ -65,6 +65,54 @@ public class DashEmp {
 
         }
     }
+    @FXML
+    void handleCongeButtonProfile(ActionEvent event) {
+        try {
+            // Charger la vue GestionContrats.fxml
+            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/Formulaire.fxml"));
+
+            // Créer une nouvelle scène avec la vue des contrats
+            Stage stage = (Stage) Emp.getScene().getWindow();
+            Scene scene = new Scene(contratsView);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void handleHistoriqueButtonProfile(ActionEvent event) {
+        try {
+            // Charger la vue GestionContrats.fxml
+            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/Historique.fxml"));
+
+            // Créer une nouvelle scène avec la vue des contrats
+            Stage stage = (Stage) Emp.getScene().getWindow();
+            Scene scene = new Scene(contratsView);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void handleReclamationButtonProfile(ActionEvent event) {
+        try {
+            // Charger la vue GestionContrats.fxml
+            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/Reclamation.fxml"));
+
+            // Créer une nouvelle scène avec la vue des contrats
+            Stage stage = (Stage) Emp.getScene().getWindow();
+            Scene scene = new Scene(contratsView);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     public void handleClicks(ActionEvent event) {

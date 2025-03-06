@@ -62,13 +62,24 @@
                     </padding>
                 </Button>
 
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Congé">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Congé" onAction="#handleTousLesCongesButtonAction">
                     <padding>
                         <Insets left="20.0" />
                     </padding>
                 </Button>
 
-                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Réclamations">
+                <Button fx:id="reclamationbtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Réclamations" onAction="#handleReclamationsButtonAction">
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="RéceptionCongé" onAction="#handleRecepetionCongeButtonAction">
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+
+                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #ecf0f1; -fx-font-size: 14;" text="Calendrier" onAction="#handleCalendarButtonAction">
                     <padding>
                         <Insets left="20.0" />
                     </padding>
