@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f445380-2a75-4c7c-a03e-24547708b9be" name="Changes" comment="métier avancéé + Api">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contrat.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Contrat.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Static/Images9_QRCode.png" beforeDir="false" afterPath="$PROJECT_DIR$/Static/Images9_QRCode.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/AddDepartement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/AddDepartement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/AddOffre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/AddOffre.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DashDepartement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DashDepartement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DashOffre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DashOffre.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DepartementCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DepartementCell.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/OffreCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/OffreCell.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/Static/Style/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/Static/Style/Styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/UpdateDepartement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/UpdateDepartement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/UpdateOffre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/UpdateOffre.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/freelancers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/freelancers.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/hello-view.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="3f445380-2a75-4c7c-a03e-24547708b9be" name="Changes" comment="métier avancéé + Api" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,7 +136,7 @@
       <workItem from="1740429842136" duration="27000" />
       <workItem from="1741213533780" duration="6154000" />
       <workItem from="1741229314227" duration="7161000" />
-      <workItem from="1741241765439" duration="939000" />
+      <workItem from="1741241765439" duration="1592000" />
     </task>
     <task id="LOCAL-00001" summary="métier avancéé + Api">
       <option name="closed" value="true" />
