@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f445380-2a75-4c7c-a03e-24547708b9be" name="Changes" comment="métier avancéé + Api" />
+    <list default="true" id="3f445380-2a75-4c7c-a03e-24547708b9be" name="Changes" comment="métier avancéé + Api">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,7 +124,7 @@
       <workItem from="1740323872614" duration="9201000" />
       <workItem from="1740428310350" duration="45000" />
       <workItem from="1740429842136" duration="27000" />
-      <workItem from="1741213533780" duration="5486000" />
+      <workItem from="1741213533780" duration="6154000" />
     </task>
     <task id="LOCAL-00001" summary="métier avancéé + Api">
       <option name="closed" value="true" />
@@ -141,5 +143,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="métier avancéé + Api" />
     <option name="LAST_COMMIT_MESSAGE" value="métier avancéé + Api" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/pifinal/Utils/FreelancerProxyServer.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
