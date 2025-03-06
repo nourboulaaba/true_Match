@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f445380-2a75-4c7c-a03e-24547708b9be" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pifinal/Controller/DashDepartementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pifinal/Controller/DashDepartementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pifinal/Controller/DashOffreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pifinal/Controller/DashOffreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pifinal/Controller/OffreCellController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pifinal/Controller/OffreCellController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pifinal/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pifinal/Main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DashOffre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/DashOffre.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/OffreCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pifinal/OffreCell.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="3f445380-2a75-4c7c-a03e-24547708b9be" name="Changes" comment="métier avancéé + Api" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,11 +122,24 @@
       <workItem from="1740323872614" duration="9201000" />
       <workItem from="1740428310350" duration="45000" />
       <workItem from="1740429842136" duration="27000" />
-      <workItem from="1741213533780" duration="4667000" />
+      <workItem from="1741213533780" duration="5486000" />
     </task>
+    <task id="LOCAL-00001" summary="métier avancéé + Api">
+      <option name="closed" value="true" />
+      <created>1741219690262</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1741219690262</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="métier avancéé + Api" />
+    <option name="LAST_COMMIT_MESSAGE" value="métier avancéé + Api" />
   </component>
 </project>
