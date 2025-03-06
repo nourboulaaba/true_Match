@@ -13,13 +13,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.io.File;
 import javafx.scene.control.cell.PropertyValueFactory;
 import service.contratService;
+import util.PDFGenerator;
 
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.awt.Desktop;
 
 public class GestionContratsController implements Initializable {
 
@@ -368,5 +371,53 @@ public class GestionContratsController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+    
+    /**
+     * Gère l'export de la liste des contrats en PDF
+     */
+    @FXML
+    private void handleExportPDF() {
+        try {
+            // Récupérer tous les contrats
+            List<Contrat> contrats = service.getAll();
+            
+            if (contrats.isEmpty()) {
+                showAlert(Alert.AlertType.WARNING, "Export PDF", "Aucun contrat à exporter.");
+                return;
+            }
+            
+            // Générer le PDF
+            Stage stage = (Stage) contratsListView.getScene().getWindow();
+            String filePath = PDFGenerator.generateContratsPDF(contrats, stage);
+            
+            if (filePath != null) {
+                // Afficher un message de succès
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Export PDF");
+                alert.setHeaderText("PDF généré avec succès");
+                alert.setContentText("Le fichier a été enregistré à l'emplacement suivant :\n" + filePath);
+                
+                // Ajouter un bouton pour ouvrir le fichier
+                ButtonType openButton = new ButtonType("Ouvrir le fichier");
+                ButtonType okButton = ButtonType.OK;
+                
+                alert.getButtonTypes().setAll(openButton, okButton);
+                
+                alert.showAndWait().ifPresent(buttonType -> {
+                    if (buttonType == openButton) {
+                        try {
+                            File file = new File(filePath);
+                            Desktop.getDesktop().open(file);
+                        } catch (IOException e) {
+                            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'ouvrir le fichier: " + e.getMessage());
+                        }
+                    }
+                });
+            }
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de la génération du PDF: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

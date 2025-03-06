@@ -61,6 +61,8 @@
                 <Label fx:id="pageInfoLabel" text="Page 1 sur 1" />
                 <Button fx:id="nextPageButton" text="&gt;" onAction="#handleNextPage" />
                 <ComboBox fx:id="pageSizeComboBox" promptText="Éléments par page" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="exportPdfButton" text="Télécharger PDF" onAction="#handleExportPDF" styleClass="button-primary" />
             </HBox>
         </VBox>
     </VBox>

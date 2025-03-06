@@ -15,12 +15,15 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import service.missionService;
 import service.utilisateurService;
+import util.PDFGenerator;
 
 import java.io.IOException;
+import java.io.File;
 import java.net.URL;
 import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.awt.Desktop;
 
 public class GestionMissionsController implements Initializable {
 
@@ -378,5 +381,53 @@ public class GestionMissionsController implements Initializable {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    /**
+     * Gère l'export de la liste des missions en PDF
+     */
+    @FXML
+    private void handleExportPDF() {
+        try {
+            // Récupérer toutes les missions
+            List<Mission> missions = service.getAll();
+            
+            if (missions.isEmpty()) {
+                showAlert(Alert.AlertType.WARNING, "Export PDF", "Aucune mission à exporter.");
+                return;
+            }
+            
+            // Générer le PDF
+            Stage stage = (Stage) missionsList.getScene().getWindow();
+            String filePath = PDFGenerator.generateMissionsPDF(missions, stage);
+            
+            if (filePath != null) {
+                // Afficher un message de succès
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Export PDF");
+                alert.setHeaderText("PDF généré avec succès");
+                alert.setContentText("Le fichier a été enregistré à l'emplacement suivant :\n" + filePath);
+                
+                // Ajouter un bouton pour ouvrir le fichier
+                ButtonType openButton = new ButtonType("Ouvrir le fichier");
+                ButtonType okButton = ButtonType.OK;
+                
+                alert.getButtonTypes().setAll(openButton, okButton);
+                
+                alert.showAndWait().ifPresent(buttonType -> {
+                    if (buttonType == openButton) {
+                        try {
+                            File file = new File(filePath);
+                            Desktop.getDesktop().open(file);
+                        } catch (IOException e) {
+                            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'ouvrir le fichier: " + e.getMessage());
+                        }
+                    }
+                });
+            }
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de la génération du PDF: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
