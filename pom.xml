@@ -25,16 +25,14 @@
             <artifactId>javafx-fxml</artifactId>
             <version>21.0.2</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>21.0.2</version>
         </dependency>
-        <dependency>
-            <groupId>com.dlsc</groupId>
-            <artifactId>calendarfx</artifactId>
-            <version>11.12.7</version>
-        </dependency>
+
 
 
         <!-- JSON (Gson pour traiter les réponses de l'API OpenAI) -->
@@ -102,7 +100,7 @@
             <artifactId>application</artifactId>
             <version>v11.12.7</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/application-v11.12.7.jar</systemPath>
+            <systemPath>C:\Users\hp\Downloads\application-v11.12.7.jar</systemPath>
         </dependency>
 
         <dependency>
