@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="274.0" prefWidth="899.0" stylesheets="@Static/Style/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pifinal.Controller.OffreCellController">
+<AnchorPane prefHeight="274.0" prefWidth="899.0" stylesheets="@Static/Style/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pitest11.Controller.OffreCellController">
    <children>
       <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" wrappingWidth="83.7366943359375" />
       <Text layoutX="112.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="83.7366943359375" />

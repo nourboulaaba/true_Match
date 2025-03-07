@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="113.0" prefWidth="847.0" stylesheets="@Static/Style/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pifinal.Controller.DepartementCellController">
+<AnchorPane prefHeight="113.0" prefWidth="847.0" stylesheets="@Static/Style/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pitest11.Controller.DepartementCellController">
    <children>
       <Text layoutX="50.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="71.73669052124023" />
       <Text fx:id="nomDep" layoutX="17.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="104.53676986694336" />

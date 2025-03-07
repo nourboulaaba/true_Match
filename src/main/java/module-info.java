@@ -1,4 +1,4 @@
-module org.example.pifinal {
+module tn.esprit.pitest11 {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -23,10 +23,10 @@ module org.example.pifinal {
     requires com.google.gson;
     requires java.sql;
 
-    opens org.example.pifinal to javafx.fxml;
-    exports org.example.pifinal;
-    exports org.example.pifinal.Main;              // Exports the main package
-    exports org.example.pifinal.Controller;    // Ensures controllers are accessible
-    opens org.example.pifinal.Controller to javafx.fxml;
-    opens org.example.pifinal.Model to javafx.base;
+    opens tn.esprit.pitest11 to javafx.fxml;
+    exports tn.esprit.pitest11;
+    exports tn.esprit.pitest11.Main;              // Exports the main package
+    exports tn.esprit.pitest11.Controller;    // Ensures controllers are accessible
+    opens tn.esprit.pitest11.Controller to javafx.fxml;
+    opens tn.esprit.pitest11.Model to javafx.base;
 }

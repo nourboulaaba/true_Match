@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="485.0" prefWidth="402.0" stylesheets="@Static/Style/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pifinal.Controller.FreelancersController">
+<VBox prefHeight="485.0" prefWidth="402.0" stylesheets="@Static/Style/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pitest11.Controller.FreelancersController">
     <Label style="-fx-font-size: 20; -fx-padding: 10;" text="Freelancer List" />
 
     <TableView fx:id="freelancerTable" prefHeight="400.0" prefWidth="416.0">
