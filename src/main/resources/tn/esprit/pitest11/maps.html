@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Google Maps Test</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 100%;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuuYiAdEaQAOTzRqheqZdgZHT8ostySdc"></script>
+    <script>
+        function initMap() {
+            // Read the latitude and longitude from the query string
+            var urlParams = new URLSearchParams(window.location.search);
+            var lat = parseFloat(urlParams.get('lat')) || 40.7128;
+            var lng = parseFloat(urlParams.get('lng')) || -74.0060;
+            var eventLocation = {lat: lat, lng: lng};
+            // Create a map centered at the event location
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: eventLocation
+            });
+            // Place a marker at the event location
+            var marker = new google.maps.Marker({
+                position: eventLocation,
+                map: map
+            });
+        }
+    </script>
+</head>
+<body onload="initMap()">
+<div id="map"></div>
+</body>
+</html>

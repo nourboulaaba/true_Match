@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="96.0" prefWidth="602.0" stylesheets="@Static/Style/Syles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pitest11.Controller.EntretienCellUserController">
+    <children>
+        <Text layoutX="21.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recrutement" wrappingWidth="78.13671493530273" />
+        <Text layoutX="126.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Offre" wrappingWidth="63.7366943359375" />
+        <Text layoutX="197.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="78.13671493530273" />
+        <Text layoutX="268.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu" wrappingWidth="63.7366943359375" />
+        <Text fx:id="nomRecrutement" layoutX="14.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="78.13671493530268" />
+        <Text fx:id="offreName" layoutX="116.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="63.7366943359375" />
+        <Text fx:id="Date" layoutX="197.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="63.7366943359375" />
+        <Text fx:id="Lieu" layoutX="261.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="78.13671493530268" />
+        <Button fx:id="approve" layoutX="354.0" layoutY="28.0" mnemonicParsing="false" onAction="#approve" prefHeight="26.0" prefWidth="64.0" text="Approve" />
+        <Button fx:id="decline" layoutX="496.0" layoutY="28.0" mnemonicParsing="false" onAction="#decline" prefHeight="26.0" prefWidth="64.0" text="Decline" />
+    </children>
+</AnchorPane>
