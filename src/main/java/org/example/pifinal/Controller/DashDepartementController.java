@@ -17,10 +17,13 @@ import org.example.pifinal.Model.Departement;
 import org.example.pifinal.Services.DepartementService;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DashDepartementController {
 
+    public ComboBox filter;
     @FXML
     private Button addbtn;
 
@@ -46,26 +49,61 @@ public class DashDepartementController {
     public void initialize() {
         populateListView();
         populateCharts();
+        setupFilterOptions();
 
         departementListView.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) { // Double-click
+            if (event.getClickCount() == 2) {
                 Departement selectedDepartement = departementListView.getSelectionModel().getSelectedItem();
                 if (selectedDepartement != null) {
                     openOffreDashboard(selectedDepartement);
                 }
             }
         });
-        // Add dynamic search
+
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             filterDepartements(newValue);
         });
     }
-    void filterDepartements(String searchText) {
-        List<Departement> filteredList = departementService.readAll().stream()
-                .filter(dep -> dep.getNom().toLowerCase().contains(searchText.toLowerCase()))
-                .toList();
-        departementList.setAll(filteredList);
+    private void setupFilterOptions() {
+        filter.getItems().addAll("Aucun Filtre", "Budget Ascendant", "Budget Descendant");
+        filter.getSelectionModel().select("Aucun Filtre");
+        filter.setOnAction(event -> applySorting());
     }
+    void filterDepartements(String searchText) {
+        if (searchText == null || searchText.trim().isEmpty()) {
+            populateListView(); // Reload all departments if search is cleared
+            populateCharts();
+        } else {
+            List<Departement> filteredList = departementService.readAll().stream()
+                    .filter(dep -> dep.getNom().toLowerCase().contains(searchText.toLowerCase()))
+                    .collect(Collectors.toList());
+            departementList.setAll(filteredList);
+            departementListView.setItems(departementList);
+            applySorting();
+        }
+    }
+
+    private void applySorting() {
+        Object selected = filter.getValue();
+        if (selected == null) {
+            return; // No selection, do nothing
+        }
+
+        String selectedOption = selected.toString();
+
+        if (selectedOption.equals("Aucun Filtre")) {
+            return;
+        }
+
+        if (selectedOption.equals("Budget Ascendant")) {
+            departementList.sort(Comparator.comparingInt(Departement::getBudget));
+        } else if (selectedOption.equals("Budget Descendant")) {
+            departementList.sort(Comparator.comparingInt(Departement::getBudget).reversed());
+        }
+    }
+
+
+
 
 
 
@@ -113,6 +151,8 @@ public class DashDepartementController {
                 }
             }
         });
+        applySorting();
+
     }
 
     void populateCharts() {
@@ -155,15 +195,6 @@ public class DashDepartementController {
     @FXML
     void search(ActionEvent event) {
         String searchText = searchField.getText().trim().toLowerCase();
-        if (searchText.isEmpty()) {
-            populateListView();
-        } else {
-            List<Departement> filteredList = departementService.readAll().stream()
-                    .filter(dep -> dep.getNom().toLowerCase().contains(searchText))
-                    .toList();
-            departementList.setAll(filteredList);
-        }
+        filterDepartements(searchText);
     }
-
-
 }

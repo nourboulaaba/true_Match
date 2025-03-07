@@ -3,6 +3,7 @@ package org.example.pifinal.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.example.pifinal.Model.Departement;
 import org.example.pifinal.Model.User;
@@ -40,6 +41,10 @@ public class AddDepartementController {
 
     @FXML
     public void initialize() {
+        nomField.textProperty().addListener((observable, oldValue, newValue) -> validateInputs());
+        budgetField.textProperty().addListener((observable, oldValue, newValue) -> validateInputs());
+        nbEmployesField.textProperty().addListener((observable, oldValue, newValue) -> validateInputs());
+        responsableComboBox.valueProperty().addListener((observable, oldValue, newValue) -> validateInputs());
         List<User> users = userService.readAll();
         responsableComboBox.getItems().addAll(users);
     }
@@ -68,48 +73,64 @@ public class AddDepartementController {
     private boolean validateInputs() {
         boolean isValid = true;
 
-        if (nomField.getText().trim().isEmpty()) {
+        // Validate name field (nomField)
+        String name = nomField.getText().trim();
+        if (name.isEmpty()) {
             nomErrorLabel.setText("Le nom est requis.");
+            nomErrorLabel.setTextFill(Color.RED);
+            isValid = false;
+        } else if (name.matches(".*\\d.*")) { // Check if name contains any digits
+            nomErrorLabel.setText("Le nom ne doit pas contenir de chiffres.");
+            nomErrorLabel.setTextFill(Color.RED);
             isValid = false;
         } else {
-            nomErrorLabel.setText("");
+            nomErrorLabel.setText("");  // Clear the error if input is valid
         }
 
+        // Validate budget field (budgetField)
         try {
             int budget = Integer.parseInt(budgetField.getText());
             if (budget < 0) {
                 budgetErrorLabel.setText("Le budget doit être positif.");
+                budgetErrorLabel.setTextFill(Color.RED);
                 isValid = false;
             } else {
-                budgetErrorLabel.setText("");
+                budgetErrorLabel.setText("");  // Clear the error if input is valid
             }
         } catch (NumberFormatException e) {
             budgetErrorLabel.setText("Veuillez entrer un budget valide.");
+            budgetErrorLabel.setTextFill(Color.RED);
             isValid = false;
         }
 
+        // Validate number of employees field (nbEmployesField)
         try {
             int nbEmployes = Integer.parseInt(nbEmployesField.getText());
             if (nbEmployes < 0) {
                 nbEmployesErrorLabel.setText("Le nombre d'employés doit être positif.");
+                nbEmployesErrorLabel.setTextFill(Color.RED);
                 isValid = false;
             } else {
-                nbEmployesErrorLabel.setText("");
+                nbEmployesErrorLabel.setText("");  // Clear the error if input is valid
             }
         } catch (NumberFormatException e) {
             nbEmployesErrorLabel.setText("Veuillez entrer un nombre valide.");
+            nbEmployesErrorLabel.setTextFill(Color.RED);
             isValid = false;
         }
 
+        // Validate responsible selection (responsableComboBox)
         if (responsableComboBox.getValue() == null) {
             responsableErrorLabel.setText("Veuillez sélectionner un responsable.");
+            responsableErrorLabel.setTextFill(Color.RED);
             isValid = false;
         } else {
-            responsableErrorLabel.setText("");
+            responsableErrorLabel.setText("");  // Clear the error if input is valid
         }
 
         return isValid;
     }
+
 
     @FXML
     void cancel(ActionEvent event) {

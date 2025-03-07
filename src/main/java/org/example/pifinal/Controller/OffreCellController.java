@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -17,6 +18,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.pifinal.Model.Offre;
 import org.example.pifinal.Services.OffreService;
+import org.example.pifinal.Utils.GeminiAPI;
 import org.example.pifinal.Utils.QRCodeGenerator;
 
 import com.itextpdf.kernel.pdf.*;
@@ -45,6 +47,7 @@ public class OffreCellController {
     public ImageView qrCodeImageView;
     public Button contrat;
     public Button mail;
+    public Label scoreAI;
     private Offre offre;
     private OffreService offreService = new OffreService();
     private DashOffreController parentController;
@@ -74,6 +77,7 @@ public class OffreCellController {
         this.parentController = parentController;
         updateView();
         generateAndDisplayQRCode();
+        fetchAndDisplayScore();
 
 
     }
@@ -96,6 +100,7 @@ public class OffreCellController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             offreService.delete(offre.getId());
             parentController.populateListView();
+            parentController.populateCharts();;
         }
     }
 
@@ -115,6 +120,7 @@ public class OffreCellController {
             stage.showAndWait();
 
             parentController.populateListView();
+            parentController.populateCharts();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -183,8 +189,23 @@ public class OffreCellController {
         }
     }
 
+    @FXML
+    public void fetchAndDisplayScore() {
+        if (offre != null) {
+            String offerDetails = offre.getTitre() + " " + offre.getDescription() + offre.getSalaireMin()+offre.getSalaireMax();
+            try {
+                String score = GeminiAPI.getOfferScore(offerDetails);
+                scoreAI.setText("Score AI : " + score );
+            } catch (IOException e) {
+                e.printStackTrace();
+                showAlert("Erreur", "Impossible de récupérer le score AI.");
+            }
+        }
+    }
+
+
     public void mail(ActionEvent actionEvent) {
-        sendEmail("mahmoudtouil9@gmail.com");
+        sendEmail("sfaxiabderahmene5@gmail.com");
 
     }
 
@@ -203,8 +224,8 @@ public class OffreCellController {
     }
 
     public void sendEmail(String recipient) {
-        final String senderEmail = "mahmoudtouil9@gmail.com";
-        final String senderPassword = "zzjs enoh rimz nqvp"; // Use App Password if using Gmail
+        final String senderEmail = "sfaxiabderahmene5@gmail.com";
+        final String senderPassword = "qlhl ylab ulqq uowv"; // Use App Password if using Gmail
 
         // Check if the PDF file exists before proceeding
         String filePath = "Contrat.pdf";

@@ -73,6 +73,7 @@ public class DepartementCellController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             departementService.delete(departement.getId());
             parentController.populateListView();
+            parentController.populateCharts();
         }
     }
 
@@ -92,6 +93,8 @@ public class DepartementCellController {
             stage.showAndWait();
 
             parentController.populateListView();
+            parentController.populateCharts();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

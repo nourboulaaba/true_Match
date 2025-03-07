@@ -12,7 +12,6 @@ module org.example.pifinal {
     requires jdk.httpserver;
     requires com.fasterxml.jackson.databind;
     requires async.http.client;
-    requires java.sql;
     requires org.json.chargebee;
     requires com.google.zxing;
     requires com.google.zxing.javase;
@@ -21,6 +20,8 @@ module org.example.pifinal {
     requires kernel;
     requires io;
     requires java.desktop;
+    requires com.google.gson;
+    requires java.sql;
 
     opens org.example.pifinal to javafx.fxml;
     exports org.example.pifinal;
