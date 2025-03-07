@@ -36,7 +36,7 @@ public class GoogleAuthController {
     private final UserService userService = new UserService();
     private final String CLIENT_SECRET_FILE = "/client_secret_59297607140-h0dk215jiob0b5anfmjlbu8vemnutv86.apps.googleusercontent.com.json";
 
-    private static final String TOKENS_DIRECTORY_PATH = "tokens";
+    private static final String TOKENS_DIRECTORY_PATH = "/tokens";
     private static final List<String> SCOPES = Arrays.asList(
             "https://www.googleapis.com/auth/userinfo.profile",
             "https://www.googleapis.com/auth/userinfo.email"
@@ -162,6 +162,7 @@ public class GoogleAuthController {
 
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             // Handle authentication errors
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Authentication Error");

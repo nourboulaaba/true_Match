@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@Static/Style/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pifinal.Controller.UpdateDepartementController">
+
+    <Label layoutX="13.0" layoutY="14.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Modifier le Département" underline="true" />
+
+    <Label layoutX="50" layoutY="80" text="Nom:" />
+    <TextField fx:id="nomField" layoutX="126.0" layoutY="84.0" prefWidth="300" />
+    <Label fx:id="nomErrorLabel" layoutX="50" layoutY="180" />
+
+
+    <Label layoutX="50" layoutY="130" text="Budget:" />
+    <TextField fx:id="budgetField" layoutX="150.0" layoutY="134.0" prefWidth="150" />
+    <Label fx:id="budgetErrorLabel" layoutX="50" layoutY="180" />
+
+
+    <Label layoutX="50" layoutY="180" text="Nombre d'Employés:" />
+    <TextField fx:id="nbEmployesField" layoutX="264.0" layoutY="182.0" prefWidth="100" />
+    <Label fx:id="nbEmployesErrorLabel" layoutX="50" layoutY="180" />
+
+
+    <Label layoutX="50" layoutY="230" text="Responsable:" />
+    <ComboBox fx:id="responsableComboBox" layoutX="200.0" layoutY="230.0" prefWidth="200" />
+    <Label fx:id="responsableErrorLabel" layoutX="50" layoutY="180" />
+
+
+    <Button fx:id="updateButton" layoutX="109.0" layoutY="320.0" onAction="#update" prefHeight="42.0" prefWidth="131.0" text="Mettre à jour" />
+    <Button fx:id="cancelButton" layoutX="298.0" layoutY="320.0" onAction="#cancel" prefHeight="42.0" prefWidth="131.0" text="Annuler" />
+
+</AnchorPane>

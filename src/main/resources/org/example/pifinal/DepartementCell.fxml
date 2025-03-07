@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="113.0" prefWidth="847.0" stylesheets="@Static/Style/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pifinal.Controller.DepartementCellController">
+   <children>
+      <Text layoutX="50.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="71.73669052124023" />
+      <Text fx:id="nomDep" layoutX="17.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="104.53676986694336" />
+      <Text layoutX="134.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Budget" wrappingWidth="71.73669052124012" />
+      <Text fx:id="budgetDep" layoutX="128.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="84.53673934936523" />
+      <Text layoutX="222.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'Employe" wrappingWidth="148.53667831420887" />
+      <Text fx:id="nbEmployeDep" layoutX="260.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="71.73669052124012" />
+      <Text layoutX="402.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsable" wrappingWidth="84.53673934936512" />
+      <Text fx:id="respDep" layoutX="388.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="111.73675155639648" />
+      <Button fx:id="update" layoutX="533.0" layoutY="37.0" mnemonicParsing="false" onAction="#update" prefHeight="42.0" prefWidth="131.0" text="Update" />
+      <Button fx:id="delete" layoutX="693.0" layoutY="37.0" mnemonicParsing="false" onAction="#delete" prefHeight="42.0" prefWidth="131.0" text="Delete" />
+   </children>
+</AnchorPane>

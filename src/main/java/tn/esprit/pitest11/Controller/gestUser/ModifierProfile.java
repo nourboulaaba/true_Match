@@ -191,7 +191,7 @@ public class ModifierProfile implements Initializable {
         file = fileChooser.showOpenDialog(stage);
         if (file != null) {
             // Get the destination folder (src/upload in this case)
-            Path destinationFolder = Path.of("src", "upload");
+            Path destinationFolder = Path.of("src/main/java/resources", "upload");
 
             try {
                 if (!Files.exists(destinationFolder)) {

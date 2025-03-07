@@ -78,7 +78,7 @@ public class profileController {
     public void initialize() {
         // Récupère l'utilisateur connecté via le tn.esprit.pitest11.service
         User user = UserSession.getConnectedUser();
-
+        System.out.println("000000000000000000000000000000000000000000000000000000000"+user+"000000000000000000000000000000");
 
 
         setCurrentUser( user);
@@ -97,8 +97,12 @@ public class profileController {
     }
 
     public void setCurrentUser(User user) {
+        System.out.println("🔹 1Chargement du profil utilisateur : " + (user != null ? user.getEmail() : "null"));
+        System.out.println("1 the function inside the profile  first :::::a"+user.getProfilePhoto());
+
         if (user.getId() == UserSession.getConnectedUser().getId()) user = UserSession.getConnectedUser();
         System.out.println("🔹 Chargement du profil utilisateur : " + (user != null ? user.getEmail() : "null"));
+        System.out.println("the function inside the profile  first :::::a"+user.getProfilePhoto());
 
         if (user != null) {
             this.currentUser = user;
@@ -127,9 +131,11 @@ public class profileController {
             if (currentUserImage != null) {
                 if (user.getProfilePhoto() != null && !user.getProfilePhoto().isEmpty()) {
                     try {
+
+                        System.out.println("the function inside the profile a"+user.getProfilePhoto());
                         currentUserImage.setImage(new Image(user.getProfilePhoto()));
                     }catch (Exception e){
-                        currentUserImage.setImage(new Image("/images/user.png")); // Image par défaut
+                        currentUserImage.setImage(new Image("C:\\Users\\hp\\Desktop\\Nouveau dossier (4)\\src\\main\\resources\\images\\user.png")); // Image par défaut
 
                     }
                 } else {

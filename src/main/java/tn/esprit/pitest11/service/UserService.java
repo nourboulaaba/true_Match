@@ -283,6 +283,8 @@ public class UserService implements IService<User> {
     public void updateOne(User user) throws SQLException {
         String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
         user.setPassword(hashedPassword);
+
+        System.out.println("thisi sthe file path " + user.getProfilePhoto());
         String req = "UPDATE user SET last_name = ?, first_name = ?, identifier = ?, email = ?, password = ?, cin = ?, role = ?, face_id = ?, salary = ?, hire_date = ?, phone_number = ?, cv = ?, profile_photo = ? WHERE id = ?";
 
 

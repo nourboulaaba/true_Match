@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="485.0" prefWidth="402.0" stylesheets="@Static/Style/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pifinal.Controller.FreelancersController">
+    <Label style="-fx-font-size: 20; -fx-padding: 10;" text="Freelancer List" />
+
+    <TableView fx:id="freelancerTable" prefHeight="400.0" prefWidth="416.0">
+        <columns>
+            <TableColumn fx:id="nameColumn" text="Name" />
+            <TableColumn fx:id="skillsColumn" text="Skills" />
+            <TableColumn fx:id="hourRateColumn" prefWidth="140.0" text="Hourly Rate" />
+            <TableColumn fx:id="profileLinkColumn" prefWidth="80.79998779296875" text="Profile" />
+        </columns>
+    </TableView>
+
+
+    <Button onAction="#loadFreelancers" style="-fx-padding: 10;" text="Load Freelancers" />
+</VBox>

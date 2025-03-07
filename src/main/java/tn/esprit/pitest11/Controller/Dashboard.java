@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.stage.Modality;
 import tn.esprit.pitest11.Controller.gestAuth.GoogleAuthController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,6 +66,37 @@ public class Dashboard {
             e.printStackTrace();
         }
     }
+
+
+
+
+    @FXML
+    void handleOffreEmploiButtonAction(ActionEvent event) {
+        try {
+            // Charger la vue DashDepartement.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/pifinal/DashDepartement.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle fenêtre (Stage)
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Gestion des Départements");
+
+            // Ajouter la scène avec la vue chargée
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Empêcher l'interaction avec la fenêtre principale tant que le popup est ouvert
+            popupStage.initModality(Modality.WINDOW_MODAL);
+            popupStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+
+            // Afficher la fenêtre popup
+            popupStage.showAndWait(); // Bloque jusqu'à fermeture du popup
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     void handleForamtionButtonAction(ActionEvent event) {
 
@@ -91,79 +123,138 @@ public class Dashboard {
     @FXML
     void handleCalendarButtonAction(ActionEvent event) {
         try {
-            // Charger la vue GestionContrats.fxml
-            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/Calendrier.fxml"));
+            // Charger la vue Calendrier.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Calendrier.fxml"));
+            Parent root = loader.load();
 
-            // Créer une nouvelle scène avec la vue des contrats
-            Stage stage = (Stage) contratsButton.getScene().getWindow();
-            Scene scene = new Scene(contratsView);
-            stage.setScene(scene);
-            stage.show();
+            // Créer une nouvelle fenêtre (Stage)
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Calendrier");
+
+            // Ajouter la scène avec la vue chargée
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Empêcher l'interaction avec la fenêtre principale tant que le popup est ouvert
+            popupStage.initModality(Modality.WINDOW_MODAL);
+            popupStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+
+            // Afficher la fenêtre popup
+            popupStage.showAndWait(); // Bloque jusqu'à fermeture du popup
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     void handleTousLesCongesButtonAction(ActionEvent event) {
         try {
-            // Charger la vue GestionContrats.fxml
-            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/TousLesConges.fxml"));
+            // Charger la vue TousLesConges.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TousLesConges.fxml"));
+            Parent root = loader.load();
 
-            // Créer une nouvelle scène avec la vue des contrats
-            Stage stage = (Stage) contratsButton.getScene().getWindow();
-            Scene scene = new Scene(contratsView);
-            stage.setScene(scene);
-            stage.show();
+            // Créer une nouvelle fenêtre (Stage)
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Tous les Congés");
+
+            // Ajouter la scène avec la vue chargée
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Empêcher l'interaction avec la fenêtre principale tant que le popup est ouvert
+            popupStage.initModality(Modality.WINDOW_MODAL);
+            popupStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+
+            // Afficher la fenêtre popup
+            popupStage.showAndWait(); // Bloque jusqu'à fermeture du popup
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     void handleRecrutementButtonAction(ActionEvent event) {
         try {
-            // Charger la vue GestionContrats.fxml
-            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/tn/esprit/pitest11/DashAdminRecrutement.fxml"));
+            // Charger la vue DashAdminRecrutement.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/pitest11/DashAdminRecrutement.fxml"));
+            Parent root = loader.load();
 
-            // Créer une nouvelle scène avec la vue des contrats
-            Stage stage = (Stage) contratsButton.getScene().getWindow();
-            Scene scene = new Scene(contratsView);
-            stage.setScene(scene);
-            stage.show();
+            // Créer une nouvelle fenêtre (Stage)
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Recrutement - Admin");
+
+            // Ajouter la scène avec la vue chargée
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Empêcher l'interaction avec la fenêtre principale tant que le popup est ouvert
+            popupStage.initModality(Modality.WINDOW_MODAL);
+            popupStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+
+            // Afficher la fenêtre popup
+            popupStage.showAndWait(); // Bloque jusqu'à fermeture du popup
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     void handleRecepetionCongeButtonAction(ActionEvent event) {
         try {
-            // Charger la vue GestionContrats.fxml
-            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/ReceptionConge.fxml"));
+            // Charger la vue ReceptionConge.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReceptionConge.fxml"));
+            Parent root = loader.load();
 
-            // Créer une nouvelle scène avec la vue des contrats
-            Stage stage = (Stage) contratsButton.getScene().getWindow();
-            Scene scene = new Scene(contratsView);
-            stage.setScene(scene);
-            stage.show();
+            // Créer une nouvelle fenêtre (Stage)
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Réception des Congés");
+
+            // Ajouter la scène avec la vue chargée
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Empêcher l'interaction avec la fenêtre principale tant que le popup est ouvert
+            popupStage.initModality(Modality.WINDOW_MODAL);
+            popupStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+
+            // Afficher la fenêtre popup
+            popupStage.showAndWait(); // Bloque jusqu'à fermeture du popup
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     void handleReclamationsButtonAction(ActionEvent event) {
-
         try {
-            // Charger la vue GestionContrats.fxml
-            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/ListeReclamation.fxml"));
+            // Charger la vue ListeReclamation.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListeReclamation.fxml"));
+            Parent root = loader.load();
 
-            // Créer une nouvelle scène avec la vue des contrats
-            Stage stage = (Stage) contratsButton.getScene().getWindow();
-            Scene scene = new Scene(contratsView);
-            stage.setScene(scene);
-            stage.show();
+            // Créer une nouvelle fenêtre (Stage)
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Liste des Réclamations");
+
+            // Ajouter la scène avec la vue chargée
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Empêcher l'interaction avec la fenêtre principale tant que le popup est ouvert
+            popupStage.initModality(Modality.WINDOW_MODAL);
+            popupStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+
+            // Afficher la fenêtre popup
+            popupStage.showAndWait(); // Bloque jusqu'à fermeture du popup
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     void handleCertificatsButtonAction(ActionEvent event) {
@@ -350,31 +441,55 @@ public class Dashboard {
     public void handleMissionsButtonAction(javafx.event.ActionEvent actionEvent) {
         try {
             // Charger la vue GestionMissions.fxml
-            javafx.scene.Parent missionsView = FXMLLoader.load(getClass().getResource("/GestionMissions.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GestionMissions.fxml"));
+            Parent root = loader.load();
 
-            // Créer une nouvelle scène avec la vue des missions
-            Stage stage = (Stage) missionsButton.getScene().getWindow();
-            Scene scene = new Scene(missionsView);
-            stage.setScene(scene);
-            stage.show();
+            // Créer une nouvelle fenêtre (Stage)
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Gestion des Missions");
+
+            // Ajouter la scène avec la vue chargée
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Empêcher l'interaction avec la fenêtre principale tant que le popup est ouvert
+            popupStage.initModality(Modality.WINDOW_MODAL);
+            popupStage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+
+            // Afficher la fenêtre popup
+            popupStage.showAndWait(); // Bloque jusqu'à fermeture du popup
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     public void handleContratsButtonAction(javafx.event.ActionEvent actionEvent) {
         try {
             // Charger la vue GestionContrats.fxml
-            javafx.scene.Parent contratsView = FXMLLoader.load(getClass().getResource("/GestionContrats.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GestionContrats.fxml"));
+            Parent root = loader.load();
 
-            // Créer une nouvelle scène avec la vue des contrats
-            Stage stage = (Stage) contratsButton.getScene().getWindow();
-            Scene scene = new Scene(contratsView);
-            stage.setScene(scene);
-            stage.show();
+            // Créer une nouvelle fenêtre (Stage)
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Gestion des Contrats");
+
+            // Ajouter la scène avec la vue chargée
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Empêcher l'interaction avec la fenêtre principale tant que le popup est ouvert
+            popupStage.initModality(Modality.WINDOW_MODAL);
+            popupStage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+
+            // Afficher la fenêtre popup
+            popupStage.showAndWait(); // Bloque jusqu'à fermeture du popup
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }

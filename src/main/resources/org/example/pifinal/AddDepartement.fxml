@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="563.0" prefWidth="668.0" stylesheets="@Static/Style/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.pifinal.Controller.AddDepartementController">
+
+    <Label layoutX="13.0" layoutY="14.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Ajouter un Département" underline="true" />
+
+    <Label layoutX="50" layoutY="80" text="Nom:" />
+    <TextField fx:id="nomField" layoutX="116.0" layoutY="84.0" prefWidth="300" />
+    <Label fx:id="nomErrorLabel" layoutX="53.0" layoutY="124.0" prefHeight="44.0" prefWidth="558.0" />
+
+
+    <Label layoutX="57.0" layoutY="180.0" text="Budget:" />
+    <TextField fx:id="budgetField" layoutX="147.0" layoutY="184.0" prefWidth="150" />
+    <Label fx:id="budgetErrorLabel" layoutX="57.0" layoutY="224.0" prefHeight="44.0" prefWidth="573.0" />
+
+
+    <Label layoutX="50.0" layoutY="273.0" text="Nombre d'Employés:" />
+    <TextField fx:id="nbEmployesField" layoutX="259.0" layoutY="275.0" prefWidth="100" />
+    <Label fx:id="nbEmployesErrorLabel" layoutX="50.0" layoutY="317.0" prefHeight="44.0" prefWidth="446.0" />
+
+
+    <Label layoutX="57.0" layoutY="380.0" text="Responsable:" />
+    <ComboBox fx:id="responsableComboBox" layoutX="197.0" layoutY="380.0" prefWidth="200" />
+    <Label fx:id="responsableErrorLabel" layoutX="44.0" layoutY="424.0" prefHeight="44.0" prefWidth="558.0" />
+
+
+    <Button fx:id="saveButton" layoutX="108.0" layoutY="485.0" onAction="#save" prefHeight="42.0" prefWidth="131.0" text="Enregistrer" />
+    <Button fx:id="cancelButton" layoutX="293.0" layoutY="485.0" onAction="#cancel" prefHeight="42.0" prefWidth="131.0" text="Annuler" />
+
+</AnchorPane>
