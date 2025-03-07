@@ -7,7 +7,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllerConge.ReceptionConge"
+            fx:controller="tn.esprit.pitest11.controllerConge.ReceptionConge"
             prefHeight="600.0" prefWidth="800.0"
             stylesheets="@Reception.css">
     <children>

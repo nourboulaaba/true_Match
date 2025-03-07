@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #F4F4F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gestUser.GestionRH">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #F4F4F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pitest11.Controller.gestUser.GestionRH">
     <children>
         <VBox alignment="TOP_CENTER" layoutX="46.0" layoutY="20.0" prefHeight="617.0" prefWidth="887.0" spacing="20">
             <children>

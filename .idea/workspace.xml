@@ -5,14 +5,164 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbd42d3c-8835-4f17-95b5-8699f0ab3b66" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/ATSController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/AddEntretienController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/AddRecrutementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/DashAdminEntretienController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/DashAdminRecrutementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/DashUserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/EntretienCellController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/EntretienCellUserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/MapsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/RecrutementCellController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/StatsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/UpdateEntretienController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/UpdateRecrutementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/profileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/CV.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Convoque.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Entretien.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Offre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Recrutement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Interfaces/IService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/entite/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/ConvoqueService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/EntretienService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/OffreService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/RecrutementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/utils/GeminiAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/utils/TwilioAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/ATS.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/AddEntretien.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/AddRecrutement.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/DashAdminEntretien.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/DashAdminRecrutement.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/DashUser.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/EntretienCell.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/EntretienCellUser.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/RecrutementCell.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/Static/Style/Syles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/Static/image/AdminAddRecrutement.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/Stats.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/UpdateEntretien.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/UpdateRecrutement.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/hello-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/maps.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pitest11/maps.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/uploadPdf/bar_chart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/uploadPdf/line_chart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/uploadPdf/pie_chart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/uploadPdf/scatter_chart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/uploadPdf/statistics.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/DashEmp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/DashEmp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CertificatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/CertificatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/DashEmp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/DashEmp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/FormationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/FormationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/GestionContratsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/GestionContratsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/GestionMissionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/GestionMissionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ReviewAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/ReviewAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Statistique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/Statistique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/gestAuth/ChangeForgotPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/gestAuth/ChangeForgotPasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/gestAuth/GoogleAuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/gestAuth/GoogleAuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/gestAuth/ResetPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/gestAuth/ResetPasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/gestUser/AjouterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/gestUser/AjouterUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/gestUser/ChangePasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/gestUser/ChangePasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/gestUser/ForgotPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/gestUser/ForgotPasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/gestUser/GestionRH.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/gestUser/GestionRH.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/gestUser/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/gestUser/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/gestUser/ModifierProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/gestUser/ModifierProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/gestUser/profileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/gestUser/profileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/profileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Contrat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Contrat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/EmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Mission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Mission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerConge/CalendrierConge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/controllerConge/CalendrierConge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerConge/Formulaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/controllerConge/Formulaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerConge/HistoriqueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/controllerConge/HistoriqueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerConge/ListeReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/controllerConge/ListeReclamationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerConge/ReceptionConge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/controllerConge/ReceptionConge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerConge/Reclamation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/controllerConge/Reclamation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerConge/TousLesCongesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/controllerConge/TousLesCongesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entite/Certificat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Certificat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entite/Conges.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Conges.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entite/Employes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Employes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entite/Reclamations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Reclamations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entite/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entite/formations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Entities/formations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mail/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/mail/EmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/example/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MainFX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/example/dao/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/example/mainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/CertificatPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/CertificatPDF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/CertificatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/CertificatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/CongeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/CongeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/FormationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/FormationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/GeminiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/GeminiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/ICertificatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/ICertificatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/IService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/MailConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/MailConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/MailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/MailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/NotificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/OTPService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/OTPService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/ReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/UserSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/contratService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/contratService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/missionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/service/missionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/TestCalendrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/test/TestCalendrier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/TestCongeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/test/TestCongeRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/TestFormulaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/test/TestFormulaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/TestHistorique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/test/TestHistorique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/TestReceptionConge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/test/TestReceptionConge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/TestReclamation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/test/TestReclamation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/TestTousLesConges.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/test/TestTousLesConges.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/TestTousReclamations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/test/TestTousReclamations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CongeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/utils/CongeRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/utils/DataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/PreferenceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/utils/PreferenceManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ReclamationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/utils/ReclamationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Auth/ChangeForgotPassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Auth/ChangeForgotPassword.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Auth/ChangePassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Auth/ChangePassword.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Auth/ForgetPassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Auth/ForgetPassword.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Auth/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Auth/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Auth/ResetPassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Auth/ResetPassword.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Calendrier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Calendrier.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Certificat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Certificat.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/DashEmployee.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DashEmployee.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Dashboard1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Dashboard1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Formations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Formations.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Formulaire.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Formulaire.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionContrats.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionContrats.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionMissions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionMissions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Historique.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Historique.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Item.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ListeReclamation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ListeReclamation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ModifierProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Profile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ReceptionConge.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ReceptionConge.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Reclamation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Reclamation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/TousLesConges.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TousLesConges.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionRH.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionRH.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +179,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -38,39 +191,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.MainFX.executor": "Run",
-    "Application.TestCalendrier.executor": "Run",
-    "Application.mainFX.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "true",
-    "Maven.TrueMatch [install].executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "prod",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/dell/Downloads/true_Match_organisation/true_Match",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2735632",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MainFX.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestCalendrier.executor&quot;: &quot;Run&quot;,
+    &quot;Application.mainFX.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Maven.TrueMatch [install].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;prod&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/hp/Desktop/Nouveau dossier (4)/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2735632&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hp\Desktop\Nouveau dossier (4)\src\main\resources" />
+      <recent name="C:\Users\hp\Desktop\Nouveau dossier (4)\src\main\java\tn\esprit\pitest11\utils" />
+      <recent name="C:\Users\hp\Desktop\Nouveau dossier (4)\src\main\java\tn\esprit\pitest11\Controller" />
+      <recent name="C:\Users\hp\Desktop\Nouveau dossier (4)\src\main\java\tn\esprit\pitest11" />
+      <recent name="C:\Users\hp\Desktop\Nouveau dossier (4)\src\main\java\tn\esprit\pitest11\service" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.mainFX">
     <configuration name="TestCalendrier" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.TestCalendrier" />
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.pitest11.test.TestCalendrier" />
       <module name="prod" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml " />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.*" />
+          <option name="PATTERN" value="tn.esprit.pitest11.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -79,12 +242,12 @@
       </method>
     </configuration>
     <configuration name="mainFX" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.mainFX" />
-      <module name="prod" />
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.pitest11.example.mainFX" />
+      <module name="GeminiIntegration" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml " />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="tn.esprit.pitest11.example.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -141,6 +304,9 @@
       <workItem from="1741293373034" duration="908000" />
       <workItem from="1741296319658" duration="2382000" />
       <workItem from="1741298993106" duration="1836000" />
+      <workItem from="1741316512898" duration="260000" />
+      <workItem from="1741316894881" duration="5189000" />
+      <workItem from="1741322145324" duration="64000" />
     </task>
     <servers />
   </component>
@@ -151,9 +317,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Controller/Login.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/tn/esprit/pitest11/Controller/Login.java</url>
           <line>210</line>
-          <properties class="Controller.Login" method="screenDragged">
+          <properties class="Controller.Login">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

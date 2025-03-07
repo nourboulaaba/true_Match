@@ -20,6 +20,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
+            <dependency>
+                <groupId>com.twilio.sdk</groupId>
+                <artifactId>twilio</artifactId>
+                <version>7.1.0</version> <!-- Mets la dernière version si besoin -->
+            </dependency>
 
         <dependency>
             <groupId>de.jensd</groupId>
@@ -195,6 +200,45 @@
             <version>2.2.0</version>
         </dependency>
 
+
+
+        <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-web</artifactId>
+        <version>21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>17.0.6</version>
+        </dependency>
+
+
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itext7-core</artifactId>
+                <version>7.2.5</version> <!-- Vérifie la dernière version sur Maven Repository -->
+                <type>pom</type> <!-- Vérifie la dernière version sur Maven Repository -->
+
+            </dependency>
+
+
+
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>21</version>
+        </dependency>
+
+
+
+        <dependency>
+                <groupId>net.sourceforge.tess4j</groupId>
+                <artifactId>tess4j</artifactId>
+                <version>4.5.5</version> <!-- Vérifie la dernière version sur Maven Repository -->
+            </dependency>
+
         <dependency>
             <groupId>com.jfoenix</groupId>
             <artifactId>jfoenix</artifactId>
@@ -296,7 +340,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>org.example.mainFX</mainClass>
+                    <mainClass>tn.esprit.pitest11.example.mainFX</mainClass>
                 </configuration>
             </plugin>
         </plugins>

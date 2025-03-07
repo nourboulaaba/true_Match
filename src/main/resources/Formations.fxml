@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.FormationController" alignment="CENTER" spacing="20" stylesheets="@stylef.css">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.pitest11.Controller.FormationController" alignment="CENTER" spacing="20" stylesheets="@stylef.css">
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>

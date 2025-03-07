@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controllerConge.Reclamation" spacing="15" alignment="CENTER"
+      fx:controller="tn.esprit.pitest11.controllerConge.Reclamation" spacing="15" alignment="CENTER"
       stylesheets="@reclam.css" prefHeight="600.0" prefWidth="800.0"> <!-- Set preferred size for VBox -->
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>

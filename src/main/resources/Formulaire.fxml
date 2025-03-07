@@ -9,7 +9,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllerConge.Formulaire"
+            fx:controller="tn.esprit.pitest11.controllerConge.Formulaire"
             stylesheets="@Formulaire.css">
 
     <StackPane AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">

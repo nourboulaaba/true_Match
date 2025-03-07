@@ -7,7 +7,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controller.GestionMissionsController"
+            fx:controller="tn.esprit.pitest11.Controller.GestionMissionsController"
             prefHeight="600.0" prefWidth="800.0"
             styleClass="main-container">
 
