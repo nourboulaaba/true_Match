@@ -4,7 +4,7 @@
 
 ##  Description
 
-PIDEV est une application web de gestion des ressources humaines permettant de gérer les utilisateurs, emplois, recrutements, services, formations, missions et contrats. Chaque membre de l'équipe développe un module indépendant avec des fonctionnalités CRUD, des APIs REST et des traitements métier avancés.
+TRUEMATCH est une application desktop de gestion des ressources humaines permettant de gérer les utilisateurs, emplois, recrutements, services, formations, missions et contrats. Chaque membre de l'équipe développe un module indépendant avec des fonctionnalités CRUD, des APIs REST et des traitements métier avancés.
 
 ---
 
@@ -37,8 +37,8 @@ README.md
 
 ### Gestion Utilisateur
 - CRUD complet
-- API : Auth Google, reset password avec captcha, mailing après connexion
-- Métier avancé : reconnaissance faciale (Face ID), recherche, filtres, export XML des employés
+- API : Auth Google, reset password , mailing après connexion
+- Métier avancé : reconnaissance faciale (Face ID), recherche, filtres
 
 ### Gestion Emploi
 - CRUD + API Job List
